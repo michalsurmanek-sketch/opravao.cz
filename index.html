@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f2e8">
+<meta name="description" content="Popište opravu jednou. Opravao.cz vás propojí s řemeslníky ve vašem okolí.">
+<title>Opravao.cz — Dáme to do pořádku</title>
+<style>
+:root{--paper:#f7f2e8;--ink:#20211f;--orange:#e94e1b;--olive:#707b3a;--line:#292a27;--muted:#6e6b62}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1480px,calc(100% - 64px));margin:auto}
+header{height:76px;display:flex;align-items:center;gap:30px;border-bottom:1px solid rgba(32,33,31,.14)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;font-size:34px;letter-spacing:-1.8px;white-space:nowrap}.brand-mark{width:42px;height:42px;background:var(--orange);color:white;display:grid;place-items:center;clip-path:polygon(32% 0,70% 0,63% 34%,100% 34%,37% 100%,46% 60%,9% 60%);font-size:0}
+.brand-mark:after{content:"";position:absolute}.brand span:last-child{line-height:1}
+.nav{height:34px;border-left:1px solid #85847e;margin-left:10px;padding-left:32px;display:flex;align-items:center;gap:38px;font-weight:750;font-size:16px;flex:1}.nav a:hover{color:var(--orange)}
+.header-contact{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:850;white-space:nowrap}.phone-icon{color:var(--olive);font-size:24px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:6px;padding:14px 22px;background:var(--orange);color:white;font-weight:800;font-size:16px;cursor:pointer;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(.94);transform:translateY(-1px)}.btn-outline{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.menu-toggle{display:none;border:0;background:none;font-size:27px}
+.hero{position:relative;display:grid;grid-template-columns:.92fr 1.08fr;min-height:510px;align-items:center;overflow:hidden;padding:24px 0 0}
+.hero-copy{position:relative;z-index:1;padding:12px 0 30px}.eyebrow{font-weight:800;color:var(--olive);font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(54px,6.2vw,94px);line-height:.91;letter-spacing:-.065em;margin:0 0 18px;font-weight:950;max-width:680px}h1 em{font-style:normal;color:var(--orange);display:block}
+.hero-copy p{font-size:22px;line-height:1.28;max-width:590px;margin:0 0 26px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}.hero-actions .btn{min-width:215px;padding:15px 20px;font-size:18px}
+.house-art{width:100%;height:485px;align-self:end;display:block}.hero::before{content:"";position:absolute;inset:0 0 0 45%;background:radial-gradient(ellipse at 65% 70%,rgba(116,124,57,.08),transparent 60%);pointer-events:none}
+.request{background:linear-gradient(110deg,#292a27,#171816);color:#fff;border-radius:7px;padding:18px 30px 16px;margin:0 0 24px;position:relative;z-index:2}
+.request h2{font-size:38px;line-height:1;margin:0 0 13px;letter-spacing:-.04em}
+.form-grid{display:grid;grid-template-columns:1.2fr 1fr 1.1fr auto;gap:16px;align-items:end}.field label{display:block;font-weight:750;font-size:14px;margin:0 0 7px}.input-wrap{height:52px;display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:6px;background:#f8f4eb;color:#30312e}.input-wrap svg{width:22px;height:22px;flex:none}.input-wrap input,.input-wrap select{border:0;outline:0;background:transparent;width:100%;font:inherit;font-size:15px;color:#292a27;min-width:0}.form-grid .btn{height:52px;white-space:nowrap;font-size:16px;padding:0 18px}.form-note{margin:10px 0 0;font-size:14px;color:#f0eee8;display:flex;align-items:center;gap:8px}.shield{color:#c5d38c;font-size:20px}
+.services{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:0 0 22px}.service{min-height:145px;border:1px solid #454640;border-radius:7px;background:rgba(255,255,255,.14);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-weight:850;text-align:center;font-size:20px;line-height:1.05;transition:background .15s,border-color .15s,transform .15s}.service:hover,.service[aria-pressed="true"]{background:#fff9ee;border-color:var(--orange);transform:translateY(-2px)}.service svg{width:55px;height:55px;stroke:#252623;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.service .solid{fill:#252623;stroke:none}
+.trust{display:flex;align-items:center;justify-content:center;gap:20px;font-size:17px;font-weight:800;padding:0 0 34px}.trust:before,.trust:after{content:"";height:2px;background:var(--olive);flex:1;max-width:270px}.trust-item{display:flex;align-items:center;gap:9px;white-space:nowrap}.check{color:var(--olive);font-size:25px;font-weight:900}
+footer{padding:24px 0;border-top:1px solid rgba(32,33,31,.18);font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+#status{margin:10px 0 0;color:#f3dda0;font-size:14px;min-height:18px}
+@media(max-width:1050px){.wrap{width:min(100% - 36px,900px)}header{gap:16px}.brand{font-size:29px}.nav{gap:18px;padding-left:20px;font-size:14px}.header-contact{font-size:16px}.header-cta{padding:12px 14px;font-size:14px}.hero{min-height:440px;grid-template-columns:1fr 1fr}.house-art{height:410px}.form-grid{grid-template-columns:repeat(2,1fr)}.form-grid .btn{grid-column:2}.services{grid-template-columns:repeat(3,1fr)}.service{min-height:130px}}
+@media(max-width:700px){.wrap{width:calc(100% - 30px)}header{height:66px;justify-content:space-between}.brand{font-size:27px}.brand-mark{width:35px;height:35px}.menu-toggle{display:block}.nav{display:none;position:absolute;top:66px;left:0;right:0;height:auto;padding:18px 22px;background:var(--paper);border:0;z-index:10;box-shadow:0 8px 15px #0001;flex-direction:column;align-items:flex-start;gap:18px}.nav.open{display:flex}.header-contact{margin-left:auto;font-size:0}.phone-icon{font-size:24px}.header-cta{display:none}
+.hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;padding:34px 0 0}.hero-copy{padding:0}.eyebrow{font-size:12px}h1{font-size:clamp(49px,13vw,76px);max-width:560px}.hero-copy p{font-size:18px;max-width:440px}.hero-actions{gap:10px}.hero-actions .btn{min-width:0;flex:1;font-size:15px;padding:13px 10px}.house-art{height:auto;max-height:320px;margin-top:8px}.request{padding:19px 16px 15px;margin-top:2px}.request h2{font-size:29px}.form-grid{grid-template-columns:1fr;gap:12px}.form-grid .btn{grid-column:auto;width:100%}.input-wrap{height:48px}.services{grid-template-columns:repeat(2,1fr);gap:9px}.service{min-height:118px;font-size:17px}.service svg{width:45px;height:45px}.trust{gap:10px;flex-wrap:wrap;justify-content:flex-start;font-size:13px;padding-bottom:24px}.trust:before,.trust:after{display:none}.trust-item{white-space:normal}.check{font-size:20px}footer{gap:12px;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="brand" href="#" aria-label="Opravao.cz – úvod"><span class="brand-mark" aria-hidden="true"></span><span>OPRAVAO</span></a>
+<nav class="nav" id="nav"><a href="#jak-to-funguje">Jak to funguje</a><a href="#pro-remeslniky">Pro řemeslníky</a><a href="#rady">Rady a návody</a></nav>
+<a class="header-contact" href="tel:800123456"><span class="phone-icon">☎</span><span>800 123 456</span></a>
+<a class="btn header-cta" href="#poptavka">Nezávazně poptat opravu</a>
+<button class="menu-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+</header>
+<main>
+<section class="hero" id="jak-to-funguje">
+<div class="hero-copy">
+<div class="eyebrow">Opravy bez zbytečného obvolávání</div>
+<h1>Co se pokazilo?<em>Dáme to do pořádku.</em></h1>
+<p>Popište opravu jednou. Propojíme vás s ověřenými řemeslníky ve vašem okolí.</p>
+<div class="hero-actions"><a class="btn" href="#poptavka">Najít opraváře</a><a class="btn btn-outline" href="#jak-funguje">Jak služba funguje</a></div>
+</div>
+<svg class="house-art" viewBox="0 0 760 500" role="img" aria-label="Řez domem s opravářem u elektroinstalace, instalatérem a hodinovým manželem">
+<defs><pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#252623" opacity=".35"/></pattern></defs>
+<!-- trees and ground -->
+<g fill="#788043"><circle cx="70" cy="252" r="54"/><circle cx="105" cy="208" r="48"/><circle cx="105" cy="294" r="55"/><circle cx="703" cy="380" r="52"/><circle cx="730" cy="325" r="39"/></g>
+<path d="M24 470 Q165 457 255 471 T500 468 T750 466" fill="none" stroke="#252623" stroke-width="3" stroke-dasharray="2 5"/>
+<!-- house silhouette -->
+<path d="M86 244 L385 24 L706 242 L706 463 L86 463 Z" fill="#f8f4eb" stroke="#20211f" stroke-width="7"/>
+<path d="M74 241 L385 12 L718 239" fill="none" stroke="#20211f" stroke-width="9"/>
+<path d="M93 231 L385 18 L703 228" fill="none" stroke="#e94e1b" stroke-width="10"/>
+<path d="M118 238 L385 43 L684 240" fill="none" stroke="#f3f0e8" stroke-width="2"/>
+<!-- chimney -->
+<path d="M622 70 L622 24 L676 24 L676 107" fill="#f8f4eb" stroke="#20211f" stroke-width="6"/><path d="M615 21h67v11h-67z" fill="#f8f4eb" stroke="#20211f" stroke-width="5"/>
+<!-- floor divisions -->
+<path d="M90 279 H701 M90 279 V463 M411 279 V463 M90 279 L385 63 L701 279" fill="none" stroke="#20211f" stroke-width="6"/>
+<path d="M95 285 H696 V457 H95z" fill="url(#dots)" opacity=".45"/>
+<!-- upper room electrician -->
+<path d="M402 82 V274 M410 82 H680" stroke="#20211f" stroke-width="3" fill="none"/>
+<path d="M497 107v44" stroke="#20211f" stroke-width="4"/><path d="M471 150h52l-11 17h-31z" fill="#20211f"/><path d="M481 167h32v8h-32z" fill="#20211f"/>
+<circle cx="463" cy="157" r="17" fill="#f8f4eb" stroke="#20211f" stroke-width="4"/><path d="M450 179q-12 35 1 69l49 7-7-49-21-24z" fill="#f8f4eb" stroke="#20211f" stroke-width="5"/><path d="M476 194l20-28 22 10M468 223l-18 35m35-12 19 20" fill="none" stroke="#20211f" stroke-width="6" stroke-linecap="round"/>
+<path d="M448 139h54v22h-54z" fill="#e94e1b"/><text x="475" y="155" fill="white" font-size="13" font-weight="800" text-anchor="middle">ELEKTRO</text>
+<!-- bathroom tiles + sink -->
+<g stroke="#252623" stroke-width="2" opacity=".65"><path d="M103 326h102v132H103zM103 370h102M103 414h102M137 326v132M171 326v132"/></g>
+<path d="M220 318h95l-8 43h-80z" fill="#f7f2e8" stroke="#20211f" stroke-width="5"/><path d="M268 317v-21q0-18 15-18t15 17" fill="none" stroke="#20211f" stroke-width="6"/><path d="M270 361v30h27v-30" fill="none" stroke="#20211f" stroke-width="5"/>
+<path d="M114 302h72v24h-72z" fill="#e94e1b"/><text x="150" y="319" fill="white" font-size="15" font-weight="800" text-anchor="middle">VODA</text>
+<!-- plumber figure -->
+<circle cx="227" cy="385" r="16" fill="#f8f4eb" stroke="#20211f" stroke-width="5"/><path d="M211 402q-19 7-22 39l39 8 18-34z" fill="#f8f4eb" stroke="#20211f" stroke-width="5"/><path d="M215 414l38-26 21 4M226 442l-19 20m33-12 10 14" fill="none" stroke="#20211f" stroke-width="7" stroke-linecap="round"/>
+<!-- door room -->
+<path d="M473 315h102v142H473z" fill="#f4efe4" stroke="#20211f" stroke-width="5"/><path d="M487 326h68v120h-68z" fill="none" stroke="#20211f" stroke-width="3"/><circle cx="543" cy="386" r="4" fill="#20211f"/>
+<path d="M594 302h92v25h-92z" fill="#e94e1b"/><text x="640" y="319" fill="white" font-size="13" font-weight="800" text-anchor="middle">DOMÁCNOST</text>
+<!-- handyman figure -->
+<circle cx="614" cy="375" r="17" fill="#f8f4eb" stroke="#20211f" stroke-width="5"/><path d="M599 394q-21 13-21 49l47 9 21-40z" fill="#f8f4eb" stroke="#20211f" stroke-width="5"/><path d="M605 405l-19 28 40-8m-28 27-23 17m48-20 20 18" fill="none" stroke="#20211f" stroke-width="7" stroke-linecap="round"/>
+</svg>
+</section>
+<section class="request" id="poptavka">
+<h2>Co potřebujete opravit?</h2>
+<form id="repair-form">
+<div class="form-grid">
+<div class="field"><label for="type">Typ opravy</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14.7 6.3 3 3M3 21l7.6-7.6M15 5l4-4 4 4-4 4M2 2l6 6m-3-7 6 6"/></svg><select id="type" required><option value="">Vyberte typ opravy</option><option>Instalatér</option><option>Elektrikář</option><option>Spotřebiče</option><option>Dveře a okna</option><option>Střecha</option><option>Hodinový manžel</option></select></div></div>
+<div class="field"><label for="place">Město / PSČ</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><input id="place" placeholder="Např. Praha, 120 00" required></div></div>
+<div class="field"><label for="contact">Telefon / e-mail</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg><input id="contact" placeholder="Váš telefon nebo e-mail" required></div></div>
+<button class="btn" type="submit">Najít dostupného opraváře <span aria-hidden="true">→</span></button>
+</div><p class="form-note"><span class="shield">⬟</span> Poptávka je zdarma a bez závazků.</p><p id="status" role="status"></p>
+</form>
+</section>
+<section class="services" aria-label="Nejčastější opravy">
+<button class="service" type="button" aria-pressed="false"><svg viewBox="0 0 64 64"><path d="M15 8v22m-8-14h16M7 16l8 8 8-8M15 30 9 42h12l-6-12ZM43 10l-7 17h11l-8 22 18-27H45l8-12z"/></svg><span>Instalatér</span></button>
+<button class="service" type="button" aria-pressed="false"><svg viewBox="0 0 64 64" class="solid"><path d="M35 3 13 36h16l-4 25 27-38H35z"/></svg><span>Elektrikář</span></button>
+<button class="service" type="button" aria-pressed="false"><svg viewBox="0 0 64 64"><rect x="13" y="7" width="38" height="50" rx="4"/><path d="M13 17h38M20 12h2m5 0h2"/><circle cx="32" cy="37" r="12"/><circle cx="32" cy="37" r="7"/></svg><span>Spotřebiče</span></button>
+<button class="service" type="button" aria-pressed="false"><svg viewBox="0 0 64 64"><path d="M18 56V9l28-6v53zM18 9h28M39 31h1"/></svg><span>Dveře<br>a okna</span></button>
+<button class="service" type="button" aria-pressed="false"><svg viewBox="0 0 64 64"><path d="m4 48 28-34 28 34M15 35l8 6m3-16 8 6m3-11 8 6m-28 27h37M47 18V8h8v20"/></svg><span>Střecha</span></button>
+<button class="service" type="button" aria-pressed="false"><svg viewBox="0 0 64 64"><path d="M11 45 40 16m-6-7a13 13 0 0 0 17 17L38 39 25 52 12 39zM44 43l10 10M48 39l7-7 7 7-7 7z"/></svg><span>Hodinový<br>manžel</span></button>
+</section>
+<div class="trust"><span class="trust-item"><span class="check">✓</span>Ověření řemeslníci</span><span>·</span><span class="trust-item"><span class="check">✓</span>Jasná domluva</span><span>·</span><span class="trust-item"><span class="check">✓</span>Bez zbytečného obvolávání</span></div>
+<section id="jak-funguje" hidden><h2>Jak služba funguje</h2><p>Vyberete opravu, zadáte místo a kontakt. Poté vás spojíme s dostupným řemeslníkem.</p></section>
+</main>
+<footer><span>© Opravao.cz</span><span>Opravy domácnosti jednoduše</span></footer>
+</div>
+<script>
+const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+document.querySelectorAll('.service').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');document.querySelector('#type').value=button.innerText.replace(/\n/g,' ') }));
+document.querySelector('#repair-form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#status').textContent='Formulář je připravený. Pro skutečné odesílání poptávek je potřeba připojit e-mail nebo databázi.'});
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+</body>
+</html>
