@@ -5,7 +5,7 @@
 - Zákazník zadá poptávku zdarma.
 - Správce ověří, že kontakt funguje, oprava patří do nabízeného oboru a je v oblasti působnosti.
 - Ověřený kontakt lze nabídnout nejvýše třem schváleným opravářům. Opravář před přijetím vidí základ zadání; předání kontaktu je nutné provést pouze při splnění podmínek uvedených ve smlouvě.
-- Poplatek se účtuje opraváři až po jeho přijetí kvalifikované poptávky. Výchozí pilotní ceny jsou 149 Kč za běžnou a 249 Kč za urgentní poptávku; správce je může měnit.
+- Poplatek se účtuje opraváři až po jeho přijetí kvalifikované poptávky. Výchozí pilotní ceny jsou 149 Kč za přijatou poptávku; konkrétní sazbu opraváře lze sjednat individuálně; správce je může měnit.
 - Neplatný kontakt, duplicitní žádost, poptávka mimo obor/oblast nebo požadavek, který opravář odmítne před převzetím kontaktu, se neúčtuje.
 - Zákazník za zadání ani zprostředkování neplatí. Provize z ceny zakázky, předplatné a placené profily jsou vypnuté; lze je zapnout později, ale nemají se kombinovat s poplatkem za tentýž kontakt bez jasné volby partnera.
 
