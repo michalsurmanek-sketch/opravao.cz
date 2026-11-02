@@ -82,7 +82,43 @@ footer{padding:24px 0;border-top:1px solid rgba(32,33,31,.18);font-size:13px;col
 const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
 toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
 document.querySelectorAll('.service').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');document.querySelector('#type').value=button.innerText.replace(/\n/g,' ') }));
-document.querySelector('#repair-form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#status').textContent='Formulář je připravený. Pro skutečné odesílání poptávek je potřeba připojit e-mail nebo databázi.'});
+const SUPABASE_URL='https://jmukoccjqykyoqsypuwb.supabase.co';
+const SUPABASE_PUBLIC_KEY='sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V';
+const repairForm=document.querySelector('#repair-form');
+const statusMessage=document.querySelector('#status');
+repairForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!repairForm.reportValidity())return;
+  const button=repairForm.querySelector('button[type="submit"]');
+  const originalLabel=button.innerHTML;
+  button.disabled=true;
+  button.textContent='Odesílám…';
+  statusMessage.textContent='';
+  try{
+    const response=await fetch(SUPABASE_URL+'/functions/v1/submit-opravao-lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPABASE_PUBLIC_KEY},
+      body:JSON.stringify({source:'opravao.cz',transportVersion:1,lead:{
+        repairType:document.querySelector('#type').value,
+        place:document.querySelector('#place').value,
+        contact:document.querySelector('#contact').value
+      }})
+    });
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok){
+      if(response.status===429)throw new Error('Přijali jsme několik pokusů. Zkuste to prosím znovu za chvíli.');
+      throw new Error('Poptávku se teď nepodařilo odeslat. Zkuste to prosím znovu.');
+    }
+    repairForm.reset();
+    document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));
+    statusMessage.textContent='Děkujeme, poptávka byla odeslána.';
+  }catch(error){
+    statusMessage.textContent=error instanceof Error?error.message:'Poptávku se teď nepodařilo odeslat. Zkuste to prosím znovu.';
+  }finally{
+    button.disabled=false;
+    button.innerHTML=originalLabel;
+  }
+});
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 </script>
 </body>
