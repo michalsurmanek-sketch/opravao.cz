@@ -118,7 +118,7 @@ $("#replyForm").onsubmit=async e=>{
  e.preventDefault();const btn=$("#replySend"),notice=$("#replyNotice"),message=$("#replyMessage").value.trim();if(message.length<2)return;
  if(!replyRequestId)replyRequestId=crypto.randomUUID();
  btn.disabled=true;btn.textContent="Odesílám…";notice.textContent="";
- try{const result=await api("",{action:"send_reply",id:$("#replyLeadId").value,request_id:replyRequestId,message},"POST");notice.textContent=result.warning?"E-mail odeslán, historie nebyla uložena.":"Zpráva odeslána.";if(!result.warning){$("#replyModal").hidden=true;await refresh();msg("#leadNotice","Odpověď odeslána zákazníkovi.")}replyRequestId=null}
+ try{const result=await api("",{action:"send_reply",id:$("#replyLeadId").value,request_id:replyRequestId,message},"POST");notice.textContent=result.warning?"E-mail odeslán, historie nebyla uložena.":result.already_sent?"Tato zpráva již byla odeslána.":"Zpráva odeslána.";if(!result.warning){$("#replyModal").hidden=true;await refresh();msg("#leadNotice",result.already_sent?"Zpráva již byla odeslána.":"Odpověď odeslána zákazníkovi.")}replyRequestId=null}
  catch(err){notice.textContent="Odeslání selhalo: "+err.message}
  finally{btn.disabled=false;btn.textContent="Odeslat zprávu"}
 };
