@@ -2,6 +2,7 @@
 Aktualizováno 3. 11. 2026. Položky označit hotové až po odpovídající kontrole, nikoli samotným commitem.
 
 - [ ] Na mobilu zobrazit odkazy v patičce „Klientský účet“ a „Zadat opravu“ ve stejném řádku; „Klientský účet“ oranžově.
+- [ ] Na mobilu umístit ilustraci domu vpravo vedle hlavního nadpisu „Co se pokazilo? Dáme to do pořádku.“ Menší popis „Popište opravu jednou. Propojíme vás s ověřenými řemeslníky ve vašem okolí.“ velikostí a zalomením přizpůsobit prostoru kolem domu; zachovat čitelnost a zabránit překrytí.
 - [ ] Opravit doslovné znaky \\n před CSS selektory .house-tag, které mohou zneplatňovat posuny Voda a Domácnost.
 - [ ] Ověřit publikaci nejnovější verze a skutečný obsah produkční stránky.
 - [ ] Ověřit telefon 000 000 000 a dočasný odkaz na formulář.
