@@ -111,16 +111,20 @@ document.addEventListener("click",e=>{
  $("#replyHistory").innerHTML=(Array.isArray(lead.communication)?lead.communication:[]).map(x=>'<div class="reply-item"><small>'+esc(when(x.created_at))+'</small><p>'+esc(x.body||x.message||"")+'</p></div>').join("")||"<p>Zatím bez uložených zpráv.</p>";
  $("#replyMessage").value="";$("#replyNotice").textContent="";$("#replyModal").hidden=false;replyRequestId=null;
 });
-$("#replyClose").onclick=()=>{$("#replyModal").hidden=true};
-$("#replyModal").addEventListener("click",e=>{if(e.target.id==="replyModal")$("#replyModal").hidden=true});
 $("#replyMessage").addEventListener("input",()=>{replyRequestId=null});
+let replySending=false;
+function closeReply(){if(replySending)return;$("#replyModal").hidden=true;$("#replyMessage").value="";replyRequestId=null;}
+$("#replyClose").onclick=closeReply;
+$("#replyModal").addEventListener("click",e=>{if(e.target.id==="replyModal")closeReply()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#replyModal").hidden)closeReply()});
+
 $("#replyForm").onsubmit=async e=>{
  e.preventDefault();const btn=$("#replySend"),notice=$("#replyNotice"),message=$("#replyMessage").value.trim();if(message.length<2)return;
  if(!replyRequestId)replyRequestId=crypto.randomUUID();
- btn.disabled=true;btn.textContent="Odesílám…";notice.textContent="";
+ replySending=true;btn.disabled=true;$("#replyClose").disabled=true;btn.textContent="Odesílám…";notice.textContent="";
  try{const result=await api("",{action:"send_reply",id:$("#replyLeadId").value,request_id:replyRequestId,message},"POST");notice.textContent=result.warning?"E-mail odeslán, historie nebyla uložena.":result.already_sent?"Tato zpráva již byla odeslána.":"Zpráva odeslána.";if(!result.warning){$("#replyModal").hidden=true;await refresh();msg("#leadNotice",result.already_sent?"Zpráva již byla odeslána.":"Odpověď odeslána zákazníkovi.")}replyRequestId=null}
  catch(err){notice.textContent="Odeslání selhalo: "+err.message}
- finally{btn.disabled=false;btn.textContent="Odeslat zprávu"}
+ finally{replySending=false;btn.disabled=false;$("#replyClose").disabled=false;btn.textContent="Odeslat zprávu"}
 };
 $("#exportLeads").onclick=()=>{
  const q=($("#searchLead").value||"").toLowerCase(),st=$("#filterStatus").value||"";
