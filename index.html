@@ -110,6 +110,8 @@ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-item
 @media(max-width:850px){.hero{padding-top:4px}.hero>.eyebrow{margin-top:0;margin-bottom:6px}}
 @media(max-width:850px){header{height:56px}.nav{top:56px}.hero{padding-top:0}.hero>.eyebrow{margin-top:0;margin-bottom:4px;margin-left:45px;max-width:calc(100% - 45px)}}
 @media(max-width:850px){.hero{margin-top:-8px}.hero>.eyebrow{margin-bottom:4px}}
+.location-input-wrap{display:flex;flex:1;min-width:0;position:relative}.location-input-wrap input{width:100%;padding-right:150px}.location-locate{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;gap:6px;align-items:center;border:0;background:transparent;color:var(--olive);cursor:pointer;font:inherit;padding:10px}.location-locate:focus-visible{outline:2px solid var(--orange)}
+@media(max-width:850px){.location-input-wrap input{padding-right:52px}.location-locate span{display:none}.location-locate{right:4px;padding:10px}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
@@ -156,9 +158,9 @@ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-item
 </section>
 <section id="lokalita" class="location-section" aria-labelledby="location-heading">
 <p class="eyebrow">01 / LOKALITA</p><h2 id="location-heading">Kde potřebujete opravu?</h2><p>Vyberte místo na mapě nebo vyhledejte obec či PSČ.</p>
-<form id="location-search" class="location-search"><label for="location-query">Město, obec nebo PSČ</label><div><input id="location-query" placeholder="Zadejte město, obec nebo PSČ" required minlength="2"><button class="btn" type="submit">Vyhledat →</button></div></form>
+<form id="location-search" class="location-search"><label for="location-query">Město, obec nebo PSČ</label><div><div class="location-input-wrap"><input id="location-query" placeholder="Zadejte město, obec nebo PSČ" required minlength="2"><button id="location-geolocate" class="location-locate" type="button" aria-label="Použít moji polohu" title="Moje poloha"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></svg><span>Moje poloha</span></button></div><button class="btn" type="submit">Vyhledat →</button></div></form>
 <div id="location-results" aria-live="polite"></div>
-<div class="location-layout"><div id="repair-map" aria-label="Mapa pro výběr místa opravy"></div><aside class="location-panel"><span class="location-pin" aria-hidden="true">⌖</span><h3>Vyberte lokalitu</h3><p id="location-selected">Klikněte do mapy nebo vyhledejte obec.</p><button id="location-confirm" class="btn" type="button" disabled>Tady potřebuji opravu →</button><button id="location-geolocate" class="btn btn-outline" type="button">Moje poloha</button><p id="location-status" role="status"></p></aside></div></section>
+<div class="location-layout"><div id="repair-map" aria-label="Mapa pro výběr místa opravy"></div><aside class="location-panel"><span class="location-pin" aria-hidden="true">⌖</span><h3>Vyberte lokalitu</h3><p id="location-selected">Klikněte do mapy nebo vyhledejte obec.</p><button id="location-confirm" class="btn" type="button" disabled>Tady potřebuji opravu →</button><p id="location-status" role="status"></p></aside></div></section>
 <div class="trust"><span class="trust-item"><span class="check">✓</span>Ověření řemeslníci</span><span>·</span><span class="trust-item"><span class="check">✓</span>Jasná domluva</span><span>·</span><span class="trust-item"><span class="check">✓</span>Bez zbytečného obvolávání</span></div>
 
 </main>
