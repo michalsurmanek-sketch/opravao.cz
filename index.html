@@ -112,6 +112,8 @@ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-item
 @media(max-width:850px){.hero{margin-top:-8px}.hero>.eyebrow{margin-bottom:4px}}
 .location-input-wrap{display:flex;flex:1;min-width:0;position:relative}.location-input-wrap input{width:100%;padding-right:150px}.location-locate{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;gap:6px;align-items:center;border:0;background:transparent;color:var(--olive);cursor:pointer;font:inherit;padding:10px}.location-locate:focus-visible{outline:2px solid var(--orange)}
 @media(max-width:850px){.location-input-wrap input{padding-right:52px}.location-locate span{display:none}.location-locate{right:4px;padding:10px}}
+@media(hover:none) and (pointer:coarse){*,*::before,*::after{-webkit-tap-highlight-color:transparent}a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:var(--orange);accent-color:var(--orange)}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
