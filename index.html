@@ -161,11 +161,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .house-art .house-tag-home{left:74%;top:48%}
 }
 
-/* Patička na mobilu: oba odkazy vždy vedle sebe */
+/* Mobilní patička: copyright a oba odkazy ve stejném řádku, bez zalomení */
 @media(max-width:850px){
- footer .footer-links{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:flex-start;align-items:center;gap:8px;width:100%;max-width:100%;white-space:nowrap}
- footer .footer-links a{display:inline-block;flex:0 0 auto;white-space:nowrap;font-size:13px}
- footer .footer-links span{flex:0 0 auto}
+ footer{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:6px;font-size:clamp(9px,2.4vw,12px)}
+ footer>span:first-child{min-width:0;white-space:nowrap;font-size:inherit}
+ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-end;gap:5px;width:auto;max-width:none;min-width:max-content;white-space:nowrap}
+ footer .footer-links a{display:inline-block;flex:none;white-space:nowrap;font-size:inherit}
+ footer .footer-links span{flex:none}
 }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
