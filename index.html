@@ -65,6 +65,9 @@ footer{gap:7px;flex-direction:column;font-size:13px}
 @media(max-width:380px){.wrap{width:calc(100% - 24px)}.brand{font-size:25px}.hero>.eyebrow{font-size:10px;letter-spacing:.1em}h1{font-size:clamp(37px,10.2vw,41px)}.request{padding:18px 14px 15px}.house-tag{font-size:9px;padding:4px 5px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 .hero-copy .repair-heading{color:#20211f;font-size:clamp(27px,3.1vw,48px);line-height:1.05;margin:18px 0 0;letter-spacing:-.045em}
+.submit-field{min-width:0}.submit-field .form-note{margin:0 0 8px;font-size:15px;line-height:1.25;white-space:nowrap}.submit-field .shield{font-size:15px;line-height:1}.submit-field .btn{width:100%}
+@media(max-width:1050px) and (min-width:851px){.submit-field{grid-column:2}}
+@media(max-width:850px){.submit-field{grid-column:1}.submit-field .form-note{white-space:normal}}
 </style>
 </head>
 <body>
@@ -95,8 +98,8 @@ footer{gap:7px;flex-direction:column;font-size:13px}
 <div class="field"><label for="type">Typ opravy</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14.7 6.3 3 3M3 21l7.6-7.6M15 5l4-4 4 4-4 4M2 2l6 6m-3-7 6 6"/></svg><select id="type" required><option value="">Vyberte typ opravy</option><option>Instalatér</option><option>Elektrikář</option><option>Spotřebiče</option><option>Dveře a okna</option><option>Střecha</option><option>Hodinový manžel</option></select></div></div>
 <div class="field"><label for="place">Město / PSČ</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><input id="place" placeholder="Např. Praha, 120 00" required></div></div>
 <div class="field"><label for="contact">Telefon / e-mail</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg><input id="contact" placeholder="Váš telefon nebo e-mail" required></div></div>
-<button class="btn" type="submit">Najít dostupného opraváře <span aria-hidden="true">→</span></button>
-</div><p class="form-note"><span class="shield">⬟</span> Poptávka je zdarma a bez závazků.</p><p id="status" role="status"></p>
+<div class="submit-field"><p class="form-note"><span class="shield">⬟</span> Poptávka je zdarma a bez závazků.</p><button class="btn" type="submit">Najít dostupného opraváře <span aria-hidden="true">→</span></button></div>
+</div><p id="status" role="status"></p>
 </form>
 </section>
 <section class="services" aria-label="Nejčastější opravy">
