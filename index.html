@@ -26,7 +26,7 @@
 .wrap{width:min(1480px,calc(100% - 64px));margin:auto}
 header{height:70px;display:flex;align-items:center;gap:24px;border-bottom:0}
 .brand{display:flex;align-items:center;gap:10px;font-weight:950;font-size:38px;letter-spacing:-1.8px;white-space:nowrap}.brand-mark{width:49px;height:49px;display:block;object-fit:contain;flex:none}
-.brand span:last-child{line-height:1}
+.brand span:last-child{line-height:1}.brand .brand-orange{color:var(--orange)}.header-login{display:inline-flex;align-items:center;gap:7px;font-size:16px;font-weight:800;white-space:nowrap}.header-login:hover{color:var(--orange)}.nav-login{display:none}
 .nav{height:34px;border-left:1px solid #85847e;margin-left:10px;padding-left:30px;display:flex;align-items:center;gap:clamp(20px,3vw,46px);font-weight:750;font-size:18px;flex:1}.nav a:hover{color:var(--orange)}
 .header-contact{display:flex;align-items:center;gap:9px;font-size:22px;font-weight:850;white-space:nowrap;border-left:1px solid #85847e;padding-left:30px}.phone-icon{color:var(--olive);width:25px;height:25px;display:block;fill:currentColor;flex:none}
 .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:6px;padding:15px 22px;background:var(--orange);color:white;font-weight:800;font-size:17px;line-height:1.2;cursor:pointer;transition:filter .15s,transform .15s}.btn:hover{filter:brightness(.94);transform:translateY(-1px)}.btn-outline{background:transparent;color:var(--ink);border:2px solid var(--ink)}.menu-toggle{display:none;border:0;background:none;font-size:27px}
@@ -64,7 +64,7 @@ footer{padding:24px 0;border-top:1px solid rgba(32,33,31,.18);font-size:14px;col
 .wrap{width:calc(100% - 30px)}
 header{height:66px;gap:8px;justify-content:space-between}.brand{font-size:27px;letter-spacing:-1.2px}.brand-mark{width:35px;height:37px}
 .menu-toggle{display:block;font-size:27px;padding:8px}.nav{display:none;position:absolute;top:66px;left:15px;right:15px;height:auto;padding:18px;background:var(--white);border:1px solid var(--line);border-radius:10px;z-index:10;box-shadow:0 8px 18px #0001;flex-direction:column;align-items:flex-start;gap:18px;font-size:16px}.nav.open{display:flex}
-.header-contact{margin-left:auto;font-size:0}.phone-icon{font-size:24px}.header-cta{display:none}
+.header-login{margin-left:auto;padding:7px;gap:5px;font-size:13px}.header-login svg{width:21px;height:21px}.header-contact{margin-left:0;font-size:0}.nav-login{display:block}.phone-icon{font-size:24px}.header-cta{display:none}
 .hero{display:block;min-height:0;padding:24px 0 10px;overflow:visible}.hero>.eyebrow{display:block;font-size:12px;line-height:1.4;letter-spacing:.12em;margin:0 0 13px}.hero-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start;min-height:0}
 .hero-copy{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:none;padding:0}
 h1{font-size:clamp(39px,10.3vw,49px);line-height:.98;letter-spacing:-.06em;margin:0 0 14px;max-width:640px}
@@ -200,9 +200,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <body>
 <div class="wrap">
 <header>
-<a class="brand" href="#" aria-label="Opravao.cz – úvod"><img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true"><span>OPRAVAO</span></a>
-<nav class="nav" id="nav"><a href="#jak-to-funguje">Jak to funguje</a><a href="#pro-remeslniky">Pro řemeslníky</a><a href="#rady">Rady a návody</a></nav>
-<a class="header-contact" href="#poptavka"><svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02z"/></svg><span>000 000 000</span></a>
+<a class="brand" href="#" aria-label="Opravao.cz – úvod"><img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true"><span>OPRAVA<span class="brand-orange">O</span></span></a>
+<nav class="nav" id="nav"><a href="#jak-to-funguje">Jak to funguje</a><a href="#pro-remeslniky">Pro řemeslníky</a><a href="#rady">Rady a návody</a><a href="/ucet.html" class="nav-login">Přihlášení</a></nav>
+<a class="header-login" href="/ucet.html" aria-label="Přihlášení do účtu" title="Přihlášení"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg><span>Přihlášení</span></a><a class="header-contact" href="#poptavka"><svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02z"/></svg><span>000 000 000</span></a>
 <a class="btn header-cta" href="#poptavka">Nezávazně poptat opravu</a>
 <button class="menu-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
 </header>
