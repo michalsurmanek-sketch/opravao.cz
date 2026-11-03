@@ -126,7 +126,7 @@ $("#exportLeads").onclick=()=>{
  const q=($("#searchLead").value||"").toLowerCase(),st=$("#filterStatus").value||"";
  const rows=leads.filter(x=>(!st||x.status===st)&&[x.place,x.email,x.phone,x.name,x.note,x.assigned_to,x.next_action,x.payload?.repairType].join(" ").toLowerCase().includes(q));
  const fields=["created_at","name","email","phone","place","region","repair_type","status","assigned_to","next_action"];
- const csv=[fields.join(";"),...rows.map(x=>[x.created_at,x.name,x.email,x.phone,x.place,x.region,x.payload?.repairType||x.note,human(x.status),x.assigned_to,x.next_action].map(v=>'"'+String(v??"").replace(/"/g,'""').replace(/^[=+@-]/,"'"+String.fromCharCode(36)+"&")+'"').join(";"))].join("\r\n");
+ const csv=[fields.join(";"),...rows.map(x=>[x.created_at,x.name,x.email,x.phone,x.place,x.region,x.payload?.repairType||x.note,human(x.status),x.assigned_to,x.next_action].map(v=>'"'+String(v??"").replace(/"/g,'""').replace(/^[=+@-]/,m=>"'"+m)+'"').join(";"))].join("\r\n");
  const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="opravao-poptavky-"+new Date().toISOString().slice(0,10)+".csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 $("#searchLead").addEventListener("input",renderLeads);")+'"').join(";"))].join("\r\n");
