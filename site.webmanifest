@@ -1,0 +1,16 @@
+{
+  "name": "Opravao.cz — Dáme to do pořádku",
+  "short_name": "Opravao",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f2e8",
+  "theme_color": "#f7f2e8",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
