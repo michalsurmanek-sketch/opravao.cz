@@ -31,6 +31,36 @@ aside{background:#12392b;color:#d9e9e0;padding:24px 16px;gap:20px}
 .status{background:#fff0df;color:#a65311}
 .login{background:#12392b}.loginbox{background:#fff;border-radius:15px}
 @media(max-width:850px){.shell{grid-template-columns:1fr}aside{padding:12px 15px;gap:10px}.nav{display:flex;overflow-x:auto}.top{padding:0 16px}.content{padding:18px 14px}.metric{padding:14px}}
+</style><style id="opravao-mobile-completion">
+html,body{max-width:100%;overflow-x:hidden}button,input,select,textarea{touch-action:manipulation}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #e94e1b;outline-offset:2px}
+.main,.content,.panel,.view{min-width:0}.row{min-width:0}.panel{overflow:hidden}
+.table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.table{width:100%}.table td{overflow-wrap:anywhere}.toolbar>*{min-width:0}
+.notice{overflow-wrap:anywhere}.loginbox{max-height:calc(100dvh - 32px);overflow:auto}
+@media(max-width:850px){
+.shell{display:block;min-height:100dvh}
+aside{position:relative;width:100%;display:flex;flex-direction:column;gap:10px;padding:13px 14px 9px}
+aside>.aside-note{display:none}.nav{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;gap:5px;padding:4px 0 8px}
+.nav button{flex:0 0 auto;min-height:43px;padding:10px 12px;white-space:nowrap}
+.top{height:auto;min-height:62px;padding:10px 14px;gap:10px;flex-wrap:wrap}
+.top h1{font-size:19px}.identity{margin-left:auto;gap:8px;min-width:0}.identity span:first-child{display:none}
+.content{padding:18px 14px 40px;max-width:100%}.intro{gap:14px}.intro h2{font-size:25px}
+.row{display:grid;grid-template-columns:1fr}.form{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:16px}
+}
+@media(max-width:520px){
+.brand{font-size:22px}.sub{font-size:11px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.metric{padding:13px}.metric strong{font-size:24px}.metric small,.metric em{font-size:11px}
+.intro{display:flex;flex-direction:column;align-items:stretch}.intro .button{width:100%}
+.form,.row{grid-template-columns:minmax(0,1fr)}
+.field.wide{grid-column:auto}.toolbar{display:flex;flex-direction:column;align-items:stretch}
+.toolbar input,.toolbar select{max-width:none;width:100%}
+.actions{flex-wrap:wrap}.actions .button{max-width:100%}
+.table{min-width:680px}.table th,.table td{padding:10px 8px;font-size:12px}
+.loginbox{padding:22px 18px}.identity .button{padding:9px 11px}
+}
 </style></head><body>
 <div class="login" id="login"><div class="loginbox"><div class="brand"><img class="brand-icon" src="/favicon.svg" alt=""> OPRAVA<b>O</b></div><h2>Administrace</h2><p>Přihlaste se účtem správce Opravao.cz.</p><form id="loginForm"><input type="email" id="loginEmail" autocomplete="username" placeholder="E-mail správce" required><input type="password" id="loginPassword" autocomplete="current-password" placeholder="Heslo" required><button class="button">Přihlásit se</button></form><div class="notice" id="loginMsg"></div></div></div>
 <div class="shell"><aside><div><div class="brand"><img class="brand-icon" src="/favicon.svg" alt=""> OPRAVA<b>O</b></div><div class="sub">PROVOZNÍ CENTRUM</div></div><nav class="nav"><button class="active" data-view="overview"><span>▦</span>Přehled</button><button data-view="requests"><span>⌕</span>Poptávky</button><button data-view="partners"><span>♙</span>Opraváři</button><button data-view="distribution"><span>↗</span>Předání</button><button data-view="revenue"><span>◉</span>Výnosy</button><button data-view="settings"><span>⚙</span>Model a ceny</button></nav><div class="aside-note">Opravao.cz<br>Správa poptávek a spolupráce<br><a href="/" style="color:#fff">← Veřejný web</a></div></aside>
@@ -63,7 +93,7 @@ async function ensureSession(){if(session?.refresh_token&&Number(session.expires
 async function api(resource,body=null,method="GET"){await ensureSession();const r=await fetch(FN+(method==="GET"?"?resource="+encodeURIComponent(resource):""),{method,headers:{apikey:KEY,Authorization:"Bearer "+session.access_token,"Content-Type":"application/json"},...(body?{body:JSON.stringify(body)}:{})});const j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.error==="admin_forbidden"?"Tento účet nemá oprávnění správce.":j.error||"Chyba serveru");return j}
 async function auth(path,body){const r=await fetch(URL+"/auth/v1/"+path,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(body)});const j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.msg||j.message||j.error_description||"Přihlášení se nepodařilo.");return j}
 function msg(id,text,error=false){const e=$(id);if(e){e.textContent=text;e.classList.toggle("error",error)}}
-async function login(e){e.preventDefault();const submit=e.submitter||$("#loginForm button");if(submit){submit.disabled=true;submit.textContent="Přihlašuji…"}msg("#loginMsg","Ověřuji přihlášení…");try{session=await auth("token?grant_type=password",{email:$("#loginEmail").value.trim(),password:$("#loginPassword").value});sessionStorage.setItem("opravao_admin_session",JSON.stringify(session));await api("dashboard");$("#login").classList.add("hidden");$("#userEmail").textContent=session.user?.email||"Správce";await refresh()}catch(e){session=null;sessionStorage.removeItem("opravao_admin_session");msg("#loginMsg",e.message,true)}finally{if(submit){submit.disabled=false;submit.textContent="Přihlásit se"}}}
+async function login(e){e.preventDefault();const submit=e.submitter||$("#loginForm button");if(submit){submit.disabled=true;submit.textContent="Přihlašuji…"}msg("#loginMsg","Ověřuji přihlášení…");try{session=await auth("token?grant_type=password",{email:$("#loginEmail").value.trim(),password:$("#loginPassword").value});sessionStorage.setItem("opravao_admin_session",JSON.stringify(session));await api("dashboard");$("#login").classList.add("hidden");$("#userEmail").textContent=session.user?.email||"Správce";try{await refresh()}catch(err){msg("#leadNotice","Nepodařilo se načíst data: "+err.message,true)}}catch(e){session=null;sessionStorage.removeItem("opravao_admin_session");msg("#loginMsg",e.message,true)}finally{if(submit){submit.disabled=false;submit.textContent="Přihlásit se"}}}
 $("#loginForm").addEventListener("submit",login);if(session){ensureSession().then(()=>api("dashboard")).then(async()=>{$("#login").classList.add("hidden");$("#userEmail").textContent=session.user?.email||"Správce";await refresh()}).catch(()=>{session=null;sessionStorage.removeItem("opravao_admin_session")})}
 $("#logout").onclick=async()=>{try{await fetch(URL+"/auth/v1/logout",{method:"POST",headers:{apikey:KEY,Authorization:"Bearer "+session?.access_token}})}catch{}session=null;sessionStorage.removeItem("opravao_admin_session");$("#login").classList.remove("hidden")};
 document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>go(b.dataset.view));
