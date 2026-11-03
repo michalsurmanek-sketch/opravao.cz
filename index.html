@@ -115,6 +115,29 @@ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-item
 @media(hover:none) and (pointer:coarse){*,*::before,*::after{-webkit-tap-highlight-color:transparent}a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:var(--orange);accent-color:var(--orange)}
 .location-panel-heading{display:flex;flex-direction:row;align-items:center;gap:10px}.location-panel-heading .location-pin{font-size:32px;line-height:1;flex:none}.location-panel-heading h3{margin:0}
+
+/* 2026-11-03: jemné sjednocení rozložení bez změny barev a obsahu */
+@media(max-width:850px){
+  .wrap{width:calc(100% - 30px)}
+  header{gap:10px}
+  .hero{margin-top:0;padding-bottom:4px}
+  .hero>.eyebrow{margin-bottom:3px}
+  .hero-layout{aspect-ratio:1672/941}
+  .hero-copy{padding-top:12px}
+  .hero-copy h1{width:43%;font-size:clamp(24px,6.1vw,38px);margin-bottom:9px}
+  .hero-copy p{width:41%;font-size:clamp(12px,3vw,16px);line-height:1.4}
+  .mobile-repair-heading{margin:12px 0 10px;font-size:clamp(26px,6vw,33px)}
+  .request{padding:18px 16px 16px;margin-bottom:16px}
+  .form-grid{gap:12px}
+  .field label{margin-bottom:7px}
+  .submit-field .form-note{margin-bottom:10px}
+  .services{gap:9px}
+  .service{min-height:104px}
+}
+@media(min-width:851px){
+  .request{margin-top:14px}
+  .services{margin-top:12px}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
