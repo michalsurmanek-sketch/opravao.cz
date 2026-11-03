@@ -84,11 +84,13 @@ header{position:relative}.nav{left:45px;right:0;margin-left:0;width:auto;max-wid
 .hero-copy{display:contents}
 .hero-copy h1{grid-column:1;grid-row:1;font-size:clamp(29px,7.2vw,44px);margin:0;max-width:100%}
 .hero-copy p{grid-column:1;grid-row:2;font-size:clamp(14px,3.6vw,18px);margin:0;line-height:1.4}
-.house-art{grid-column:2;grid-row:1 / span 2;position:relative;left:auto;top:auto;transform:none;width:100%;max-width:none;height:100%;min-height:240px;aspect-ratio:auto;margin:0;background-size:auto 100%;background-position:right center}
+.house-art{grid-column:2;grid-row:1 / span 2;position:relative;left:auto;top:auto;transform:none;width:100%;max-width:none;height:auto;min-height:0;aspect-ratio:1672/941;margin:0;background-size:contain;background-position:center}
 .hero-actions{grid-column:1 / -1;grid-row:3}.hero-copy .repair-heading{grid-column:1 / -1;grid-row:4;margin:4px 0 0;font-size:clamp(26px,6vw,34px)}
 .house-tag{font-size:8px;padding:3px 4px}.house-tag-electric{left:45%;top:9%}.house-tag-water{left:14%;top:55%}.house-tag-home{left:64%;top:62%}
 footer>span:last-child{display:flex;align-items:center;gap:8px;white-space:nowrap;flex-wrap:nowrap}
 }
+.house-art{border:0!important;outline:0!important;box-shadow:none!important;border-radius:0;opacity:1;filter:none;background-color:transparent}.house-art::before,.house-art::after{display:none!important}
+@media(max-width:850px){.house-art{grid-column:1 / -1;grid-row:3;width:100%;height:auto;aspect-ratio:1672/941;transform:none;background-size:contain;background-position:center}.hero-actions{grid-row:4}.hero-copy .repair-heading{grid-row:5}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
