@@ -194,7 +194,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* Desktop: odstup nad tmavým formulářovým boxem od nadpisu. */
 @media(min-width:851px){.request{margin-top:42px}}
-</style>
+.craft-section{scroll-margin-top:90px;background:#fffdf8;border:1px solid var(--line);border-radius:12px;padding:clamp(24px,4vw,52px);margin:30px 0}.craft-section h2{font-size:clamp(27px,3.5vw,45px);line-height:1.1;margin:0 0 15px}.craft-section p:not(.eyebrow){max-width:740px;font-size:18px;line-height:1.6}.craft-section .btn{margin-top:10px}@media(max-width:850px){.craft-section{margin:22px 0;padding:23px 18px}} </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -245,7 +245,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <div class="location-layout"><div id="repair-map" aria-label="Mapa pro výběr místa opravy"></div><aside class="location-panel"><div class="location-panel-heading"><span class="location-pin" aria-hidden="true">⌖</span><h3>Vyberte lokalitu</h3></div><p id="location-selected">Klikněte do mapy nebo vyhledejte obec.</p><button id="location-confirm" class="btn" type="button" disabled>Tady potřebuji opravu →</button><p id="location-status" role="status"></p></aside></div></section>
 <div class="trust"><span class="trust-item"><span class="check">✓</span>Ověření řemeslníci</span><span>·</span><span class="trust-item"><span class="check">✓</span>Jasná domluva</span><span>·</span><span class="trust-item"><span class="check">✓</span>Bez zbytečného obvolávání</span></div>
 
-</main>
+<section id="pro-remeslniky" class="craft-section"><div><p class="eyebrow">Pro řemeslníky a firmy</p><h2>Získejte nové zakázky ve svém okolí</h2><p>Máte živnost nebo firmu a provádíte opravy? Přidejte se k síti Opravao.cz. Napište nám své IČO, kontaktní údaje, kraj působnosti a zaměření. Registraci zatím ověřujeme ručně.</p><a class="btn" href="mailto:info@opravao.cz?subject=Registrace%20firmy%20%E2%80%93%20Opravao.cz">Požádat o registraci</a></div></section></main>
 <footer><span>© Opravao.cz · Opravy jednoduše</span><nav class="footer-links" aria-label="Odkazy v patičce"><a href="/ucet.html">Klientský účet</a><span aria-hidden="true">·</span><a href="#poptavka">Zadat opravu</a></nav></footer>
 </div>
 <script>
