@@ -160,6 +160,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .house-art .house-tag-electric{left:59%;top:11%}
  .house-art .house-tag-home{left:74%;top:48%}
 }
+
+/* Patička na mobilu: oba odkazy vždy vedle sebe */
+@media(max-width:850px){
+ footer .footer-links{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:flex-start;align-items:center;gap:8px;width:100%;max-width:100%;white-space:nowrap}
+ footer .footer-links a{display:inline-block;flex:0 0 auto;white-space:nowrap;font-size:13px}
+ footer .footer-links span{flex:0 0 auto}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
