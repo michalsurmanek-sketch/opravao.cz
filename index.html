@@ -276,9 +276,10 @@ header:before{display:none}
 @media(max-width:850px){
   .hero-layout{grid-template-columns:minmax(0,1fr) minmax(0,.92fr)!important;grid-template-rows:auto auto!important;column-gap:0!important}
   .hero-copy h1{font-size:clamp(29px,6.35vw,44px)!important;line-height:.99!important;letter-spacing:-.055em!important;margin:0 0 8px!important}
-  .hero-copy p{font-size:clamp(12px,2.75vw,16px)!important;line-height:1.3!important;margin:0!important;max-width:100%!important}
+  .hero-copy p{width:min(100%,230px)!important;max-width:230px!important;font-size:clamp(12px,2.75vw,16px)!important;line-height:1.3!important;margin:0!important}
   .house-art{width:215%!important;margin-left:-115%!important}
   .hero>.trust{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin:0 0 12px!important}
+  .hero>.trust>span:nth-child(2n){display:flex!important}
   .hero>.trust .trust-item{min-width:0!important}
   .mobile-repair-heading{margin:10px 0 14px!important}
 }
