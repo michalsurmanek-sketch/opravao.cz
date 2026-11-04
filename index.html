@@ -522,6 +522,16 @@ header{height:84px!important}
   background-size:100% 100%!important;
   clip-path:none!important;
 }
+
+/* Přesná poloha a tloušťka podtržení „Co potřebujete opravit?“ podle mobilní předlohy. */
+.mobile-repair-heading::after,
+.hero-copy .repair-heading::after{
+  left:39%!important;
+  right:auto!important;
+  width:20%!important;
+  height:.20em!important;
+  bottom:-.12em!important;
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
