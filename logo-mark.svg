@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Opravao">
-  <path fill="#f04b18" d="M11 3h42v9h8v40h-9v9H11v-8H3V12h8z"/>
-  <path fill="#fffdf8" d="M35 8 18 35h12l-3 21 21-30H35l7-18z"/>
+  <path fill="#f04b18" d="M23 2h18v21h21v18H41v21H23V41H2V23h21z"/>
+  <path fill="#fffdf8" d="M38 7 18 34h13l-4 23 21-30H35l9-20z"/>
 </svg>
