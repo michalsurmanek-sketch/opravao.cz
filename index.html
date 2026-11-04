@@ -271,7 +271,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* Bílé pozadí přes celou šířku bez ořezávání rozbalovacího menu. */
 header{position:relative;isolation:isolate;background:transparent;box-shadow:none;clip-path:none}
-header:before{content:"";display:block!important;position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#fff;border-bottom:1px solid #e6dfd3;pointer-events:none}
+header:before{content:"";display:block!important;position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:calc(100vw / .71);transform:translateX(-50%);background:#fff;border-bottom:1px solid #e6dfd3;pointer-events:none}
 
 /* Mobilní kompozice: zachovat velikost domu a přizpůsobit obsah kolem něj. */
 @media(max-width:850px){
