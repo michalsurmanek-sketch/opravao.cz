@@ -270,8 +270,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .craft-section{scroll-margin-top:90px;background:#fffdf8;border:1px solid var(--line);border-radius:12px;padding:clamp(24px,4vw,52px);margin:30px 0}.craft-section h2{font-size:clamp(27px,3.5vw,45px);line-height:1.1;margin:0 0 15px}.craft-section p:not(.eyebrow){max-width:740px;font-size:18px;line-height:1.6}.craft-section .btn{margin-top:10px}@media(max-width:850px){.craft-section{margin:22px 0;padding:23px 18px}} .company-overlay[hidden]{display:none!important}.company-overlay{position:fixed;inset:0;z-index:9999;background:#171816c9;display:flex;align-items:center;justify-content:center;padding:14px;overscroll-behavior:contain}.company-dialog{position:relative;background:var(--white);color:var(--ink);width:min(570px,100%);max-height:calc(100dvh - 28px);overflow:auto;border-radius:14px;padding:28px}.company-dialog h2{font-size:30px;margin:0 0 8px}.company-dialog p{margin:0 0 16px}.company-dialog label{display:block;font-weight:750;margin:12px 0}.company-dialog input,.company-dialog select,.company-dialog textarea{display:block;width:100%;padding:12px;border:1px solid var(--line);border-radius:7px;font:inherit;margin-top:5px;background:white;color:var(--ink)}.company-close{position:absolute;top:10px;right:14px;border:0;background:transparent;font-size:32px;cursor:pointer}.company-hint{font-size:13px;color:var(--muted);margin-top:10px!important}@media(max-width:600px){.company-dialog{padding:24px 18px}}
 
 /* Bílé pozadí přes celou šířku bez ořezávání rozbalovacího menu. */
-header{position:relative;isolation:isolate;background:transparent;box-shadow:none;clip-path:none}
-header:before{content:"";display:block!important;position:absolute;z-index:-1;top:0;bottom:0;left:0;right:0;width:auto;transform:none;background:#fff;border-bottom:1px solid #e6dfd3;pointer-events:none}
+header{position:relative;isolation:isolate;background:#fff;box-shadow:none;clip-path:none}
+header:before{content:none!important;display:none!important}
 
 /* Mobilní kompozice: zachovat velikost domu a přizpůsobit obsah kolem něj. */
 @media(max-width:850px){
