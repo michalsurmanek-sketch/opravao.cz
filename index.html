@@ -372,6 +372,21 @@ header{height:84px!important}
   .nav{top:76.8px!important}
 }
 
+
+/* Ikony popisků formuláře mají rozměry i mimo mobilní breakpoint. */
+.field label{display:flex;align-items:center;gap:8px}
+.field label svg{
+  display:inline-block;
+  width:22px;
+  height:22px;
+  flex:none;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
