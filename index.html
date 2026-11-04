@@ -124,6 +124,7 @@ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-item
 @media(max-width:850px){.hero{padding-top:4px}.hero>.eyebrow{margin-top:0;margin-bottom:6px}}
 @media(max-width:850px){header{height:56px}.nav{top:56px}.hero{padding-top:0}.hero>.eyebrow{margin-top:0;margin-bottom:4px;margin-left:45px;max-width:calc(100% - 45px)}}
 @media(max-width:850px){.hero{margin-top:-8px}.hero>.eyebrow{margin-bottom:4px}}
+.place-locate{width:42px;height:42px;display:grid;place-items:center;flex:none;padding:0;border:0;border-radius:8px;background:transparent;color:var(--olive);cursor:pointer}.place-locate svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.place-locate:hover{background:#707b3a14}.place-locate:disabled{opacity:.55;cursor:wait}
 .location-input-wrap{display:flex;flex:1;min-width:0;position:relative}.location-input-wrap input{width:100%;padding-right:150px}.location-locate{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;gap:6px;align-items:center;border:0;background:transparent;color:var(--olive);cursor:pointer;font:inherit;padding:10px}.location-locate:focus-visible{outline:2px solid var(--orange)}
 @media(max-width:850px){.location-input-wrap input{padding-right:52px}.location-locate span{display:none}.location-locate{right:4px;padding:10px}}
 @media(hover:none) and (pointer:coarse){*,*::before,*::after{-webkit-tap-highlight-color:transparent}a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}}
@@ -438,7 +439,7 @@ header{height:84px!important}
 <form id="repair-form">
 <div class="form-grid">
 <div class="field"><label for="type"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3 3 3M3 21l7.6-7.6M15 5l4-4 4 4-4 4M2 2l6 6m-3-7 6 6"/></svg>Typ opravy</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14.7 6.3 3 3M3 21l7.6-7.6M15 5l4-4 4 4-4 4M2 2l6 6m-3-7 6 6"/></svg><select id="type" required><option value="">Vyberte typ opravy</option><option>Instalatér</option><option>Elektrikář</option><option>Spotřebiče</option><option>Dveře a okna</option><option>Střecha</option><option>Hodinový manžel</option></select></div></div>
-<div class="field"><label for="place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Město / PSČ</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><input id="place" placeholder="Např. Praha, 120 00" required></div></div>
+<div class="field"><label for="place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Město / PSČ</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><input id="place" placeholder="Např. Praha, 120 00" required><button id="place-geolocate" class="place-locate" type="button" aria-label="Použít moji polohu" title="Použít moji polohu"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></svg></button></div></div>
 <div class="field"><label for="contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg>Telefon / e-mail</label><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg><input id="contact" placeholder="Váš telefon nebo e-mail" required></div></div>
 <div class="submit-field"><p class="form-note"><span class="shield">⬟</span> Poptávka je zdarma a bez závazků.</p><button class="btn" type="submit">Najít dostupného opraváře <span aria-hidden="true">→</span></button></div>
 </div><p id="status" role="status"></p>
@@ -470,6 +471,43 @@ const SUPABASE_URL='https://jmukoccjqykyoqsypuwb.supabase.co';
 const SUPABASE_PUBLIC_KEY='sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V';
 const repairForm=document.querySelector('#repair-form');
 const statusMessage=document.querySelector('#status');
+const placeInput=document.querySelector('#place');
+const placeLocate=document.querySelector('#place-geolocate');
+placeLocate.addEventListener('click',()=>{
+  if(!navigator.geolocation){
+    statusMessage.textContent='Tento prohlížeč nepodporuje zjištění polohy.';
+    return;
+  }
+  placeLocate.disabled=true;
+  placeLocate.title='Zjišťuji polohu…';
+  placeLocate.setAttribute('aria-label','Zjišťuji polohu');
+  statusMessage.textContent='Zjišťuji vaši polohu…';
+  navigator.geolocation.getCurrentPosition(async position=>{
+    try{
+      const {latitude,longitude}=position.coords;
+      const response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&addressdetails=1&accept-language=cs&lat='+latitude+'&lon='+longitude,{signal:AbortSignal.timeout(10000)});
+      if(!response.ok)throw Error('reverse geocoding failed');
+      const data=await response.json(),address=data.address||{};
+      const town=address.city||address.town||address.village||address.municipality||address.hamlet||address.suburb;
+      const label=[town,address.postcode].filter(Boolean).join(', ')||data.display_name;
+      if(!label)throw Error('location label unavailable');
+      placeInput.value=label;
+      placeInput.dispatchEvent(new Event('input',{bubbles:true}));
+      statusMessage.textContent='Poloha doplněna: '+label;
+    }catch{
+      statusMessage.textContent='Obec se nepodařilo určit. Zadejte ji prosím ručně.';
+    }finally{
+      placeLocate.disabled=false;
+      placeLocate.title='Použít moji polohu';
+      placeLocate.setAttribute('aria-label','Použít moji polohu');
+    }
+  },error=>{
+    placeLocate.disabled=false;
+    placeLocate.title='Použít moji polohu';
+    placeLocate.setAttribute('aria-label','Použít moji polohu');
+    statusMessage.textContent=error.code===1?'Povolte přístup k poloze v nastavení prohlížeče.':error.code===3?'Zjištění polohy vypršelo. Zkuste to znovu nebo zadejte město ručně.':'Polohu se nepodařilo zjistit. Zadejte město ručně.';
+  },{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
+});
 repairForm.addEventListener('submit',async e=>{
   e.preventDefault();
   if(!repairForm.reportValidity())return;
