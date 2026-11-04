@@ -556,13 +556,13 @@ header{height:84px!important}
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 28' preserveAspectRatio='none'%3E%3Cpath fill='%23e94e1b' d='M2 24C63 9 160 2 251 3c55 0 105 5 147 10-65-5-123-4-180 0C139 16 71 21 2 27c-3 0-3-2 0-3Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
 }
 
-/* Linka pod slovem „pořádku.“ navazuje na jeho vlastní šířku a velikost písma. */
-.hero-underline{position:relative;display:inline-block;white-space:nowrap}
+/* Jediné podtržení „pořádku.“: kotva je přímo na slově, tah je o něco výraznější. */
+.hero-underline{position:relative!important;display:inline-block!important;white-space:nowrap}
 .hero-underline::after{
- content:"";position:absolute;left:0;right:0;bottom:-.09em;height:.12em;pointer-events:none;
- background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 28' preserveAspectRatio='none'%3E%3Cpath fill='%23e94e1b' d='M2 24C63 9 160 2 251 3c55 0 105 5 147 10-65-5-123-4-180 0C139 16 71 21 2 27c-3 0-3-2 0-3Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+ content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:-.09em!important;height:.15em!important;display:block!important;pointer-events:none;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 28' preserveAspectRatio='none'%3E%3Cpath fill='%23e94e1b' d='M2 24C63 9 160 2 251 3c55 0 105 5 147 10-65-5-123-4-180 0C139 16 71 21 2 27c-3 0-3-2 0-3Z'/%3E%3C/svg%3E") center/100% 100% no-repeat!important;
 }
-.hero-copy h1 em::after{content:none!important;display:none!important}
+html body .hero-copy h1 em::after{all:unset!important;content:none!important;display:none!important}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
