@@ -343,6 +343,20 @@ header:before{display:none}
   .hero-copy p{font-size:15px!important}
 }
 
+
+/* Mobilní podtržení sekce podle reference. */
+@media(max-width:850px){
+  .mobile-repair-heading{
+    font-size:clamp(30px,5.8vw,40px)!important;
+    font-weight:900!important;
+  }
+  .mobile-repair-heading:after{
+    width:105px!important;
+    height:4px!important;
+    margin:5px auto 0!important;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
