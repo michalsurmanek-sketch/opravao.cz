@@ -459,6 +459,12 @@ header{height:84px!important}
   .hero-copy-mobile span:nth-child(2){white-space:normal}
 }
 
+
+
+/* Podtržení oranžového řádku „pořádku.“ musí fungovat na každé šířce. */
+.hero-copy h1 em{position:relative;display:inline-block}
+.hero-copy h1 em::after{content:"";position:absolute;left:0;bottom:-8px;width:4em;height:4px;background:var(--orange);border-radius:50%;transform:rotate(-2deg);transform-origin:left center}
+@media(max-width:850px){.hero-copy h1 em::after{width:4em!important}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
