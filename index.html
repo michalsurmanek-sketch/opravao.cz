@@ -360,6 +360,18 @@ header:before{display:none}
 
 /* Značka v hlavičce je samostatný průhledný blesk bez dlaždice. */
 .brand-mark{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}
+
+/* Výška hlavičky zvětšená o 20 % podle jednotlivých breakpointů. */
+header{height:84px!important}
+@media(max-width:850px){
+  header{height:86.4px!important}
+  .nav{top:86.4px!important}
+}
+@media(max-width:380px){
+  header{height:76.8px!important}
+  .nav{top:76.8px!important}
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
