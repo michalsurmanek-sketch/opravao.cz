@@ -416,6 +416,30 @@ header{height:84px!important}
   .hero-copy .trust-icon svg{width:22px!important;height:22px!important}
 }
 
+
+/* Mobilní titul a výhody srovnané podle dodané předlohy. */
+@media(max-width:850px){
+  .hero-layout{min-height:calc(58vw - 23px)!important}
+  .hero-copy{align-self:stretch!important}
+  .hero-copy h1{
+    width:112%!important;
+    font-size:clamp(40px,7.5vw,52px)!important;
+    line-height:1!important;
+  }
+  .hero-copy h1 em::after{width:4em!important}
+  .hero-copy .trust{
+    width:min(100%,180px)!important;
+    margin-top:auto!important;
+  }
+  .hero-copy .trust-item{min-height:56px!important}
+  .hero-copy .trust-icon{height:18px!important}
+  .hero-copy .trust-icon svg{width:18px!important;height:18px!important}
+}
+@media(max-width:380px){
+  .hero-layout{min-height:calc(58vw - 16px)!important}
+  .hero-copy h1{font-size:clamp(39px,10vw,42px)!important;width:112%!important}
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
