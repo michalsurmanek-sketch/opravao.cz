@@ -464,6 +464,38 @@ header{height:84px!important}
 .hero-copy h1 em{position:relative;display:inline-block}
 .hero-copy h1 em::after{content:"";position:absolute;left:0;bottom:-8px;width:4em;height:4px;background:var(--orange);border-radius:50%;transform:rotate(-2deg);transform-origin:left center}
 @media(max-width:850px){.hero-copy h1 em::after{width:4em!important}}
+
+/* Ručně kreslená oranžová linka podle vizuální předlohy, responsivně pro každý nadpis. */
+.mobile-repair-heading,
+.hero-copy .repair-heading{position:relative}
+.mobile-repair-heading::after,
+.hero-copy .repair-heading::after{
+  content:"";
+  position:absolute;
+  right:3%;
+  bottom:-.10em;
+  width:3.55em;
+  height:.18em;
+  margin:0!important;
+  background:var(--orange);
+  border:0;
+  border-radius:80% 35% 75% 20% / 90% 45% 65% 20%;
+  clip-path:polygon(0 79%,12% 42%,43% 12%,76% 2%,100% 18%,93% 47%,62% 39%,31% 55%,7% 100%);
+  transform:rotate(-1.5deg);
+}
+.hero-copy h1 em::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-.12em;
+  width:100%!important;
+  height:.075em;
+  background:var(--orange);
+  border-radius:75% 35% 75% 30%;
+  clip-path:polygon(0 85%,12% 43%,48% 8%,81% 1%,100% 42%,83% 46%,49% 31%,15% 70%);
+  transform:rotate(-1deg);
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
