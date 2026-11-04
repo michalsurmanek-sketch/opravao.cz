@@ -387,6 +387,24 @@ header{height:84px!important}
   stroke-linejoin:round;
 }
 
+
+/* Tah pod posledním oranžovým řádkem hlavního nadpisu jako v předloze. */
+@media(max-width:850px){
+  .hero-copy h1 em{position:relative}
+  .hero-copy h1 em::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:min(72vw,230px);
+    height:4px;
+    background:var(--orange);
+    border-radius:50%;
+    transform:rotate(-2deg);
+    transform-origin:left center;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
