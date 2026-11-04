@@ -496,6 +496,32 @@ header{height:84px!important}
   transform:rotate(-1deg);
 }
 
+
+/* Tvar a umístění linek podle přiloženého vizuálu: tenký oranžový tah se špičatými konci. */
+.mobile-repair-heading::after,
+.hero-copy .repair-heading::after{
+  right:auto!important;
+  left:61%!important;
+  bottom:-.12em!important;
+  width:36%!important;
+  height:.22em!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  clip-path:none!important;
+  transform:none!important;
+  background-color:transparent!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 28'%3E%3Cpath fill='%23e94e1b' d='M3 25C78 5 230-3 397 6 290 4 119 12 3 25Z'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+}
+.hero-copy h1 em::after{
+  background-color:transparent!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 28'%3E%3Cpath fill='%23e94e1b' d='M3 25C78 5 230-3 397 6 290 4 119 12 3 25Z'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+  clip-path:none!important;
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
