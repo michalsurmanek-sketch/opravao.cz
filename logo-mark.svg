@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 15 65 100"><path d="M65 22 43 65h19l-10 40 39-52H70l15-31Z" fill="#e94e1b"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Opravao">
+  <path fill="#f04b18" d="M11 3h42v9h8v40h-9v9H11v-8H3V12h8z"/>
+  <path fill="#fffdf8" d="M35 8 18 35h12l-3 21 21-30H35l7-18z"/>
+</svg>
