@@ -318,6 +318,31 @@ header:before{display:none}
   .services{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:9px!important}
 }
 @media(min-width:851px){.hero-copy .trust{display:none!important}}
+
+/* Finální mobilní sazba podle referenčního screenshotu. */
+@media(max-width:850px){
+  .hero-copy{padding-top:0!important}
+  .hero-copy h1{
+    width:100%!important;
+    font-size:clamp(39px,6.7vw,47px)!important;
+    line-height:1!important;
+    margin:0 0 22px!important;
+  }
+  .hero-copy p{
+    width:min(100%,285px)!important;
+    max-width:285px!important;
+    font-size:clamp(16px,3.25vw,19px)!important;
+    line-height:1.35!important;
+    margin:0 0 18px!important;
+  }
+  .hero-copy .trust{width:min(100%,250px)!important}
+  .hero-copy .trust-item{min-height:78px!important}
+}
+@media(max-width:380px){
+  .hero-copy h1{font-size:clamp(37px,9.8vw,40px)!important}
+  .hero-copy p{font-size:15px!important}
+}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
