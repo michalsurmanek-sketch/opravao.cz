@@ -296,6 +296,28 @@ header:before{display:none}
   .mobile-repair-heading{display:block!important}
 }
 @media(min-width:851px){.hero>.trust{display:none!important}}
+
+/* Mobilní úvod podle předlohy: text a benefity v levém sloupci. */
+@media(max-width:850px){
+  .hero{padding:24px 0 0!important;margin:0!important;min-height:0!important}
+  .hero-layout{position:relative!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,.92fr)!important;grid-template-rows:1fr!important;align-items:start!important;gap:0!important;aspect-ratio:auto!important;min-height:0!important}
+  .hero-copy{display:flex!important;flex-direction:column!important;grid-column:1!important;grid-row:1!important;position:relative!important;left:auto!important;top:auto!important;transform:none!important;width:100%!important;max-width:none!important;padding:24px 0 0!important;z-index:3!important;align-self:start!important}
+  .hero-copy h1{position:relative!important;z-index:3!important;width:100%!important;max-width:none!important;font-size:clamp(42px,9.5vw,65px)!important;line-height:1.01!important;letter-spacing:-.055em!important;margin:0 0 50px!important}
+  .hero-copy p{position:relative!important;z-index:3!important;width:min(100%,275px)!important;max-width:275px!important;font-size:clamp(18px,3vw,21px)!important;line-height:1.3!important;margin:0 0 18px!important}
+  .hero-copy .trust{display:grid!important;position:relative!important;z-index:4!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important;width:100%!important;margin:0!important;padding:0!important;align-items:stretch!important}
+  .hero-copy .trust:before,.hero-copy .trust:after{display:none!important}
+  .hero-copy .trust-item{display:flex!important;min-width:0!important;min-height:68px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;padding:5px 3px!important;border-radius:14px!important;background:#f1e9dc!important;color:#20211f!important;font-size:clamp(10px,2.5vw,13px)!important;font-weight:800!important;line-height:1.05!important;text-align:center!important;white-space:normal!important}
+  .hero-copy .trust-icon{height:27px!important;display:flex!important;align-items:center!important;justify-content:center!important;color:#315f29!important}
+  .hero-copy .trust-icon svg{width:27px!important;height:27px!important;fill:none!important;stroke:currentColor!important;stroke-width:2.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+  .house-art{position:relative!important;left:auto!important;top:auto!important;grid-column:2!important;grid-row:1!important;width:215%!important;height:auto!important;aspect-ratio:1672/941!important;max-width:none!important;margin:0 0 0 -115%!important;transform:none!important;align-self:start!important;z-index:1!important}
+  .hero-actions,.hero-copy .repair-heading{display:none!important}
+  .hero>.trust,.location-section+.trust{display:none!important}
+  .mobile-repair-heading{display:block!important;margin:12px 0 14px!important;font-size:clamp(34px,7vw,46px)!important;line-height:1.05!important;letter-spacing:-.045em!important}
+  .mobile-repair-heading:after{content:"";display:block;width:125px;height:4px;margin:5px auto 0;background:var(--orange);border-radius:50%;transform:rotate(-2deg)}
+  .request{margin:0 0 16px!important;padding:16px!important}
+  .services{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:9px!important}
+}
+@media(min-width:851px){.hero-copy .trust{display:none!important}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
@@ -316,6 +338,7 @@ header:before{display:none}
 <div class="hero-copy" id="jak-to-funguje">
 <h1>Co se pokazilo?<em>Dáme to do<br>pořádku.</em></h1>
 <p>Popište opravu jednou. Propojíme vás s ověřenými řemeslníky ve vašem okolí.</p>
+<div class="trust"><span class="trust-item"><span class="trust-icon trust-check" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m5 16 7 7L27 7"/></svg></span><span>Ověření<br>řemeslníci</span></span><span class="trust-item"><span class="trust-icon trust-clock" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg></span><span>Rychlá<br>odezva</span></span><span class="trust-item"><span class="trust-icon trust-shield" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3 27 8v8c0 7-5 11-11 14C10 27 5 23 5 16V8z"/><path d="m11 16 4 4 7-8"/></svg></span><span>Bez<br>závazků</span></span></div>
 <div class="hero-actions"><a class="btn" href="#poptavka">Najít opraváře</a><a class="btn btn-outline" href="#poptavka">Jak služba funguje</a></div>
 <h2 class="repair-heading">Co potřebujete opravit?</h2>
 </div>
