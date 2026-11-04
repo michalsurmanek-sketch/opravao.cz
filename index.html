@@ -567,6 +567,12 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 /* Vypnutí původních podtržení celých nadpisů; ponechána jen linka u jednotlivých slov. */
 .mobile-repair-heading::after,
 .hero-copy .repair-heading::after{content:none!important;display:none!important}
+
+/* Hamburger panel stays above page content and responds to the button state. */
+@media(max-width:850px){
+  header{position:relative!important;z-index:30!important}
+  .nav.open{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
@@ -578,7 +584,7 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 <nav class="nav" id="nav"><a href="#jak-to-funguje">Jak to funguje</a><a href="#pro-remeslniky">Pro řemeslníky</a><a href="#rady">Rady a návody</a><a href="/ucet.html" class="nav-login">Přihlášení</a></nav>
 <a class="header-login" href="/ucet.html" aria-label="Přihlášení do účtu" title="Přihlášení"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg><span>Přihlášení</span></a><a class="header-contact" href="#poptavka"><svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02z"/></svg><span>000 000 000</span></a>
 <a class="btn header-cta" href="#poptavka">Nezávazně poptat opravu</a>
-<button class="menu-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+<button class="menu-toggle" type="button" aria-label="Otevřít menu" aria-controls="nav" aria-expanded="false">☰</button>
 </header>
 <main>
 <section class="hero">
@@ -626,7 +632,16 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 </div>
 <script>
 const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+function setMenuOpen(open){
+  nav.classList.toggle('open',open);
+  toggle.setAttribute('aria-expanded',String(open));
+  toggle.setAttribute('aria-label',open?'Zavřít menu':'Otevřít menu');
+}
+toggle.addEventListener('click',()=>setMenuOpen(toggle.getAttribute('aria-expanded')!=='true'));
+document.addEventListener('click',event=>{
+  if(toggle.getAttribute('aria-expanded')==='true'&&!nav.contains(event.target)&&!toggle.contains(event.target))setMenuOpen(false);
+});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true')setMenuOpen(false)});
 document.querySelectorAll('.service').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');document.querySelector('#lokalita').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});}));
 const SUPABASE_URL='https://jmukoccjqykyoqsypuwb.supabase.co';
 const SUPABASE_PUBLIC_KEY='sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V';
