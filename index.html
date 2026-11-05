@@ -607,6 +607,16 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
   .service{min-height:112px;font-size:15px}
   .service svg{width:44px;height:44px}
 }
+
+/* Čtyři benefity pod hlavním titulkem – pouze mobilní hero sekce. */
+@media(max-width:850px){
+  .hero-copy>p{display:none!important}
+  .hero-copy .hero-benefits{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;width:min(100%,310px)!important;max-width:310px!important;margin:16px 0 0!important;padding:0!important;align-self:flex-start!important;justify-content:stretch!important;flex-wrap:nowrap!important}
+  .hero-copy .hero-benefits::before,.hero-copy .hero-benefits::after{display:none!important}
+  .hero-copy .hero-benefits .trust-item{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:0!important;min-height:92px!important;padding:7px 2px!important;border:1px solid #e7dfd1!important;border-radius:14px!important;background:#f5f0e7!important;color:#20211f!important;font-size:clamp(9px,2.4vw,12px)!important;line-height:1.15!important;text-align:center!important;font-weight:800!important;white-space:normal!important}
+  .hero-copy .hero-benefits .trust-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;color:var(--orange)!important}
+  .hero-copy .hero-benefits .trust-icon svg{width:30px!important;height:30px!important;fill:none!important;stroke:currentColor!important;stroke-width:2.6!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
 
@@ -638,7 +648,7 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 <div class="hero-copy" id="jak-to-funguje">
 <h1>Co se pokazilo?<em>Dáme to do<br><span class="hero-underline">pořádku.</span></em></h1>
 <p><span class="hero-copy-desktop">Popište opravu jednou. Propojíme vás s ověřenými řemeslníky ve vašem okolí.</span><span class="hero-copy-mobile"><span>Popište opravu jednou.</span><span>Propojíme vás s ověřenými</span><span>řemeslníky ve vašem okolí.</span></span></p>
-<div class="trust"><span class="trust-item"><span class="trust-icon trust-check" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m5 16 7 7L27 7"/></svg></span><span>Ověření<br>řemeslníci</span></span><span class="trust-item"><span class="trust-icon trust-clock" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg></span><span>Rychlá<br>odezva</span></span><span class="trust-item"><span class="trust-icon trust-shield" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3 27 8v8c0 7-5 11-11 14C10 27 5 23 5 16V8z"/><path d="m11 16 4 4 7-8"/></svg></span><span>Bez<br>závazků</span></span></div>
+<div class="trust hero-benefits"><span class="trust-item"><span class="trust-icon trust-check" aria-hidden="true"><svg viewBox="0 0 32 32"><path d='m5 16 7 7L27 7'/></svg></span><span>Ověření<br>řemeslníci</span></span><span class="trust-item"><span class="trust-icon trust-shield" aria-hidden="true"><svg viewBox="0 0 32 32"><path d='M16 3 27 8v8c0 7-5 11-11 14C10 27 5 23 5 16V8z'/><path d='m11 16 4 4 7-8'/></svg></span><span>Férová<br>cena</span></span><span class="trust-item"><span class="trust-icon trust-clock" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx='16' cy='16' r='11'/><path d='M16 9v7l5 3'/></svg></span><span>Rychlá<br>domluva</span></span><span class="trust-item"><span class="trust-icon trust-pin" aria-hidden="true"><svg viewBox="0 0 32 32"><path d='M16 29s10-10 10-17a10 10 0 0 0-20 0c0 7 10 17 10 17Z'/><circle cx='16' cy='12' r='3'/></svg></span><span>Ve vašem<br>okolí</span></span></div>
 <div class="hero-actions"><a class="btn" href="#poptavka">Najít opraváře</a><a class="btn btn-outline" href="#poptavka">Jak služba funguje</a></div>
 <h2 class="repair-heading">Co potřebujete <span class="repair-underline">opravit</span>?</h2>
 </div>
