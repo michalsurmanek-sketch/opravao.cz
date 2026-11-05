@@ -636,6 +636,10 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
   .repair-type-option[aria-selected=true]:after{content:'✓';font-size:18px;font-weight:900;color:#e94e1b}
 }
 @media(max-width:850px){.repair-type-picker{display:none}}
+
+/* Prevent persistent orange focus frame on the repair-type dropdown after selection. */
+#type:focus,#type:focus-visible,#type:active{outline:none!important;box-shadow:none!important;border-color:transparent!important}
+.input-wrap:has(> #type):focus-within{outline:none!important;box-shadow:none!important}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
 
