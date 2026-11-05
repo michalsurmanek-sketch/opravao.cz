@@ -581,6 +581,32 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
   header{position:relative!important;z-index:30!important}
   .nav.open{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
 }
+
+/* Oprava sekce poptávky podle mobilní předlohy; hlavička a hero zůstávají beze změny. */
+@media(max-width:850px){
+  .mobile-repair-heading{font-size:clamp(30px,7vw,38px);line-height:1.05;margin:18px 0 14px;letter-spacing:-.05em}
+  .request{background:#222320;color:#fff;border-radius:18px;padding:22px 20px 20px;margin:0 0 20px}
+  .request form{display:block}
+  .form-grid{display:flex;flex-direction:column;align-items:stretch;gap:14px}
+  .field label{font-size:16px;line-height:1.2;margin:0 0 8px;font-weight:750}
+  .input-wrap{height:70px;min-height:70px;gap:14px;padding:0 16px;border-radius:15px}
+  .input-wrap svg{width:27px;height:27px}
+  .input-wrap input,.input-wrap select{font-size:19px}
+  .place-locate{width:44px;height:44px}
+  .submit-field{width:100%;margin-top:0}
+  .submit-field .form-note{font-size:16px;line-height:1.35;margin:0 0 10px;white-space:normal}
+  .submit-field .btn{width:100%;min-height:80px;height:auto;border-radius:15px;font-size:18px}
+  .privacy-consent{font-size:16px;line-height:1.45;margin:12px 0 0}
+  .services{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 18px}
+  .service{min-height:132px;border:2px solid #454640;border-radius:18px;background:transparent;font-size:18px;line-height:1.05;padding:12px 5px;gap:9px}
+  .service svg{width:52px;height:52px}
+}
+@media(max-width:380px){
+  .request{padding:19px 15px 17px;border-radius:16px}
+  .input-wrap{height:62px;min-height:62px}
+  .service{min-height:112px;font-size:15px}
+  .service svg{width:44px;height:44px}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
 
