@@ -670,6 +670,18 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
  border:0!important;outline:0!important;
 }
 
+
+/* Desktop: all five request controls on one compact row. Mobile layout unchanged. */
+@media (min-width:851px){
+#repair-form .form-grid{display:grid;grid-template-columns:minmax(155px,1.05fr) minmax(150px,1fr) minmax(145px,.85fr) minmax(175px,1.05fr) minmax(205px,1.25fr);gap:10px;align-items:end}
+#repair-form .form-grid>.field,#repair-form .form-grid>.submit-field{min-width:0;grid-column:auto}
+#repair-form .input-wrap{padding-inline:10px;gap:7px}
+#repair-form .input-wrap svg{width:19px;height:19px}
+#repair-form .input-wrap input,#repair-form .input-wrap select{font-size:14px;text-overflow:ellipsis}
+#repair-form .submit-field .form-note{font-size:12px;white-space:normal;min-height:18px;margin-bottom:7px}
+#repair-form .submit-field .btn{min-width:0;width:100%;padding:13px 9px;font-size:14px;white-space:nowrap}
+#repair-form .repair-type-trigger{min-width:0;max-width:100%}
+}
 </style>
 <link rel="stylesheet" href="/assets/leaflet-1.9.4.css">
 
