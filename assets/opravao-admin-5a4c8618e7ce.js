@@ -46,7 +46,7 @@ document.addEventListener("click",e=>{
  const lead=leads.find(x=>x.id===b.dataset.replyLead);if(!lead)return;
  if(!lead.email){msg("#leadNotice","Zákazník nemá e-mailovou adresu.",true);return}
  $("#replyLeadId").value=lead.id;$("#replyRecipient").textContent=(lead.name||"Zákazník")+" · "+lead.email;
- $("#replyHistory").innerHTML=(Array.isArray(lead.communication)?lead.communication:[]).map(x=>'<div class="reply-item"><small>'+esc(when(x.created_at||x.sent_at))+' · '+esc(x.type==="outgoing"||x.direction==="out"?"Odesláno":"Zpráva")+'</small><p>'+esc(x.body||x.message||"")+'</p></div>').join("")||"<p>Zatím bez uložených zpráv.</p>";
+ const initialRequest={created_at:lead.submitted_at||lead.created_at,type:"incoming",body:["Nová poptávka zákazníka","Typ opravy: "+(lead.payload?.repairType||"Neuvedeno"),"Místo: "+(lead.place||"Neuvedeno"),...(lead.note&&!/^Typ opravy:\s*/i.test(lead.note)?["Popis: "+lead.note]:[])].join("\n")};const timeline=[initialRequest,...(Array.isArray(lead.communication)?lead.communication:[])].sort((a,b)=>new Date(a.created_at||a.sent_at||0)-new Date(b.created_at||b.sent_at||0));$("#replyHistory").innerHTML=timeline.map(x=>'<div class="reply-item"><small>'+esc(when(x.created_at||x.sent_at))+' · '+esc(x.type==="outgoing"||x.direction==="out"?"Odesláno":"Zpráva")+'</small><p>'+esc(x.body||x.message||"")+'</p></div>').join("")||"<p>Zatím bez uložených zpráv.</p>";
  $("#replyMessage").value="";$("#replyNotice").textContent="";$("#replyModal").hidden=false;replyRequestId=null;
 });
 $("#replyMessage").addEventListener("input",()=>{replyRequestId=null});
