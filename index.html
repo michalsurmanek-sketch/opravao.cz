@@ -649,6 +649,27 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 .location-feedback{display:block;font-size:13px;line-height:1.4;margin:5px 0 0;color:var(--olive)}
 .location-feedback:empty,#location-status:empty{display:none}
 #location-search .location-feedback{flex-basis:100%;width:100%;margin:6px 0 0;order:1}
+
+/* Keep contact and location fields on their original background after autofill. */
+#repair-form .input-wrap input{
+ appearance:none;-webkit-appearance:none;border:0;border-radius:0;
+ background:transparent;background-image:none;
+}
+#repair-form .input-wrap input:autofill{
+ background-color:#f8f4eb!important;color:#292a27!important;
+ box-shadow:0 0 0 1000px #f8f4eb inset!important;
+}
+#repair-form .input-wrap input:-webkit-autofill,
+#repair-form .input-wrap input:-webkit-autofill:hover,
+#repair-form .input-wrap input:-webkit-autofill:focus,
+#repair-form .input-wrap input:-webkit-autofill:active{
+ -webkit-text-fill-color:#292a27!important;
+ caret-color:#292a27;
+ -webkit-box-shadow:0 0 0 1000px #f8f4eb inset!important;
+ box-shadow:0 0 0 1000px #f8f4eb inset!important;
+ border:0!important;outline:0!important;
+}
+
 </style>
 <link rel="stylesheet" href="/assets/leaflet-1.9.4.css">
 
