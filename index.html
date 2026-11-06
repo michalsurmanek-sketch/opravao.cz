@@ -133,7 +133,7 @@ footer .footer-links{display:flex;flex-direction:row;flex-wrap:nowrap;align-item
 @media(max-width:850px){header{height:56px}.nav{top:56px}.hero{padding-top:0}.hero>.eyebrow{margin-top:0;margin-bottom:4px;margin-left:45px;max-width:calc(100% - 45px)}}
 @media(max-width:850px){.hero{margin-top:-8px}.hero>.eyebrow{margin-bottom:4px}}
 .place-locate{width:42px;height:42px;display:grid;place-items:center;flex:none;padding:0;border:0;border-radius:8px;background:transparent;color:var(--olive);cursor:pointer}.place-locate svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.place-locate:hover{background:#707b3a14}.place-locate:disabled{opacity:.55;cursor:wait}
-.location-input-wrap{display:flex;flex:1;min-width:0;position:relative}.location-input-wrap input{width:100%;padding-right:150px}.location-locate,.place-locate,.location-locate:hover,.place-locate:hover,.location-locate:focus,.place-locate:focus,.location-locate:focus-visible,.place-locate:focus-visible{border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;appearance:none!important;-webkit-appearance:none!important}.location-locate::before,.location-locate::after,.place-locate::before,.place-locate::after{border:0!important;box-shadow:none!important}
+.location-input-wrap{display:flex;flex:1;min-width:0;position:relative}.location-input-wrap input{width:100%;padding-right:150px}.location-locate,.place-locate{border:0;outline:0;box-shadow:none;background:transparent;appearance:none;-webkit-appearance:none}.location-locate:focus-visible,.place-locate:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
 .location-locate{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;gap:6px;align-items:center;border:0;background:transparent;color:var(--olive);cursor:pointer;font:inherit;padding:10px}.location-locate:focus-visible{outline:2px solid var(--orange)}
 @media(max-width:850px){.location-input-wrap input{padding-right:52px}.location-locate span{display:none}.location-locate{right:4px;padding:10px}}
 @media(hover:none) and (pointer:coarse){*,*::before,*::after{-webkit-tap-highlight-color:transparent}a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}}
@@ -734,7 +734,44 @@ const repairForm=document.querySelector('#repair-form');
 const statusMessage=document.querySelector('#status');
 const placeInput=document.querySelector('#place');
 const placeLocate=document.querySelector('#place-geolocate');
-// Geolocation is handled by the independent location module at the end of the page.
+// Both GPS buttons use the same native geolocation flow, without extra layers.
+async function locateUser(button,field,status,updateMap=false){
+ if(!window.isSecureContext){status.textContent='Pro zjištění polohy otevřete web přes HTTPS.';return;}
+ if(!navigator.geolocation){status.textContent='Prohlížeč nepodporuje zjišťování polohy.';return;}
+ button.disabled=true;
+ status.textContent='Zjišťuji polohu… Povolte přístup v prohlížeči.';
+ try{
+  const position=await new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:false,timeout:20000,maximumAge:120000}));
+  const lat=position.coords.latitude,lon=position.coords.longitude;
+  const coordinates='Moje poloha: '+lat.toFixed(5)+', '+lon.toFixed(5);
+  field.value=coordinates;
+  field.dispatchEvent(new Event('input',{bubbles:true}));
+  if(updateMap)document.dispatchEvent(new CustomEvent('opravao:location',{detail:{lat,lon,label:coordinates}}));
+  status.textContent='Poloha nalezena. Dohledávám adresu…';
+  try{
+   const controller=new AbortController();
+   const timer=setTimeout(()=>controller.abort(),10000);
+   let response;
+   try{response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&addressdetails=1&accept-language=cs&lat='+lat+'&lon='+lon,{signal:controller.signal});}
+   finally{clearTimeout(timer);}
+   if(!response.ok)throw Error('Geocoding failed');
+   const data=await response.json(),a=data.address||{};
+   const town=a.city||a.town||a.village||a.municipality||a.hamlet||a.suburb;
+   const label=[town,a.postcode].filter(Boolean).join(', ')||data.display_name;
+   if(!label)throw Error('No address');
+   field.value=label;field.dispatchEvent(new Event('input',{bubbles:true}));
+   if(updateMap)document.dispatchEvent(new CustomEvent('opravao:location',{detail:{lat,lon,label}}));
+   status.textContent='Poloha doplněna: '+label;
+  }catch{status.textContent='Poloha byla nalezena, ale adresu nelze dohledat. Můžete zadat obec ručně.';}
+ }catch(error){
+  status.textContent=error.code===1?'Přístup k poloze byl zamítnut. Povolte polohu pro opravao.cz v prohlížeči.':error.code===3?'Zjištění polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte GPS a oprávnění prohlížeče.';
+ }finally{button.disabled=false;}
+}
+placeLocate.addEventListener('click',()=>locateUser(placeLocate,placeInput,statusMessage));
+const mapLocate=document.querySelector('#location-geolocate');
+const mapQuery=document.querySelector('#location-query');
+const mapStatus=document.querySelector('#location-status');
+if(mapLocate&&mapQuery&&mapStatus)mapLocate.addEventListener('click',()=>locateUser(mapLocate,mapQuery,mapStatus,true));
 repairForm.addEventListener('submit',async e=>{
   e.preventDefault();
   if(!repairForm.reportValidity())return;
@@ -781,6 +818,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,att
 let marker=null,location=null;
 function choose(lat,lon,label){location={lat,lon,label};if(marker)marker.remove();marker=L.marker([lat,lon],{icon:L.divIcon({className:'location-marker',iconSize:[22,22],iconAnchor:[11,11]})}).addTo(map);selected.textContent=label;confirm.disabled=false;status.textContent='Místo můžete upravit dalším kliknutím do mapy.';}
 map.on('click',e=>choose(e.latlng.lat,e.latlng.lng,'Bod na mapě: '+e.latlng.lat.toFixed(5)+', '+e.latlng.lng.toFixed(5)));
+document.addEventListener('opravao:location',e=>{const {lat,lon,label}=e.detail;choose(lat,lon,label);map.setView([lat,lon],14);});
 const query=document.querySelector('#location-query'),cache=new Map();let timer,controller,version=0;
 query.setAttribute('autocomplete','off');query.setAttribute('aria-controls','location-results');
 async function suggest(autoSelect=false){
@@ -847,57 +885,6 @@ new ResizeObserver(()=>map.invalidateSize()).observe(document.querySelector('#re
  sync();
 })();
 </script>
-<script>
-/* Shared geolocation for both location buttons; does not depend on the map library. */
-(()=>{
-const locate=async button=>{
- const formField=document.getElementById('place');
- const mapField=document.getElementById('location-query');
- const mapStatus=document.getElementById('location-status');
- const formStatus=document.getElementById('status');
- const isMap=button.id==='location-geolocate';
- const status=isMap?mapStatus:formStatus;
- if(!status)return;
- if(!window.isSecureContext){status.textContent='Určení polohy vyžaduje zabezpečené připojení HTTPS.';return;}
- if(!navigator.geolocation){status.textContent='Tento prohlížeč nepodporuje určování polohy.';return;}
- button.disabled=true;
- status.textContent='Zjišťuji vaši polohu. Povolte přístup k poloze, pokud se zobrazí dotaz…';
- try{
-  const position=await new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:false,timeout:20000,maximumAge:120000}));
-  const {latitude:lat,longitude:lon}=position.coords;
-  let label='Moje poloha: '+lat.toFixed(5)+', '+lon.toFixed(5);
-  // Preserve the GPS result even when the reverse-geocoding service is unavailable.
-  if(isMap&&mapField){mapField.value=label;mapField.dispatchEvent(new Event('input',{bubbles:true}));}
-  if(!isMap&&formField){formField.value=label;formField.dispatchEvent(new Event('input',{bubbles:true}));}
-  status.textContent='Poloha zjištěna. Dohledávám město…';
-  try{
-   const controller=new AbortController();
-   const timeout=setTimeout(()=>controller.abort(),10000);
-   try{
-    const response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&addressdetails=1&accept-language=cs&lat='+lat+'&lon='+lon,{signal:controller.signal});
-    if(!response.ok)throw Error('geocoding');
-    const data=await response.json(),a=data.address||{};
-    const town=a.city||a.town||a.village||a.municipality||a.hamlet||a.suburb;
-    label=[town,a.postcode].filter(Boolean).join(', ')||data.display_name||label;
-   }finally{clearTimeout(timeout);}
-  }catch{status.textContent='Souřadnice byly zjištěny, ale adresu se nepodařilo dohledat.';}
-  if(isMap&&mapField){mapField.value=label;mapField.dispatchEvent(new Event('input',{bubbles:true}));}
-  if(!isMap&&formField){formField.value=label;formField.dispatchEvent(new Event('input',{bubbles:true}));}
-  status.textContent='Poloha zjištěna: '+label;
-  if(isMap){
-   // Keep map selection in sync via the existing search control.
-   const mapSearch=document.getElementById('location-search');
-   if(mapSearch&&label.indexOf('Moje poloha:')!==0)mapSearch.requestSubmit();
-  }
- }catch(error){
-  status.textContent=error.code===1?'Přístup k poloze je zamítnutý. Povolte polohu pro opravao.cz v nastavení prohlížeče a telefonu.':error.code===3?'Zjišťování polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte povolení polohy v telefonu a prohlížeči.';
- }finally{button.disabled=false;}
-};
-for(const id of ['place-geolocate','location-geolocate']){
- const button=document.getElementById(id);
- if(button)button.addEventListener('click',()=>locate(button));
-}
-})();
-</script>
+
 </body>
 </html>
