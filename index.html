@@ -775,7 +775,7 @@ async function locateUser(button,field,status,updateMap=false){
   status.textContent=error.code===1?'Přístup k poloze byl zamítnut. Povolte polohu pro opravao.cz v prohlížeči.':error.code===3?'Zjištění polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte GPS a oprávnění prohlížeče.';
  }finally{button.disabled=false;}
 }
-placeLocate.addEventListener('click',()=>locateUser(placeLocate,placeInput,document.querySelector('#place-location-feedback')));
+placeLocate.addEventListener('click',()=>locateUser(placeLocate,placeInput,document.querySelector('#place-location-feedback'),true));
 const mapLocate=document.querySelector('#location-geolocate');
 const mapQuery=document.querySelector('#location-query');
 const mapStatus=document.querySelector('#map-location-feedback');
@@ -824,7 +824,6 @@ repairForm.addEventListener('submit',async e=>{
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 </script>
 
-<script>
 <script>
 /* Load pinned Leaflet from either CDN; never leave the map waiting on one stalled request. */
 window.opravaoMapReady=new Promise(resolve=>{
