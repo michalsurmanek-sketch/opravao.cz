@@ -15,6 +15,9 @@ const SUPABASE_URL='https://jmukoccjqykyoqsypuwb.supabase.co';
 const SUPABASE_PUBLIC_KEY='sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V';
 const repairForm=document.querySelector('#repair-form');
 const statusMessage=document.querySelector('#status');
+const couponOptIn=document.querySelector('#coupon-opt-in'),couponRegionWrap=document.querySelector('#coupon-region-wrap'),couponRegion=document.querySelector('#coupon-region');
+couponOptIn?.addEventListener('change',()=>{couponRegionWrap.hidden=!couponOptIn.checked;couponRegion.required=couponOptIn.checked;if(!couponOptIn.checked)couponRegion.value='';});
+
 const placeInput=document.querySelector('#place');
 const placeLocate=document.querySelector('#place-geolocate');
 let locationRequestVersion=0;
@@ -82,7 +85,7 @@ repairForm.addEventListener('submit',async e=>{
         repairType:document.querySelector('#type').value,
         place:document.querySelector('#place').value,
         contact:document.querySelector('#contact').value,
-        email:document.querySelector('#customer-email').value.trim()
+        email:document.querySelector('#customer-email').value.trim(),\n        marketingConsent:!!couponOptIn?.checked,\n        marketingRegion:couponOptIn?.checked?couponRegion.value:''
       }})
     });
     const result=await response.json().catch(()=>({}));
