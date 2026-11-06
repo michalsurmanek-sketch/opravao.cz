@@ -801,7 +801,15 @@ repairForm.addEventListener('submit',async e=>{
     const result=await response.json().catch(()=>({}));
     if(!response.ok){
       if(response.status===429)throw new Error('Přijali jsme několik pokusů. Zkuste to prosím znovu za chvíli.');
-      throw new Error('Poptávku se teď nepodařilo odeslat. Zkuste to prosím znovu.');
+      if(response.status===422){
+        const reason=result.error;
+        if(reason==='invalid_contact')throw new Error('Zadejte platné telefonní číslo (alespoň 9 číslic) nebo e-mail.');
+        if(reason==='invalid_repair_type')throw new Error('Vyberte prosím typ opravy z nabídky.');
+        if(reason==='invalid_place')throw new Error('Zadejte prosím město nebo PSČ.');
+        throw new Error('Zkontrolujte vyplněné údaje a zkuste poptávku znovu.');
+      }
+      if(response.status===503)throw new Error('Odesílání je momentálně nedostupné. Zkuste to prosím za chvíli.');
+      throw new Error('Poptávku se teď nepodařilo odeslat (chyba '+response.status+'). Zkuste to prosím znovu.');
     }
     repairForm.reset();
     document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));
