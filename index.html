@@ -734,41 +734,7 @@ const repairForm=document.querySelector('#repair-form');
 const statusMessage=document.querySelector('#status');
 const placeInput=document.querySelector('#place');
 const placeLocate=document.querySelector('#place-geolocate');
-placeLocate.addEventListener('click',()=>{
-  if(!navigator.geolocation){
-    statusMessage.textContent='Tento prohlížeč nepodporuje zjištění polohy.';
-    return;
-  }
-  placeLocate.disabled=true;
-  placeLocate.title='Zjišťuji polohu…';
-  placeLocate.setAttribute('aria-label','Zjišťuji polohu');
-  statusMessage.textContent='Zjišťuji vaši polohu…';
-  navigator.geolocation.getCurrentPosition(async position=>{
-    try{
-      const {latitude,longitude}=position.coords;
-      const response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&addressdetails=1&accept-language=cs&lat='+latitude+'&lon='+longitude,{signal:AbortSignal.timeout(10000)});
-      if(!response.ok)throw Error('reverse geocoding failed');
-      const data=await response.json(),address=data.address||{};
-      const town=address.city||address.town||address.village||address.municipality||address.hamlet||address.suburb;
-      const label=[town,address.postcode].filter(Boolean).join(', ')||data.display_name;
-      if(!label)throw Error('location label unavailable');
-      placeInput.value=label;
-      placeInput.dispatchEvent(new Event('input',{bubbles:true}));
-      statusMessage.textContent='Poloha doplněna: '+label;
-    }catch{
-      statusMessage.textContent='Obec se nepodařilo určit. Zadejte ji prosím ručně.';
-    }finally{
-      placeLocate.disabled=false;
-      placeLocate.title='Použít moji polohu';
-      placeLocate.setAttribute('aria-label','Použít moji polohu');
-    }
-  },error=>{
-    placeLocate.disabled=false;
-    placeLocate.title='Použít moji polohu';
-    placeLocate.setAttribute('aria-label','Použít moji polohu');
-    statusMessage.textContent=error.code===1?'Povolte přístup k poloze v nastavení prohlížeče.':error.code===3?'Zjištění polohy vypršelo. Zkuste to znovu nebo zadejte město ručně.':'Polohu se nepodařilo zjistit. Zadejte město ručně.';
-  },{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
-});
+// Geolocation is handled by the independent location module at the end of the page.
 repairForm.addEventListener('submit',async e=>{
   e.preventDefault();
   if(!repairForm.reportValidity())return;
@@ -856,14 +822,7 @@ query.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();
 results.addEventListener('keydown',e=>{const buttons=[...results.querySelectorAll('button')],i=buttons.indexOf(document.activeElement);if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();buttons[(i+(e.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length]?.focus();}if(e.key==='Escape'){results.replaceChildren();query.focus();}});
 document.querySelector('#location-search').addEventListener('submit',e=>{e.preventDefault();clearTimeout(timer);suggest(true);});
 confirm.addEventListener('click',()=>{if(!location)return;const place=document.querySelector('#place');place.value=location.label;place.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#poptavka').scrollIntoView({behavior:'smooth',block:'start'});});
-document.querySelector('#location-geolocate').addEventListener('click',()=>{if(!navigator.geolocation){status.textContent='Prohlížeč nepodporuje určení polohy.';return;}status.textContent='Čekám na určení polohy…';navigator.geolocation.getCurrentPosition(async p=>{
-const lat=p.coords.latitude,lon=p.coords.longitude;
-clearTimeout(timer);controller?.abort();const ticket=++version;results.replaceChildren();
-const fallback='Moje poloha: '+lat.toFixed(5)+', '+lon.toFixed(5);
-query.value=fallback;choose(lat,lon,fallback);map.setView([lat,lon],14);status.textContent='Dohledávám obec a PSČ…';
-try{const response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&addressdetails=1&accept-language=cs&lat='+lat+'&lon='+lon,{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error();const data=await response.json();if(ticket!==version)return;const a=data.address||{},town=a.city||a.town||a.village||a.municipality||a.hamlet||a.suburb,label=[town,a.postcode].filter(Boolean).join(', ')||data.display_name;if(!label)throw Error();query.value=label;choose(lat,lon,label);}
-catch{if(ticket===version)status.textContent='Poloha je vybraná, název obce se nepodařilo dohledat. Obec můžete napsat ručně.';}
-},()=>{status.textContent='Polohu se nepodařilo určit. Vyhledejte obec nebo klikněte do mapy.';},{timeout:12000});});
+// Geolocation is handled independently so it also works when Leaflet fails to load.
 new ResizeObserver(()=>map.invalidateSize()).observe(document.querySelector('#repair-map'));
 })();
 </script>
@@ -886,6 +845,58 @@ new ResizeObserver(()=>map.invalidateSize()).observe(document.querySelector('#re
  document.addEventListener('click',e=>{if(!picker.contains(e.target))close();});
  select.addEventListener('change',sync);select.addEventListener('invalid',()=>{if(matchMedia('(min-width:851px)').matches){trigger.focus();}});
  sync();
+})();
+</script>
+<script>
+/* Shared geolocation for both location buttons; does not depend on the map library. */
+(()=>{
+const locate=async button=>{
+ const formField=document.getElementById('place');
+ const mapField=document.getElementById('location-query');
+ const mapStatus=document.getElementById('location-status');
+ const formStatus=document.getElementById('status');
+ const isMap=button.id==='location-geolocate';
+ const status=isMap?mapStatus:formStatus;
+ if(!status)return;
+ if(!window.isSecureContext){status.textContent='Určení polohy vyžaduje zabezpečené připojení HTTPS.';return;}
+ if(!navigator.geolocation){status.textContent='Tento prohlížeč nepodporuje určování polohy.';return;}
+ button.disabled=true;
+ status.textContent='Zjišťuji vaši polohu. Povolte přístup k poloze, pokud se zobrazí dotaz…';
+ try{
+  const position=await new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:false,timeout:20000,maximumAge:120000}));
+  const {latitude:lat,longitude:lon}=position.coords;
+  let label='Moje poloha: '+lat.toFixed(5)+', '+lon.toFixed(5);
+  // Preserve the GPS result even when the reverse-geocoding service is unavailable.
+  if(isMap&&mapField){mapField.value=label;mapField.dispatchEvent(new Event('input',{bubbles:true}));}
+  if(!isMap&&formField){formField.value=label;formField.dispatchEvent(new Event('input',{bubbles:true}));}
+  status.textContent='Poloha zjištěna. Dohledávám město…';
+  try{
+   const controller=new AbortController();
+   const timeout=setTimeout(()=>controller.abort(),10000);
+   try{
+    const response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&addressdetails=1&accept-language=cs&lat='+lat+'&lon='+lon,{signal:controller.signal});
+    if(!response.ok)throw Error('geocoding');
+    const data=await response.json(),a=data.address||{};
+    const town=a.city||a.town||a.village||a.municipality||a.hamlet||a.suburb;
+    label=[town,a.postcode].filter(Boolean).join(', ')||data.display_name||label;
+   }finally{clearTimeout(timeout);}
+  }catch{status.textContent='Souřadnice byly zjištěny, ale adresu se nepodařilo dohledat.';}
+  if(isMap&&mapField){mapField.value=label;mapField.dispatchEvent(new Event('input',{bubbles:true}));}
+  if(!isMap&&formField){formField.value=label;formField.dispatchEvent(new Event('input',{bubbles:true}));}
+  status.textContent='Poloha zjištěna: '+label;
+  if(isMap){
+   // Keep map selection in sync via the existing search control.
+   const mapSearch=document.getElementById('location-search');
+   if(mapSearch&&label.indexOf('Moje poloha:')!==0)mapSearch.requestSubmit();
+  }
+ }catch(error){
+  status.textContent=error.code===1?'Přístup k poloze je zamítnutý. Povolte polohu pro opravao.cz v nastavení prohlížeče a telefonu.':error.code===3?'Zjišťování polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte povolení polohy v telefonu a prohlížeči.';
+ }finally{button.disabled=false;}
+};
+for(const id of ['place-geolocate','location-geolocate']){
+ const button=document.getElementById(id);
+ if(button)button.addEventListener('click',()=>locate(button));
+}
 })();
 </script>
 </body>
