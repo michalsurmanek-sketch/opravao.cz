@@ -5,7 +5,7 @@ if(!window.L){status.textContent='Mapu se nepodařilo načíst. Místo můžete 
 const map=L.map('repair-map',{scrollWheelZoom:false}).setView([49.82,15.47],7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 let marker=null,location=null;
-function choose(lat,lon,label){location={lat,lon,label};if(marker)marker.remove();marker=L.marker([lat,lon],{icon:L.divIcon({className:'location-marker',iconSize:[22,22],iconAnchor:[11,11]})}).addTo(map);selected.textContent=label;confirm.disabled=false;status.textContent='Místo můžete upravit dalším kliknutím do mapy.';}
+function choose(lat,lon,label){location={lat,lon,label};if(marker)marker.remove();marker=L.marker([lat,lon],{icon:L.divIcon({className:'location-marker',iconSize:[22,22],iconAnchor:[11,11]})}).addTo(map);selected.textContent=label;confirm.disabled=false;}
 map.on('click',e=>choose(e.latlng.lat,e.latlng.lng,'Bod na mapě: '+e.latlng.lat.toFixed(5)+', '+e.latlng.lng.toFixed(5)));
 const applyMapLocation=detail=>{const {lat,lon,label}=detail;choose(lat,lon,label);map.setView([lat,lon],14);};document.addEventListener('opravao:location',e=>applyMapLocation(e.detail));if(window.opravaoPendingMapLocation)applyMapLocation(window.opravaoPendingMapLocation);
 const query=document.querySelector('#location-query'),cache=new Map();let timer,controller,version=0;
@@ -13,7 +13,7 @@ query.setAttribute('autocomplete','off');query.setAttribute('aria-controls','loc
 async function suggest(autoSelect=false){
 const q=query.value.trim(),ticket=++version;controller?.abort();results.replaceChildren();
 if(q.length<2){status.textContent='Napište alespoň 2 znaky.';return;}
-controller=new AbortController();status.textContent='Vyhledávám lokalitu…';
+controller=new AbortController();
 try{
 let data=cache.get(q.toLowerCase());
 if(!data){
@@ -27,7 +27,7 @@ const selectItem=item=>{
  const p=item.properties,label=[p.name,p.city,p.postcode,p.state].filter((v,i,a)=>v&&a.indexOf(v)===i).join(', ');
  const [lon,lat]=item.geometry.coordinates;
  query.value=label;choose(lat,lon,label);map.setView([lat,lon],13);results.replaceChildren();
- status.textContent='Lokalita nalezena. Potvrďte ji tlačítkem v mapě.';
+ 
 };
 if(autoSelect&&items.length===1){selectItem(items[0]);return;}
 if(autoSelect&&items.length>1){
@@ -41,7 +41,7 @@ items.forEach(item=>{
  button.addEventListener('click',()=>{clearTimeout(timer);controller?.abort();version++;selectItem(item);});
  results.append(button);
 });
-status.textContent=items.length?'Vyberte odpovídající obec z nabídky.':'Místo nenalezeno. Upřesněte název nebo vyberte bod v mapě.';
+status.textContent=items.length?'':'Místo nenalezeno. Upřesněte název nebo vyberte bod v mapě.';
 }catch(error){if(error.name!=='AbortError'&&ticket===version)status.textContent='Vyhledávání je dočasně nedostupné. Zkuste to znovu nebo vyberte bod v mapě.';}
 }
 query.addEventListener('input',()=>{clearTimeout(timer);controller?.abort();version++;results.replaceChildren();timer=setTimeout(suggest,550);});
