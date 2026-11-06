@@ -44,7 +44,7 @@ async function locateUser(button,field,status,updateMap=false){
    if(!label)throw Error('No address');
    field.value=label;field.dispatchEvent(new Event('input',{bubbles:true}));
    if(updateMap){window.opravaoPendingMapLocation={lat,lon,label};document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));}
-   status.textContent='Poloha doplněna: '+label;
+   status.textContent='';
   }catch{status.textContent='Poloha byla nalezena, ale adresu nelze dohledat. Můžete zadat obec ručně.';}
  }catch(error){
   status.textContent=error.code===1?'Přístup k poloze byl zamítnut. Povolte polohu pro opravao.cz v prohlížeči.':error.code===3?'Zjištění polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte GPS a oprávnění prohlížeče.';
