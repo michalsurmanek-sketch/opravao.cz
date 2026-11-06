@@ -22,7 +22,7 @@ async function locateUser(button,field,status,updateMap=false){
  if(!window.isSecureContext){status.textContent='Pro zjištění polohy otevřete web přes HTTPS.';return;}
  if(!navigator.geolocation){status.textContent='Prohlížeč nepodporuje zjišťování polohy.';return;}
  button.disabled=true;
- status.textContent='Zjišťuji polohu… Povolte přístup v prohlížeči.';
+ 
  try{
   const position=await new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:false,timeout:20000,maximumAge:120000}));
   const lat=position.coords.latitude,lon=position.coords.longitude;
@@ -30,7 +30,7 @@ async function locateUser(button,field,status,updateMap=false){
   field.value=coordinates;
   field.dispatchEvent(new Event('input',{bubbles:true}));
   if(updateMap){window.opravaoPendingMapLocation={lat,lon,label:coordinates};document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));}
-  status.textContent='Poloha nalezena. Dohledávám adresu…';
+  
   try{
    const controller=new AbortController();
    const timer=setTimeout(()=>controller.abort(),10000);
