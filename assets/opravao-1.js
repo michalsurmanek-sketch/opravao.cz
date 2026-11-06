@@ -17,18 +17,27 @@ const repairForm=document.querySelector('#repair-form');
 const statusMessage=document.querySelector('#status');
 const placeInput=document.querySelector('#place');
 const placeLocate=document.querySelector('#place-geolocate');
+let locationRequestVersion=0;
+[placeInput,document.querySelector('#location-query')].forEach(field=>field?.addEventListener('input',()=>{locationRequestVersion++;}));
 // Both GPS buttons use the same native geolocation flow, without extra layers.
 async function locateUser(button,field,status,updateMap=false){
+ const ticket=++locationRequestVersion;
+ status.textContent='';
+ document.querySelector('#place-location-feedback').textContent='';
+ document.querySelector('#map-location-feedback').textContent='';
+ document.dispatchEvent(new Event('opravao:locating'));
  if(!window.isSecureContext){status.textContent='Pro zjištění polohy otevřete web přes HTTPS.';return;}
  if(!navigator.geolocation){status.textContent='Prohlížeč nepodporuje zjišťování polohy.';return;}
- button.disabled=true;
+ const buttons=[placeLocate,document.querySelector('#location-geolocate')].filter(Boolean);
+ buttons.forEach(control=>{control.disabled=true;control.setAttribute('aria-busy','true');});
  
  try{
   const position=await new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:false,timeout:20000,maximumAge:120000}));
+  if(ticket!==locationRequestVersion)return;
   const lat=position.coords.latitude,lon=position.coords.longitude;
   const coordinates='Moje poloha: '+lat.toFixed(5)+', '+lon.toFixed(5);
   field.value=coordinates;
-  field.dispatchEvent(new Event('input',{bubbles:true}));
+
   if(updateMap){window.opravaoPendingMapLocation={lat,lon,label:coordinates};document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));}
   
   try{
@@ -42,13 +51,15 @@ async function locateUser(button,field,status,updateMap=false){
    const town=a.city||a.town||a.village||a.municipality||a.hamlet||a.suburb;
    const label=[town,a.postcode].filter(Boolean).join(', ')||data.display_name;
    if(!label)throw Error('No address');
-   field.value=label;field.dispatchEvent(new Event('input',{bubbles:true}));
+   if(ticket!==locationRequestVersion)return;
+   field.value=label;
    if(updateMap){window.opravaoPendingMapLocation={lat,lon,label};document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));}
    status.textContent='';
-  }catch{status.textContent='Poloha byla nalezena, ale adresu nelze dohledat. Můžete zadat obec ručně.';}
+  }catch{if(ticket!==locationRequestVersion)return;status.textContent='Poloha byla nalezena, ale adresu nelze dohledat. Můžete zadat obec ručně.';}
  }catch(error){
+  if(ticket!==locationRequestVersion)return;
   status.textContent=error.code===1?'Přístup k poloze byl zamítnut. Povolte polohu pro opravao.cz v prohlížeči.':error.code===3?'Zjištění polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte GPS a oprávnění prohlížeče.';
- }finally{button.disabled=false;}
+ }finally{buttons.forEach(control=>{control.disabled=false;control.removeAttribute('aria-busy');});}
 }
 placeLocate.addEventListener('click',()=>locateUser(placeLocate,placeInput,document.querySelector('#place-location-feedback'),true));
 const mapLocate=document.querySelector('#location-geolocate');
