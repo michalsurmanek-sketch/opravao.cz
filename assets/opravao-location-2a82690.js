@@ -81,7 +81,8 @@ repairForm.addEventListener('submit',async e=>{
       body:JSON.stringify({source:'opravao.cz',transportVersion:1,lead:{
         repairType:document.querySelector('#type').value,
         place:document.querySelector('#place').value,
-        contact:document.querySelector('#contact').value
+        contact:document.querySelector('#contact').value,
+        email:document.querySelector('#customer-email').value.trim()
       }})
     });
     const result=await response.json().catch(()=>({}));
