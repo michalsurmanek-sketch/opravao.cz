@@ -754,7 +754,7 @@ async function locateUser(button,field,status,updateMap=false){
   const coordinates='Moje poloha: '+lat.toFixed(5)+', '+lon.toFixed(5);
   field.value=coordinates;
   field.dispatchEvent(new Event('input',{bubbles:true}));
-  if(updateMap)document.dispatchEvent(new CustomEvent('opravao:location',{detail:{lat,lon,label:coordinates}}));
+  if(updateMap){window.opravaoPendingMapLocation={lat,lon,label:coordinates};document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));}
   status.textContent='Poloha nalezena. Dohledávám adresu…';
   try{
    const controller=new AbortController();
@@ -768,7 +768,7 @@ async function locateUser(button,field,status,updateMap=false){
    const label=[town,a.postcode].filter(Boolean).join(', ')||data.display_name;
    if(!label)throw Error('No address');
    field.value=label;field.dispatchEvent(new Event('input',{bubbles:true}));
-   if(updateMap)document.dispatchEvent(new CustomEvent('opravao:location',{detail:{lat,lon,label}}));
+   if(updateMap){window.opravaoPendingMapLocation={lat,lon,label};document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));}
    status.textContent='Poloha doplněna: '+label;
   }catch{status.textContent='Poloha byla nalezena, ale adresu nelze dohledat. Můžete zadat obec ručně.';}
  }catch(error){
@@ -825,17 +825,36 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 </script>
 
 <script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script>
-(()=>{
-const status=document.querySelector('#location-status'),confirm=document.querySelector('#location-confirm'),selected=document.querySelector('#location-selected'),results=document.querySelector('#location-results');
+/* Load pinned Leaflet from either CDN; never leave the map waiting on one stalled request. */
+window.opravaoMapReady=new Promise(resolve=>{
+ if(window.L){resolve(true);return;}
+ const sources=['https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
+ let index=0;
+ function next(){
+  if(index>=sources.length){resolve(false);return;}
+  const script=document.createElement('script');
+  script.src=sources[index++];
+  let settled=false;
+  const timer=setTimeout(()=>{if(settled)return;settled=true;script.remove();next();},8000);
+  script.onload=()=>{if(settled)return;settled=true;clearTimeout(timer);if(window.L)resolve(true);else next();};
+  script.onerror=()=>{if(settled)return;settled=true;clearTimeout(timer);script.remove();next();};
+  document.head.appendChild(script);
+ }
+ next();
+});
+</script>
+<script>
+(async()=>{
+ await window.opravaoMapReady;
+ const status=document.querySelector('#location-status'),confirm=document.querySelector('#location-confirm'),selected=document.querySelector('#location-selected'),results=document.querySelector('#location-results');
 if(!window.L){status.textContent='Mapu se nepodařilo načíst. Místo můžete zadat přímo do pole Město / PSČ.';return;}
 const map=L.map('repair-map',{scrollWheelZoom:false}).setView([49.82,15.47],7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 let marker=null,location=null;
 function choose(lat,lon,label){location={lat,lon,label};if(marker)marker.remove();marker=L.marker([lat,lon],{icon:L.divIcon({className:'location-marker',iconSize:[22,22],iconAnchor:[11,11]})}).addTo(map);selected.textContent=label;confirm.disabled=false;status.textContent='Místo můžete upravit dalším kliknutím do mapy.';}
 map.on('click',e=>choose(e.latlng.lat,e.latlng.lng,'Bod na mapě: '+e.latlng.lat.toFixed(5)+', '+e.latlng.lng.toFixed(5)));
-document.addEventListener('opravao:location',e=>{const {lat,lon,label}=e.detail;choose(lat,lon,label);map.setView([lat,lon],14);});
+const applyMapLocation=detail=>{const {lat,lon,label}=detail;choose(lat,lon,label);map.setView([lat,lon],14);};document.addEventListener('opravao:location',e=>applyMapLocation(e.detail));if(window.opravaoPendingMapLocation)applyMapLocation(window.opravaoPendingMapLocation);
 const query=document.querySelector('#location-query'),cache=new Map();let timer,controller,version=0;
 query.setAttribute('autocomplete','off');query.setAttribute('aria-controls','location-results');
 async function suggest(autoSelect=false){
