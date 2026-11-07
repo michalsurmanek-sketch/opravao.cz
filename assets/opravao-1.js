@@ -81,7 +81,10 @@ repairForm.addEventListener('submit',async e=>{
       body:JSON.stringify({source:'opravao.cz',transportVersion:1,lead:{
         repairType:document.querySelector('#type').value,
         place:document.querySelector('#place').value,
-        contact:document.querySelector('#contact').value
+        contact:document.querySelector('#contact').value,
+        email:document.querySelector('#customer-email').value.trim(),
+        marketingConsent:!!couponOptIn?.checked,
+        marketingRegion:couponOptIn?.checked?couponRegion.value:''
       }})
     });
     const result=await response.json().catch(()=>({}));
@@ -92,6 +95,7 @@ repairForm.addEventListener('submit',async e=>{
         if(reason==='invalid_contact')throw new Error('Zadejte platné telefonní číslo (alespoň 9 číslic) nebo e-mail.');
         if(reason==='invalid_repair_type')throw new Error('Vyberte prosím typ opravy z nabídky.');
         if(reason==='invalid_place')throw new Error('Zadejte prosím město nebo PSČ.');
+        if(reason==='invalid_marketing_consent')throw new Error('Pro slevové nabídky vyberte kraj. Poptávku můžete odeslat i bez souhlasu se slevami.');
         throw new Error('Zkontrolujte vyplněné údaje a zkuste poptávku znovu.');
       }
       if(response.status===503)throw new Error('Odesílání je momentálně nedostupné. Zkuste to prosím za chvíli.');
@@ -99,7 +103,7 @@ repairForm.addEventListener('submit',async e=>{
     }
     repairForm.reset();
     document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));
-    statusMessage.textContent='Děkujeme, poptávka byla odeslána.';
+    statusMessage.textContent=result.confirmation_sent?'Děkujeme, poptávka byla odeslána. Potvrzení jsme vám poslali e-mailem.':'Děkujeme, poptávka byla odeslána. Potvrzovací e-mail se nepodařilo odeslat; ozveme se vám co nejdříve.';
   }catch(error){
     statusMessage.textContent=error instanceof Error?error.message:'Poptávku se teď nepodařilo odeslat. Zkuste to prosím znovu.';
   }finally{
