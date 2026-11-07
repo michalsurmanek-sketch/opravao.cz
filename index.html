@@ -771,48 +771,7 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 <section id="pro-remeslniky" class="craft-section"><div><p class="eyebrow">Pro řemeslníky a firmy</p><h2>Získejte nové zakázky ve svém okolí</h2><p>Máte živnost nebo firmu a provádíte opravy? Přidejte se k síti Opravao.cz. Napište nám své IČO, kontaktní údaje, kraj působnosti a zaměření. Registraci zatím ověřujeme ručně.</p><a class="btn" href="#registrace-firmy" id="open-company-registration">Požádat o registraci</a></div></section><section class="about-contact" aria-label="O Opravao.cz a kontaktní údaje"><article id="o-nas"><p class="eyebrow">O nás</p><h2>Pomáháme najít správného řemeslníka</h2><p>Opravao.cz propojuje lidi, kteří potřebují servis nebo řemeslnou práci, s ověřenými samostatnými opraváři v jejich okolí.</p><p>Požadavek zadáte zdarma. Nejdříve ho zkontrolujeme a předání vašich kontaktních údajů s vámi domluvíme.</p></article><article id="kontakt"><p class="eyebrow">Kontakt</p><h2>Ozvěte se nám</h2><p>E-mail: <a href="mailto:info@opravao.cz">info@opravao.cz</a></p><div class="operator"><h3>Provozovatel Opravao.cz</h3><p><strong>Radek Šurmánek</strong>, podnikající fyzická osoba<br>IČO: 21138885<br>Sídlo: č.p. 551, 763 63 Halenkovice</p></div></article></section></main><div class="company-overlay" id="company-registration" hidden><div class="company-dialog" role="dialog" aria-modal="true" aria-labelledby="company-title"><button type="button" class="company-close" id="company-close" aria-label="Zavřít">×</button><h2 id="company-title">Registrace firmy</h2><p>Vyplňte údaje firmy. Žádost se odešle přímo a po schválení vám dáme vědět.</p><form id="company-form"><label>IČO<input name="ico" required inputmode="numeric" pattern="[0-9]{8}" maxlength="8" placeholder="8 číslic"></label><label>Název firmy<input name="company" required maxlength="150" autocomplete="organization"></label><label>Sídlo firmy<input name="address" maxlength="250" autocomplete="street-address"></label><p id="company-ares-status" role="status" aria-live="polite" class="company-hint">Po zadání 8 číslic IČO zkusíme automaticky doplnit firmu a sídlo z ARES.</p><label>Kontaktní osoba<input name="name" required maxlength="120"></label><label>Telefon<input name="phone" type="tel" required maxlength="40"></label><label>E-mail<input name="email" type="email" required maxlength="254"></label><label>Kraj působnosti<select name="region" required><option value="">Vyberte kraj</option><option>Praha</option><option>Středočeský kraj</option><option>Jihočeský kraj</option><option>Plzeňský kraj</option><option>Karlovarský kraj</option><option>Ústecký kraj</option><option>Liberecký kraj</option><option>Královéhradecký kraj</option><option>Pardubický kraj</option><option>Kraj Vysočina</option><option>Jihomoravský kraj</option><option>Olomoucký kraj</option><option>Zlínský kraj</option><option>Moravskoslezský kraj</option></select></label><label>Obory oprav<input name="specialization" required placeholder="Např. instalatér, elektrikář" maxlength="300"></label><label>Poznámka<textarea name="note" rows="3" maxlength="1000"></textarea></label><label class="privacy-consent"><input type="checkbox" name="privacy_ack" required> Potvrzuji, že jsem se seznámil/a s <a href="/ochrana-osobnich-udaju.html" target="_blank" rel="noopener">informacemi o zpracování osobních údajů</a>.</label><button class="btn" type="submit">Odeslat žádost o registraci</button><p id="company-submit-status" class="company-hint" role="status" aria-live="polite"></p></form></div></div>
 <footer><span>© Opravao.cz · Řemeslníci pro váš domov</span><nav class="footer-links" aria-label="Odkazy v patičce"><a href="#o-nas">O nás</a><span aria-hidden="true">·</span><a href="#kontakt">Kontakt</a><span aria-hidden="true">·</span><a href="/ucet.html">Klientský účet</a><span aria-hidden="true">·</span><a href="#poptavka">Zadat požadavek</a><span aria-hidden="true">·</span><a href="/ochrana-osobnich-udaju.html">Ochrana osobních údajů</a><span aria-hidden="true">·</span><a href="/podminky.html">Podmínky</a></nav></footer>
 </div>
-<script>
-/* Independent location click handler: works even if other page scripts fail. */
-(function(){
-  const ids=['place-geolocate','location-geolocate'];
-  let running=false;
-  function report(message){const el=document.getElementById('place-location-feedback');const map=document.getElementById('map-location-feedback');if(el)el.textContent=message;if(map)map.textContent=message;}
-  function getPlace(address){
-    const a=address||{};
-    return [a.city||a.town||a.village||a.municipality||a.hamlet||a.suburb||a.county,a.postcode].filter(Boolean).join(', ');
-  }
-  async function locate(){
-    if(running)return;
-    if(!window.isSecureContext){report('Pro zjištění polohy je nutné HTTPS.');return;}
-    if(!navigator.geolocation){report('Prohlížeč nepodporuje zjišťování polohy.');return;}
-    running=true;
-    ids.forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=true;});
-    try{
-      const pos=await new Promise((resolve,reject)=>navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:false,timeout:20000,maximumAge:0}));
-      const lat=pos.coords.latitude,lon=pos.coords.longitude;
-      let label=lat.toFixed(5)+', '+lon.toFixed(5);
-      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
-      try{
-        const res=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&addressdetails=1&accept-language=cs&zoom=14&lat='+encodeURIComponent(lat)+'&lon='+encodeURIComponent(lon),{signal:controller.signal});
-        if(res.ok){const data=await res.json();label=getPlace(data.address)||data.display_name||label;}
-      }catch(e){}finally{clearTimeout(timer);}
-      ['place','location-query'].forEach(id=>{const field=document.getElementById(id);if(field){field.value=label;field.dispatchEvent(new Event('change',{bubbles:true}));}});
-      window.opravaoPendingMapLocation={lat,lon,label};
-      document.dispatchEvent(new CustomEvent('opravao:location',{detail:window.opravaoPendingMapLocation}));
-      report('');
-    }catch(e){
-      report(e.code===1?'Povolte přístup k poloze pro opravao.cz v nastavení prohlížeče.':e.code===3?'Zjištění polohy vypršelo. Zapněte GPS a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte GPS a oprávnění prohlížeče.');
-    }finally{running=false;ids.forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=false;});}
-  }
-  document.addEventListener('click',function(e){
-    const button=e.target.closest&&e.target.closest('#place-geolocate,#location-geolocate');
-    if(!button)return;
-    e.preventDefault();e.stopImmediatePropagation();
-    locate();
-  },true);
-})();
-</script>
-<script src="/assets/opravao-location-2a82690.js?v=20261107-auto-routing-1"></script>
+<script src="/assets/opravao-location-2a82690.js?v=20261107-syntax-fixed-1"></script>
 
 <script src="/assets/leaflet-1.9.4.js"></script>
 <script src="/assets/opravao-map-2a82690.js"></script>
