@@ -5,7 +5,7 @@ function setMenuOpen(open){
   toggle.setAttribute('aria-expanded',String(open));
   toggle.setAttribute('aria-label',open?'Zavřít menu':'Otevřít menu');
 }
-toggle.addEventListener('click',()=>setMenuOpen(toggle.getAttribute('aria-expanded')!=='true'));
+toggle?.addEventListener('click',()=>setMenuOpen(toggle.getAttribute('aria-expanded')!=='true'));
 document.addEventListener('click',event=>{
   if(toggle.getAttribute('aria-expanded')==='true'&&!nav.contains(event.target)&&!toggle.contains(event.target))setMenuOpen(false);
 });
@@ -25,9 +25,12 @@ let locationRequestVersion=0;
 // Both GPS buttons use the same native geolocation flow, without extra layers.
 async function locateUser(button,field,status,updateMap=false){
  const ticket=++locationRequestVersion;
+ if(!field || !status)return;
  status.textContent='';
- document.querySelector('#place-location-feedback').textContent='';
- document.querySelector('#map-location-feedback').textContent='';
+ const placeFeedback=document.querySelector('#place-location-feedback');
+ const mapFeedback=document.querySelector('#map-location-feedback');
+ if(placeFeedback)placeFeedback.textContent='';
+ if(mapFeedback)mapFeedback.textContent='';
  document.dispatchEvent(new Event('opravao:locating'));
  if(!window.isSecureContext){status.textContent='Pro zjištění polohy otevřete web přes HTTPS.';return;}
  if(!navigator.geolocation){status.textContent='Prohlížeč nepodporuje zjišťování polohy.';return;}
@@ -64,7 +67,7 @@ async function locateUser(button,field,status,updateMap=false){
   status.textContent=error.code===1?'Přístup k poloze byl zamítnut. Povolte polohu pro opravao.cz v prohlížeči.':error.code===3?'Zjištění polohy vypršelo. Zapněte polohu v telefonu a zkuste to znovu.':'Polohu se nepodařilo zjistit. Zkontrolujte GPS a oprávnění prohlížeče.';
  }finally{buttons.forEach(control=>{control.disabled=false;control.removeAttribute('aria-busy');});}
 }
-placeLocate.addEventListener('click',()=>locateUser(placeLocate,placeInput,document.querySelector('#place-location-feedback'),true));
+placeLocate?.addEventListener('click',()=>locateUser(placeLocate,placeInput,document.querySelector('#place-location-feedback'),true));
 const mapLocate=document.querySelector('#location-geolocate');
 const mapQuery=document.querySelector('#location-query');
 const mapStatus=document.querySelector('#map-location-feedback');
