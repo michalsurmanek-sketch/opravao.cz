@@ -112,7 +112,7 @@ repairForm.addEventListener('submit',async e=>{
     }
     repairForm.reset();
     document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));
-    statusMessage.textContent=result.confirmation_sent?'Děkujeme, poptávka byla odeslána. Potvrzení jsme vám poslali e-mailem.':'Děkujeme, poptávka byla odeslána. Potvrzovací e-mail se nepodařilo odeslat; ozveme se vám co nejdříve.';
+    statusMessage.textContent=result.confirmation_sent?'Děkujeme, poptávka byla uložena. Potvrzení jsme vám poslali e-mailem. '+(result.offer_emails_sent>0?'Oslovili jsme '+result.offer_emails_sent+' schválené opraváře.':result.distribution_status==='no_match'?'Pro tuto lokalitu a obor zatím nemáme schváleného opraváře; poptávku prověříme ručně.':'Poptávku předáme k ručnímu zpracování.')):'Poptávka byla uložena, ale potvrzovací e-mail se nepodařilo odeslat. Ozveme se vám co nejdříve.';
   }catch(error){
     statusMessage.textContent=error instanceof Error?error.message:'Poptávku se teď nepodařilo odeslat. Zkuste to prosím znovu.';
   }finally{
