@@ -71,6 +71,13 @@ const mapStatus=document.querySelector('#map-location-feedback');
 if(mapLocate&&mapQuery&&mapStatus)mapLocate.addEventListener('click',()=>locateUser(mapLocate,mapQuery,mapStatus,true));
 repairForm.addEventListener('submit',async e=>{
   e.preventDefault();
+  const repairTypeField=document.querySelector('#type');
+  if(!repairTypeField?.value){
+    statusMessage.textContent='Vyberte prosím typ opravy.';
+    const typeControl=document.querySelector('.repair-type-trigger')||repairTypeField;
+    typeControl?.focus();
+    return;
+  }
   if(!repairForm.reportValidity())return;
   const button=repairForm.querySelector('button[type="submit"]');
   const originalLabel=button.innerHTML;
