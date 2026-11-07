@@ -85,7 +85,9 @@ repairForm.addEventListener('submit',async e=>{
         repairType:document.querySelector('#type').value,
         place:document.querySelector('#place').value,
         contact:document.querySelector('#contact').value,
-        email:document.querySelector('#customer-email').value.trim(),\n        marketingConsent:!!couponOptIn?.checked,\n        marketingRegion:couponOptIn?.checked?couponRegion.value:''
+        email:document.querySelector('#customer-email').value.trim(),
+        marketingConsent:!!couponOptIn?.checked,
+        marketingRegion:couponOptIn?.checked?couponRegion.value:''
       }})
     });
     const result=await response.json().catch(()=>({}));
