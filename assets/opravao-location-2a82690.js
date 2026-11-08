@@ -102,7 +102,7 @@ placeInput.addEventListener('input',()=>{
        option.addEventListener('click',()=>{
          const [lon,lat]=item.geometry.coordinates;
          placeInput.value=label;
-         window.opravaoAddressLocation={lat:Number(lat),lon:Number(lon),label,source:'address'};
+         window.opravaoAddressLocation={lat:Number(lat),lon:Number(lon),label,source:'address',region:item.properties?.state||''};
          placeFeedback.textContent='Adresa vybrána; její GPS bod se uloží k poptávce.';
          clearAddressSuggestions();
        });
