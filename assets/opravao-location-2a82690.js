@@ -70,57 +70,6 @@ const mapQuery=document.querySelector('#location-query');
 const mapStatus=document.querySelector('#map-location-feedback');
 if(mapLocate&&mapQuery&&mapStatus)mapLocate.addEventListener('click',()=>locateUser(mapLocate,mapQuery,mapStatus,true));
 
-const placeSuggestions=document.querySelector('#place-suggestions'),placeFeedback=document.querySelector('#place-location-feedback');
-window.opravaoAddressLocation=null;
-let addressTimer=null,addressController=null,addressSearchVersion=0;
-const addressLabel=properties=>{
- const street=properties.street?properties.street+(properties.housenumber?' '+properties.housenumber:''):properties.name||'';
- const city=properties.city||properties.town||properties.village||properties.municipality||properties.district||'';
- return [street,properties.postcode,city,properties.state].filter((v,i,a)=>v&&a.indexOf(v)===i).join(', ');
-};
-const clearAddressSuggestions=()=>{placeSuggestions?.replaceChildren();placeInput.setAttribute('aria-expanded','false');};
-placeInput.setAttribute('aria-haspopup','listbox');
-placeInput.addEventListener('input',()=>{
- window.opravaoAddressLocation=null;
- placeFeedback.textContent='';
- clearTimeout(addressTimer);addressController?.abort();clearAddressSuggestions();
- const query=placeInput.value.trim(),ticket=++addressSearchVersion;
- if(query.length<4)return;
- addressTimer=setTimeout(async()=>{
-   addressController=new AbortController();
-   const loading=document.createElement('p');loading.textContent='Hledám adresu…';placeSuggestions.append(loading);placeInput.setAttribute('aria-expanded','true');
-   try{
-     const response=await fetch('https://photon.komoot.io/api/?limit=7&bbox=12.09,48.55,18.87,51.06&q='+encodeURIComponent(query),{signal:addressController.signal});
-     if(!response.ok)throw Error('address_search_unavailable');
-     const data=await response.json();if(ticket!==addressSearchVersion)return;
-     const seen=new Set(),items=(data.features||[]).filter(item=>item.properties?.countrycode?.toUpperCase()==='CZ'&&Array.isArray(item.geometry?.coordinates)).map(item=>({item,label:addressLabel(item.properties)})).filter(x=>x.label&&!seen.has(x.label)&&seen.add(x.label));
-     placeSuggestions.replaceChildren();
-     if(!items.length){const empty=document.createElement('p');empty.textContent='Adresu se nepodařilo najít. Doplňte ulici a číslo domu, případně obec.';placeSuggestions.append(empty);return;}
-     for(const {item,label} of items){
-       const option=document.createElement('button');option.type='button';option.setAttribute('role','option');option.textContent=label;
-       option.addEventListener('pointerdown',event=>event.preventDefault());
-       option.addEventListener('click',()=>{
-         const [lon,lat]=item.geometry.coordinates;
-         placeInput.value=label;
-         window.opravaoAddressLocation={lat:Number(lat),lon:Number(lon),label,source:'address',region:item.properties?.state||''};
-         placeFeedback.textContent='Adresa vybrána; její GPS bod se uloží k poptávce.';
-         clearAddressSuggestions();
-       });
-       placeSuggestions.append(option);
-     }
-     placeInput.setAttribute('aria-expanded','true');
-   }catch(error){if(error.name!=='AbortError'&&ticket===addressSearchVersion){placeSuggestions.replaceChildren();const msg=document.createElement('p');msg.textContent='Našeptávač je teď nedostupný. Adresu můžete zadat ručně a poptávku přesto odeslat.';placeSuggestions.append(msg);placeInput.setAttribute('aria-expanded','true');}}
- },450);
-});
-placeInput.addEventListener('keydown',event=>{
- const options=[...placeSuggestions.querySelectorAll('button')],index=options.indexOf(document.activeElement);
- if(event.key==='ArrowDown'&&options.length){event.preventDefault();options[0].focus();}
- if(event.key==='Escape')clearAddressSuggestions();
- if(event.key==='ArrowDown'&&index>=0){event.preventDefault();options[Math.min(index+1,options.length-1)]?.focus();}
- if(event.key==='ArrowUp'&&index>0){event.preventDefault();options[index-1].focus();}
-});
-document.addEventListener('click',event=>{if(!placeInput.closest('.field')?.contains(event.target))clearAddressSuggestions();});
-
 repairForm.addEventListener('submit',async e=>{
   e.preventDefault();
   const repairTypeField=document.querySelector('#type');
@@ -143,7 +92,6 @@ repairForm.addEventListener('submit',async e=>{
       body:JSON.stringify({source:'opravao.cz',transportVersion:1,lead:{
         repairType:document.querySelector('#type').value,
         place:document.querySelector('#place').value,
-        location:window.opravaoAddressLocation,
         contact:document.querySelector('#contact').value,
         email:document.querySelector('#customer-email').value.trim(),
         marketingConsent:!!couponOptIn?.checked,
