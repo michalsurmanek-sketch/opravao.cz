@@ -776,5 +776,17 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 <script src="/assets/opravao-4.js?v=20261109-company-page-2"></script><script src="/assets/opravao-5.js"></script>
 <script src="/assets/opravao-type-sync-20261106.js"></script>
 
+
+<style id="service-tiles-mobile-layout-fix">
+/* Kategorie oprav: stejné karty, oddělená ikona a čitelný text. */
+.services{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:10px!important;margin:0 0 22px!important;align-items:stretch!important}
+.service-row,.service-row:last-child{display:contents!important}
+.service{position:relative!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important;width:100%!important;height:clamp(145px,11.8vw,180px)!important;min-height:0!important;padding:10px 6px!important;overflow:hidden!important;border:1.5px solid #454640!important;border-radius:16px!important;background:rgba(255,255,255,.14)!important;color:var(--ink)!important;font-size:clamp(15px,1.35vw,20px)!important;line-height:1.12!important;text-align:center!important;transition:background .15s,border-color .15s,transform .15s!important}
+.service:hover,.service[aria-pressed="true"]{background:#fff9ee!important;border-color:var(--orange)!important;transform:translateY(-2px)!important}
+.service .service-exact-art{display:block!important;position:static!important;width:clamp(58px,5.2vw,78px)!important;height:clamp(58px,5.2vw,78px)!important;max-width:100%!important;flex:0 0 auto!important;object-fit:contain!important}
+.service .service-label{position:static!important;display:block!important;width:auto!important;height:auto!important;padding:0!important;margin:0!important;overflow:visible!important;clip:auto!important;white-space:normal!important;border:0!important;font:inherit!important;line-height:inherit!important}
+@media(max-width:850px){.services{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin-bottom:16px!important}.service{height:clamp(112px,31vw,150px)!important;gap:6px!important;padding:8px 4px!important;border-radius:16px!important;font-size:clamp(12px,3.4vw,15px)!important;line-height:1.12!important}.service .service-exact-art{width:clamp(44px,13vw,62px)!important;height:clamp(44px,13vw,62px)!important}}
+@media(max-width:380px){.service{font-size:12px!important}.service .service-exact-art{width:44px!important;height:44px!important}}
+</style>
 </body>
 </html>
