@@ -4,12 +4,12 @@
 if(!window.L){status.textContent='Mapu se nepodařilo načíst. Místo můžete zadat přímo do pole Město / PSČ.';return;}
 const map=L.map('repair-map',{scrollWheelZoom:false}).setView([49.82,15.47],7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
-let marker=null,location=null,companies=[],companyLayer=L.layerGroup().addTo(map);
+let marker=null,location=null,companies=[],companyLayer=L.layerGroup().addTo(map);const companyMapIcon=L.divIcon({className:"company-map-marker",html:'<span class="company-map-marker-core" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M10 20v-6h4v6"/></svg></span>',iconSize:[38,38],iconAnchor:[19,19]});
 const directoryStatus=document.createElement("p");directoryStatus.id="company-map-status";directoryStatus.setAttribute("role","status");directoryStatus.style.cssText="font-size:13px;color:#52665a;line-height:1.45;margin:0";document.querySelector(".location-panel")?.append(directoryStatus);
 const norm=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLocaleLowerCase("cs");
 const escapeHtml=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function distanceKm(a,b){const rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLon=rad(b.lon-a.lon),x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLon/2)**2;return 6371*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
-function showCompanies(){companyLayer.clearLayers();const type=document.querySelector("#type")?.value||"",center=location;if(!center){directoryStatus.textContent="Vyberte místo a typ služby pro zobrazení firem v okolí.";return}if(!type){directoryStatus.textContent="Vyberte typ opravy a mapa zobrazí odpovídající firmy v okolí.";return}const found=companies.filter(c=>c.services.some(s=>norm(s)===norm(type))&&distanceKm(center,{lat:c.lat,lon:c.lon})<=50);found.forEach(c=>{const services=c.services.join(", ");L.marker([c.lat,c.lon]).bindPopup("<strong>"+escapeHtml(c.name)+"</strong><br>"+escapeHtml(services)).addTo(companyLayer)});directoryStatus.textContent=found.length?found.length+" firma/firem pro službu „"+type+"“ do 50 km.": "Zatím jsme nenašli schválené firmy pro službu „"+type+"“ do 50 km."}
+function showCompanies(){companyLayer.clearLayers();const type=document.querySelector("#type")?.value||"",center=location;if(!center){directoryStatus.textContent="Vyberte místo a na mapě se zobrazí firmy v okolí.";return}const nearby=companies.filter(c=>distanceKm(center,{lat:c.lat,lon:c.lon})<=50),found=type?nearby.filter(c=>c.services.some(s=>norm(s)===norm(type))):nearby;found.forEach(c=>{const services=c.services.join(", "),marker=L.marker([c.lat,c.lon],{icon:companyMapIcon,title:c.name,alt:"Firma: "+c.name});marker.bindTooltip(escapeHtml(c.name),{direction:"top",offset:[0,-18],sticky:true,opacity:.96});marker.bindPopup("<strong>"+escapeHtml(c.name)+"</strong><br>"+escapeHtml(services));marker.addTo(companyLayer)});const points=[[center.lat,center.lon],...found.map(c=>[c.lat,c.lon])];if(found.length)map.fitBounds(L.latLngBounds(points),{padding:[44,44],maxZoom:12,animate:false});else map.setView([center.lat,center.lon],12,{animate:false});directoryStatus.textContent=type?(found.length?found.length+" firma/firem pro službu „"+type+"“ do 50 km.":"Zatím jsme nenašli schválené firmy pro službu „"+type+"“ do 50 km."):(found.length?found.length+" firma/firem do 50 km. Vyberte typ opravy pro zúžení výsledků.":"V okolí 50 km zatím není žádná schválená firma s polohou.");}
 fetch("https://jmukoccjqykyoqsypuwb.supabase.co/functions/v1/opravao-directory",{headers:{apikey:"sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V"}}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{companies=Array.isArray(data.companies)?data.companies:[];showCompanies()}).catch(()=>{directoryStatus.textContent="Seznam firem na mapě se teď nepodařilo načíst."});
 document.querySelector("#type")?.addEventListener("change",showCompanies);
 const query=document.querySelector('#location-query'),cache=new Map();let timer,controller,version=0;
@@ -17,7 +17,7 @@ function cancelSearch(){clearTimeout(timer);controller?.abort();version++;result
 document.addEventListener('opravao:locating',cancelSearch);
 function choose(lat,lon,label){cancelSearch();location={lat,lon,label};showCompanies();if(marker)marker.remove();marker=L.marker([lat,lon],{icon:L.divIcon({className:'location-marker',iconSize:[22,22],iconAnchor:[11,11]})}).addTo(map);selected.textContent=label;confirm.disabled=false;}
 map.on('click',e=>choose(e.latlng.lat,e.latlng.lng,'Bod na mapě: '+e.latlng.lat.toFixed(5)+', '+e.latlng.lng.toFixed(5)));
-const applyMapLocation=detail=>{const {lat,lon,label}=detail;query.value=label;choose(lat,lon,label);map.setView([lat,lon],14);};document.addEventListener('opravao:location',e=>applyMapLocation(e.detail));if(window.opravaoPendingMapLocation)applyMapLocation(window.opravaoPendingMapLocation);
+const applyMapLocation=detail=>{const {lat,lon,label}=detail;query.value=label;choose(lat,lon,label);};document.addEventListener('opravao:location',e=>applyMapLocation(e.detail));if(window.opravaoPendingMapLocation)applyMapLocation(window.opravaoPendingMapLocation);
 query.setAttribute('autocomplete','off');query.setAttribute('aria-controls','location-results');
 async function suggest(autoSelect=false){
 const q=query.value.trim(),ticket=++version;controller?.abort();results.replaceChildren();
@@ -40,7 +40,7 @@ const items=(data.features||[]).filter(x=>{
 const selectItem=item=>{
  const p=item.properties,label=[p.name,p.city,p.postcode,p.state].filter((v,i,a)=>v&&a.indexOf(v)===i).join(', ');
  const [lon,lat]=item.geometry.coordinates;
- query.value=label;choose(lat,lon,label);map.setView([lat,lon],13);results.replaceChildren();
+ query.value=label;choose(lat,lon,label);results.replaceChildren();
  
 };
 if(autoSelect&&items.length===1){selectItem(items[0]);return;}
