@@ -8,30 +8,35 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>Registrace firmy | Opravao.cz</title>
 <style>
-:root{--paper:#f7f2e8;--ink:#20211f;--orange:#e94e1b;--line:#ded8cb;--muted:#77756d;--white:#fffdf8}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px Inter,Arial,sans-serif}
-.wrap{max-width:900px;margin:auto;padding:0 24px}header{height:74px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
-.brand{font-size:27px;font-weight:950;letter-spacing:-1.2px;text-decoration:none;color:inherit}.brand i{font-style:normal;color:var(--orange)}
-.back{font-weight:750;color:inherit;text-decoration:none}.back:hover{color:var(--orange)}
-main{padding:38px 0 60px}.eyebrow{color:var(--orange);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin:0 0 9px}
-h1{font-size:clamp(34px,6vw,52px);letter-spacing:-.045em;line-height:1.02;margin:0 0 12px}
-.intro{color:var(--muted);line-height:1.55;font-size:17px;margin:0 0 22px}
-.panel{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:clamp(20px,4vw,34px)}
-#company-form{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
+:root{--paper:#f7f2e8;--ink:#20211f;--orange:#e94e1b;--olive:#707b3a;--line:#d9d2c5;--muted:#6e6b62;--dark:#222320;--white:#fffdf8}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}.wrap{width:min(1480px,calc(100% - 64px));margin:auto}
+header{height:70px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;font-size:38px;letter-spacing:-1.8px;white-space:nowrap}
+.brand-mark{width:49px;height:49px;display:block;object-fit:contain;flex:none}.brand span:last-child{line-height:1}.brand-orange{color:var(--orange)}
+.header-tagline{display:block;max-width:180px;padding-left:12px;border-left:1px solid #85847e;color:#315f29;font-size:12px;font-weight:850;line-height:1.1;text-transform:uppercase}
+.back{margin-left:auto;border:1px solid var(--line);border-radius:6px;padding:10px 14px;font-weight:800;background:var(--white)}.back:hover{border-color:var(--orange);color:var(--orange)}
+main{max-width:1000px;margin:0 auto;padding:44px 0 68px}
+.eyebrow{color:var(--olive);font-weight:850;text-transform:uppercase;letter-spacing:.09em;font-size:13px;margin:0 0 12px}
+h1{font-size:clamp(36px,5.8vw,64px);letter-spacing:-.055em;line-height:.98;margin:0 0 15px}h1 span{color:var(--orange)}
+.intro{color:var(--muted);line-height:1.55;font-size:18px;margin:0 0 26px;max-width:720px}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,4vw,36px);box-shadow:0 12px 35px #2223200a}
+#company-form{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
 #company-form label{display:block;font-weight:750;margin:10px 0}
-#company-form input:not([type=checkbox]),#company-form select,#company-form textarea{display:block;width:100%;padding:12px;border:1px solid var(--line);border-radius:7px;font:inherit;margin-top:5px;background:white;color:var(--ink)}
+#company-form input:not([type=checkbox]),#company-form select,#company-form textarea{display:block;width:100%;padding:13px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-top:6px;background:#fff;color:var(--ink)}
+#company-form input:focus,#company-form select:focus,#company-form textarea:focus{outline:2px solid #e94e1b45;outline-offset:1px}
 #company-form label:has(textarea),#company-form .privacy-consent,#company-form .btn,#company-submit-status,#company-ares-status{grid-column:1/-1}
 #company-form .privacy-consent{display:flex;align-items:flex-start;gap:9px;line-height:1.45;font-weight:500}
-#company-form .privacy-consent input{margin-top:4px;flex:none}
-#company-form .privacy-consent a{color:inherit;text-decoration:underline}
-.btn{justify-self:start;border:0;border-radius:6px;padding:14px 20px;background:var(--orange);color:#fff;font-weight:800;font-size:16px;cursor:pointer}
-.btn:disabled{opacity:.65;cursor:wait}.company-hint{font-size:13px;color:var(--muted);line-height:1.45}
+#company-form .privacy-consent input{margin-top:4px;flex:none}#company-form .privacy-consent a{color:var(--orange);text-decoration:underline}
+.btn{justify-self:start;border:0;border-radius:6px;padding:14px 22px;background:var(--orange);color:#fff;font-weight:850;font-size:16px;cursor:pointer}
+.btn:hover{filter:brightness(.94)}.btn:disabled{opacity:.65;cursor:wait}.company-hint{font-size:13px;color:var(--muted);line-height:1.45}
 #company-submit-status[data-state=success]{color:#315344}#company-submit-status[data-state=error]{color:#a12c12}
-@media(max-width:620px){.wrap{padding:0 16px}header{height:66px}#company-form{grid-template-columns:1fr}#company-form>*{grid-column:1/-1}.back{font-size:14px}}
+footer{border-top:1px solid var(--line);padding:20px 0 26px;color:var(--muted);font-size:13px}
+@media(max-width:620px){.wrap{width:calc(100% - 32px)}header{height:66px;gap:12px}.brand{font-size:28px;gap:7px;letter-spacing:-1.3px}.brand-mark{width:37px;height:37px}.header-tagline{display:none}.back{font-size:13px;padding:9px 10px}main{padding:32px 0 48px}#company-form{grid-template-columns:1fr}#company-form>*{grid-column:1/-1}.intro{font-size:16px}}
 </style>
 </head>
 <body><div class="wrap">
-<header><a class="brand" href="/">Oprava<i>o</i>.cz</a><a class="back" href="/">← Zpět na web</a></header>
+<header><a class="brand" href="/" aria-label="Opravao.cz – úvod"><img class="brand-mark" src="/logo-mark.svg?v=20261104-cross" alt="" aria-hidden="true"><span>OPRAVA<span class="brand-orange">O</span></span></a><span class="header-tagline">Opravy bez zbytečného<br>obvolávání</span><a class="back" href="/">← Zpět na web</a></header>
 <main><p class="eyebrow">Pro řemeslníky a firmy</p><h1>Požádat o registraci</h1>
 <p class="intro">Vyplňte údaje firmy. Žádost odešleme k ověření; po schválení vám dáme vědět.</p>
 <section class="panel" aria-label="Registrační formulář firmy"><form id="company-form"><label>IČO<input name="ico" required inputmode="numeric" pattern="[0-9]{8}" maxlength="8" placeholder="8 číslic"></label><label>Název firmy<input name="company" required maxlength="150" autocomplete="organization"></label><label>Sídlo firmy<input name="address" maxlength="250" autocomplete="street-address"></label><p id="company-ares-status" role="status" aria-live="polite" class="company-hint">Po zadání 8 číslic IČO zkusíme automaticky doplnit firmu a sídlo z ARES.</p><label>Kontaktní osoba<input name="name" required maxlength="120"></label><label>Telefon<input name="phone" type="tel" required maxlength="40"></label><label>E-mail<input name="email" type="email" required maxlength="254"></label><label>Kraj působnosti<select name="region" required><option value="">Vyberte kraj</option><option>Praha</option><option>Středočeský kraj</option><option>Jihočeský kraj</option><option>Plzeňský kraj</option><option>Karlovarský kraj</option><option>Ústecký kraj</option><option>Liberecký kraj</option><option>Královéhradecký kraj</option><option>Pardubický kraj</option><option>Kraj Vysočina</option><option>Jihomoravský kraj</option><option>Olomoucký kraj</option><option>Zlínský kraj</option><option>Moravskoslezský kraj</option></select></label><label>Obory oprav<input name="specialization" required placeholder="Např. instalatér, elektrikář" maxlength="300"></label><label>Poznámka<textarea name="note" rows="3" maxlength="1000"></textarea></label><label class="privacy-consent"><input type="checkbox" name="privacy_ack" required> Potvrzuji, že jsem se seznámil/a s <a href="/ochrana-osobnich-udaju.html" target="_blank" rel="noopener">informacemi o zpracování osobních údajů</a>.</label><button class="btn" type="submit">Odeslat žádost o registraci</button><p id="company-submit-status" class="company-hint" role="status" aria-live="polite"></p></form></section></main>
