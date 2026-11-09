@@ -98,7 +98,7 @@ $("#searchLead").addEventListener("input",renderLeads);$("#filterStatus").addEve
 
 const geoChoices=new Map();let lastGeoLookupAt=0;
 async function geocodePartner({name,ico,region}){
- let address="",source="";const cleanIco=String(ico||"").replace(/\\D/g,"");
+ let address="",source="";const cleanIco=String(ico||"").replace(/\D/g,"");
  if(cleanIco.length===8){try{const ar=await fetch("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/"+cleanIco,{headers:{Accept:"application/json"},signal:AbortSignal.timeout(9000)});if(ar.ok){const data=await ar.json();if(!data.ico||String(data.ico)===cleanIco){const a=data.sidlo||{};address=a.textovaAdresa||[a.nazevUlice,[a.cisloDomovni,a.cisloOrientacni].filter(Boolean).join("/"),a.nazevObce,a.psc].filter(Boolean).join(", ");if(address)source="Sídlo ověřené v ARES"}}}catch{}}
  const r=String(region||"").trim();if(!address){address=[name,r&&!/celá? česká republika/i.test(r)?r:"","Česká republika"].filter(Boolean).join(", ");source="Název firmy a oblast působnosti"}
  const delay=Math.max(0,1100-(Date.now()-lastGeoLookupAt));if(delay)await new Promise(resolve=>setTimeout(resolve,delay));lastGeoLookupAt=Date.now();
