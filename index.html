@@ -788,5 +788,11 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
 @media(max-width:850px){.services{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin-bottom:16px!important}.service{height:clamp(112px,31vw,150px)!important;gap:6px!important;padding:8px 4px!important;border-radius:16px!important;font-size:clamp(12px,3.4vw,15px)!important;line-height:1.12!important}.service .service-exact-art{width:clamp(44px,13vw,62px)!important;height:clamp(44px,13vw,62px)!important}}
 @media(max-width:380px){.service{font-size:12px!important}.service .service-exact-art{width:44px!important;height:44px!important}}
 </style>
+
+<style id="remove-inner-service-art-frames">
+/* Obrázky ikon obsahují vlastní mini kartu a popisek; ořízneme jejich okraje a text. */
+.service .service-exact-art{width:92px!important;height:92px!important;object-fit:fill!important;clip-path:inset(16% 16% 32% 16%)!important;margin-bottom:-26px!important;flex:0 0 92px!important}
+@media(max-width:850px){.service .service-exact-art{width:76px!important;height:76px!important;flex-basis:76px!important;clip-path:inset(16% 16% 32% 16%)!important;margin-bottom:-21px!important}}
+</style>
 </body>
 </html>
