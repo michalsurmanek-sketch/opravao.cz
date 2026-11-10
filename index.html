@@ -612,11 +612,12 @@ html body .hero-copy h1 em::after{all:unset!important;content:none!important;dis
   .service svg{width:44px;height:44px}
 }
 
-/* Čtyři benefity pod hlavním titulkem – pouze mobilní hero sekce. */
+/* Tři benefity pod hlavním titulkem v mobilním hero. */
 @media(max-width:850px){
   .hero-copy>p{display:none!important}
-  .hero-copy .hero-benefits{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;width:min(100%,310px)!important;max-width:310px!important;margin:16px 0 0!important;padding:0!important;align-self:flex-start!important;justify-content:stretch!important;flex-wrap:nowrap!important}
+  .hero-copy .hero-benefits{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;width:min(100%,310px)!important;max-width:310px!important;margin:16px 0 0!important;padding:0!important;align-self:flex-start!important;justify-content:stretch!important;flex-wrap:nowrap!important}
   .hero-copy .hero-benefits::before,.hero-copy .hero-benefits::after{display:none!important}
+  .hero-copy .hero-benefits .trust-item.mobile-hide-fair-price{display:none!important}
   .hero-copy .hero-benefits .trust-item{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:0!important;min-height:92px!important;padding:7px 2px!important;border:1px solid #e7dfd1!important;border-radius:14px!important;background:#f5f0e7!important;color:#20211f!important;font-size:clamp(9px,2.4vw,12px)!important;line-height:1.15!important;text-align:center!important;font-weight:800!important;white-space:normal!important}
   .hero-copy .hero-benefits .trust-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;color:var(--orange)!important}
   .hero-copy .hero-benefits .trust-icon svg{width:30px!important;height:30px!important;fill:none!important;stroke:currentColor!important;stroke-width:2.6!important;stroke-linecap:round!important;stroke-linejoin:round!important}
