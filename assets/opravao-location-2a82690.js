@@ -10,7 +10,7 @@ document.addEventListener('click',event=>{
   if(toggle.getAttribute('aria-expanded')==='true'&&!nav.contains(event.target)&&!toggle.contains(event.target))setMenuOpen(false);
 });
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true')setMenuOpen(false)});
-document.querySelectorAll('.service').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');document.querySelector('#lokalita').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});}));
+document.querySelectorAll('.service').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.service').forEach(b=>b.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');const heading=document.querySelector('.location-panel-heading'),chosenIcon=document.querySelector('#selected-service-location-icon'),source=button.querySelector('.service-exact-art');if(heading&&chosenIcon&&source&&matchMedia('(min-width:851px)').matches){chosenIcon.src=source.currentSrc||source.src;chosenIcon.alt='Ikona služby '+(button.querySelector('.service-label')?.textContent.trim()||'');chosenIcon.hidden=false;heading.classList.add('has-service-icon')}document.querySelector('#lokalita').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});}));
 const SUPABASE_URL='https://jmukoccjqykyoqsypuwb.supabase.co';
 const SUPABASE_PUBLIC_KEY='sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V';
 const repairForm=document.querySelector('#repair-form');
