@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T15:17:32.548Z",
+  "updated_at": "2026-11-11T15:19:44.791Z",
   "target_per_region": 10,
   "current_category": "Elektrikář",
   "next_category": "Elektrikář",
@@ -222,94 +222,94 @@
       "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 6,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "status": "complete",
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Středočeský kraj": {
-          "verified_count": 6,
+          "verified_count": 9,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Jihočeský kraj": {
           "verified_count": 7,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Plzeňský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Karlovarský kraj": {
           "verified_count": 7,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Ústecký kraj": {
           "verified_count": 6,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Liberecký kraj": {
-          "verified_count": 6,
+          "verified_count": 7,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Královéhradecký kraj": {
           "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Pardubický kraj": {
           "verified_count": 6,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 5,
+          "verified_count": 9,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Jihomoravský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Olomoucký kraj": {
           "verified_count": 7,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Zlínský kraj": {
-          "verified_count": 6,
+          "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         },
         "Moravskoslezský kraj": {
           "verified_count": 9,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T15:17:32.548Z"
+          "updated_at": "2026-11-11T15:19:44.791Z"
         }
       },
       "started_at": "2026-11-11T15:17:32.548Z",
-      "added_firms": 26,
-      "verified_assignments": 99,
-      "updated_at": "2026-11-11T15:17:32.548Z"
+      "added_firms": 38,
+      "verified_assignments": 113,
+      "updated_at": "2026-11-11T15:19:44.791Z"
     },
     {
       "category": "Spotřebiče",
