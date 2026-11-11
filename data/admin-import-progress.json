@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T14:21:04.455Z",
+  "updated_at": "2026-11-11T14:25:10.249Z",
   "target_per_region": 10,
   "current_category": "Instalatér",
   "next_category": "Elektrikář",
@@ -107,94 +107,94 @@
       "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 8,
+          "verified_count": 9,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Středočeský kraj": {
-          "verified_count": 4,
+          "verified_count": 5,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Jihočeský kraj": {
+          "verified_count": 5,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:25:10.249Z"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 6,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:25:10.249Z"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 5,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:25:10.249Z"
+        },
+        "Ústecký kraj": {
           "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
-        },
-        "Plzeňský kraj": {
-          "verified_count": 5,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
-        },
-        "Karlovarský kraj": {
-          "verified_count": 3,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
-        },
-        "Ústecký kraj": {
-          "verified_count": 3,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Liberecký kraj": {
-          "verified_count": 2,
+          "verified_count": 6,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 2,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Pardubický kraj": {
-          "verified_count": 2,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 2,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 3,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
-        },
-        "Olomoucký kraj": {
           "verified_count": 5,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 6,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Zlínský kraj": {
-          "verified_count": 1,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 2,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T14:21:04.455Z"
+          "updated_at": "2026-11-11T14:25:10.249Z"
         }
       },
       "started_at": "2026-11-11T14:19:15.515Z",
-      "added_firms": 40,
-      "verified_assignments": 46,
-      "updated_at": "2026-11-11T14:21:04.455Z"
+      "added_firms": 52,
+      "verified_assignments": 71,
+      "updated_at": "2026-11-11T14:25:10.249Z"
     },
     {
       "category": "Elektrikář",
