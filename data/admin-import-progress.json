@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T22:16:20Z",
+  "updated_at": "2026-11-11T23:18:44Z",
   "target_per_region": 10,
-  "current_category": "Truhlář",
-  "next_category": "Topenář",
+  "current_category": "Topenář",
+  "next_category": "Ploty a brány",
   "categories": [
     {
       "category": "Autoservis",
@@ -1149,79 +1149,118 @@
     },
     {
       "category": "Truhlář",
-      "status": "pending",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T23:18:44Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T23:12:56Z",
+      "updated_at": "2026-11-11T23:18:44Z",
+      "completed_at": "2026-11-11T23:18:44Z",
+      "added_firms": 10,
+      "updated_existing_firms": 0,
+      "verified_assignments": 140,
+      "missing_assignments": 0,
+      "duplicate_records_inserted": 0,
+      "existing_business_candidates_merged": 0,
+      "unresolved_identity_candidates_skipped": 1,
+      "conflicting_registry_identity_candidates_corrected": 1
     },
     {
       "category": "Topenář",
