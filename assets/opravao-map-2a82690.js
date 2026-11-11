@@ -4,7 +4,7 @@
 if(!window.L){status.textContent='Mapu se nepodařilo načíst. Místo můžete zadat přímo do pole Město / PSČ.';return;}
 const map=L.map('repair-map',{scrollWheelZoom:false}).setView([49.82,15.47],7);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
-let marker=null,location=null,companies=[],previewCompany=null,companyLayer=L.layerGroup().addTo(map);const companyMapIcon=L.divIcon({className:"company-map-marker",html:'<span class="company-map-marker-core" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M10 20v-6h4v6"/></svg></span>',iconSize:[38,38],iconAnchor:[19,19]});
+let marker=null,location=null,companies=[],previewCompany=null,timer,controller,version=0,companyLayer=L.layerGroup().addTo(map);const companyMapIcon=L.divIcon({className:"company-map-marker",html:'<span class="company-map-marker-core" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M10 20v-6h4v6"/></svg></span>',iconSize:[38,38],iconAnchor:[19,19]});
 const directoryStatus=document.createElement("p");directoryStatus.id="company-map-status";directoryStatus.setAttribute("role","status");directoryStatus.style.cssText="font-size:13px;color:#52665a;line-height:1.45;margin:0";document.querySelector(".location-panel")?.append(directoryStatus);
 const norm=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLocaleLowerCase("cs");
 const escapeHtml=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -34,7 +34,7 @@ if(previewMode){
  }
 }
 document.querySelector("#type")?.addEventListener("change",showCompanies);
-const query=document.querySelector('#location-query'),cache=new Map();let timer,controller,version=0;
+const query=document.querySelector('#location-query'),cache=new Map();
 function cancelSearch(){clearTimeout(timer);controller?.abort();version++;results.replaceChildren();status.textContent='';}
 document.addEventListener('opravao:locating',cancelSearch);
 function choose(lat,lon,label){cancelSearch();location={lat,lon,label};showCompanies();if(marker)marker.remove();marker=L.marker([lat,lon],{icon:L.divIcon({className:'location-marker',iconSize:[22,22],iconAnchor:[11,11]})}).addTo(map);selected.textContent=label;confirm.disabled=false;}
