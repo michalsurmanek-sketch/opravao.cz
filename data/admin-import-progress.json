@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T16:25:59.370Z",
+  "updated_at": "2026-11-11T17:15:40.237Z",
   "target_per_region": 10,
   "current_category": "Dveře a okna",
   "next_category": "Střecha",
@@ -453,79 +453,97 @@
     },
     {
       "category": "Dveře a okna",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 8,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T17:15:40.237Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T17:15:40.237Z",
+      "updated_at": "2026-11-11T17:15:40.237Z",
+      "added_firms": 25,
+      "verified_assignments": 81
     },
     {
       "category": "Střecha",
