@@ -11,6 +11,15 @@ const escapeHtml=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 function distanceKm(a,b){const rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLon=rad(b.lon-a.lon),x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLon/2)**2;return 6371*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
 function showCompanies(){companyLayer.clearLayers();const type=document.querySelector("#type")?.value||"",center=location;if(!center){directoryStatus.textContent="Vyberte místo a na mapě se zobrazí firmy v okolí.";return}const nearby=companies.filter(c=>distanceKm(center,{lat:c.lat,lon:c.lon})<=50),found=type?nearby.filter(c=>c.services.some(s=>norm(s)===norm(type))):nearby;found.forEach(c=>{const services=c.services.join(", "),marker=L.marker([c.lat,c.lon],{icon:companyMapIcon,title:c.name,alt:"Firma: "+c.name});marker.bindTooltip(escapeHtml(c.name),{permanent:found.length<=8,direction:"right",offset:[19,0],sticky:true,opacity:.98,className:"company-map-label"});marker.bindPopup("<strong>"+escapeHtml(c.name)+"</strong><br>"+escapeHtml(services)+(c.website?'<br><a href="'+escapeHtml(c.website)+'" target="_blank" rel="noopener noreferrer">Navštívit web firmy ↗</a>':""));marker.addTo(companyLayer)});const points=[[center.lat,center.lon],...found.map(c=>[c.lat,c.lon])];if(found.length)map.fitBounds(L.latLngBounds(points),{padding:[44,44],maxZoom:13,animate:false});else map.setView([center.lat,center.lon],13,{animate:false});directoryStatus.textContent=type?(found.length?found.length+" firma/firem pro službu „"+type+"“ do 50 km.":"Zatím jsme nenašli schválené firmy pro službu „"+type+"“ do 50 km."):(found.length?found.length+" firma/firem do 50 km. Vyberte typ opravy pro zúžení výsledků.":"V okolí 50 km zatím není žádná schválená firma s polohou.");}
 fetch("https://jmukoccjqykyoqsypuwb.supabase.co/functions/v1/opravao-directory",{headers:{apikey:"sb_publishable_FSrTbgu1LeF9DNeam3ztwA_3dNHGq-V"}}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{companies=Array.isArray(data.companies)?data.companies:[];showCompanies()}).catch(()=>{directoryStatus.textContent="Seznam firem na mapě se teď nepodařilo načíst."});
+const previewParams=new URLSearchParams(location.search);
+if(previewParams.get("mapPreview")==="1"){
+ const lat=Number(previewParams.get("lat")),lon=Number(previewParams.get("lon")),service=previewParams.get("service")||"";
+ if(Number.isFinite(lat)&&Number.isFinite(lon)&&lat>=48.5&&lat<=51.1&&lon>=12&&lon<=18.9){
+  const typeSelect=document.querySelector("#type");
+  if(typeSelect&&service){const option=[...typeSelect.options].find(o=>norm(o.value||o.textContent)===norm(service));if(option)typeSelect.value=option.value||option.textContent;}
+  choose(lat,lon,"Poloha firmy: "+lat.toFixed(5)+", "+lon.toFixed(5));
+ }
+}
 document.querySelector("#type")?.addEventListener("change",showCompanies);
 const query=document.querySelector('#location-query'),cache=new Map();let timer,controller,version=0;
 function cancelSearch(){clearTimeout(timer);controller?.abort();version++;results.replaceChildren();status.textContent='';}
