@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T17:20:01.864Z",
+  "updated_at": "2026-11-11T18:18:31.510Z",
   "target_per_region": 10,
   "current_category": "Střecha",
   "next_category": "Hodinový manžel",
@@ -567,79 +567,97 @@
     },
     {
       "category": "Střecha",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 8,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 8,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 8,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T18:18:31.510Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T18:18:31.510Z",
+      "updated_at": "2026-11-11T18:18:31.510Z",
+      "added_firms": 20,
+      "verified_assignments": 128
     },
     {
       "category": "Hodinový manžel",
