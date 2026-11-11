@@ -1028,8 +1028,7 @@
       "duplicate_records_inserted": 0,
       "existing_business_candidates_merged": 3,
       "redirected_unrelated_domain_candidates_skipped": 1,
-      "invalid_ico_candidates_skipped": 1,
-      "unresolved_identity_candidates_skipped": 2,
+      "unresolved_identity_candidates_skipped": 3,
       "inaccessible_source_candidates_skipped": 1
     },
     {
