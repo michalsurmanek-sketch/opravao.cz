@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T14:27:41.421Z",
+  "updated_at": "2026-11-11T15:17:32.548Z",
   "target_per_region": 10,
   "current_category": "Elektrikář",
   "next_category": "Elektrikář",
@@ -219,79 +219,97 @@
     },
     {
       "category": "Elektrikář",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 8,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 7,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 6,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 9,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T15:17:32.548Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T15:17:32.548Z",
+      "added_firms": 26,
+      "verified_assignments": 99,
+      "updated_at": "2026-11-11T15:17:32.548Z"
     },
     {
       "category": "Spotřebiče",
