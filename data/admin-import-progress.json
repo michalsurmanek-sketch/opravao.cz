@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T16:15:20.522Z",
+  "updated_at": "2026-11-11T16:19:17.244Z",
   "target_per_region": 10,
   "current_category": "Spotřebiče",
   "next_category": "Dveře a okna",
@@ -340,91 +340,92 @@
           "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Středočeský kraj": {
+          "verified_count": 6,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T16:19:17.244Z"
+        },
+        "Jihočeský kraj": {
           "verified_count": 3,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
-        },
-        "Jihočeský kraj": {
-          "verified_count": 1,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Plzeňský kraj": {
+          "verified_count": 4,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T16:19:17.244Z"
+        },
+        "Karlovarský kraj": {
           "verified_count": 2,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
-        },
-        "Karlovarský kraj": {
-          "verified_count": 0,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Ústecký kraj": {
           "verified_count": 1,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Liberecký kraj": {
+          "verified_count": 3,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T16:19:17.244Z"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 4,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T16:19:17.244Z"
+        },
+        "Pardubický kraj": {
+          "verified_count": 3,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T16:19:17.244Z"
+        },
+        "Kraj Vysočina": {
           "verified_count": 1,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
-        },
-        "Královéhradecký kraj": {
-          "verified_count": 2,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
-        },
-        "Pardubický kraj": {
-          "verified_count": 0,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
-        },
-        "Kraj Vysočina": {
-          "verified_count": 0,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Jihomoravský kraj": {
           "verified_count": 2,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Zlínský kraj": {
-          "verified_count": 1,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 1,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T16:15:20.522Z"
+          "updated_at": "2026-11-11T16:19:17.244Z"
         }
       },
       "started_at": "2026-11-11T16:15:20.522Z",
-      "added_firms": 16,
-      "verified_assignments": 22,
-      "updated_at": "2026-11-11T16:15:20.522Z"
+      "added_firms": 36,
+      "verified_assignments": 47,
+      "updated_at": "2026-11-11T16:19:17.244Z",
+      "updated_existing_firms": 2
     },
     {
       "category": "Dveře a okna",
