@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T17:19:18.085Z",
+  "updated_at": "2026-11-11T17:20:01.864Z",
   "target_per_region": 10,
-  "current_category": "Dveře a okna",
-  "next_category": "Střecha",
+  "current_category": "Střecha",
+  "next_category": "Hodinový manžel",
   "categories": [
     {
       "category": "Autoservis",
@@ -453,97 +453,117 @@
     },
     {
       "category": "Dveře a okna",
-      "status": "in_progress",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Středočeský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Jihočeský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Plzeňský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Karlovarský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Ústecký kraj": {
-          "verified_count": 9,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Liberecký kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Královéhradecký kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Pardubický kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Kraj Vysočina": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Jihomoravský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Olomoucký kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Zlínský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         },
         "Moravskoslezský kraj": {
           "verified_count": 10,
           "target": 10,
+          "missing_count": 0,
           "status": "complete",
-          "updated_at": "2026-11-11T17:19:18.085Z"
+          "updated_at": "2026-11-11T17:20:01.864Z"
         }
       },
       "started_at": "2026-11-11T17:15:40.237Z",
-      "updated_at": "2026-11-11T17:19:18.085Z",
-      "added_firms": 37,
-      "verified_assignments": 139
+      "updated_at": "2026-11-11T17:20:01.864Z",
+      "added_firms": 38,
+      "verified_assignments": 140,
+      "updated_existing_firms": 0,
+      "missing_assignments": 0,
+      "completed_at": "2026-11-11T17:20:01.864Z",
+      "duplicate_records_inserted": 0,
+      "collapsed_shared_business_candidates": 2,
+      "unresolved_identity_candidates_skipped": 3
     },
     {
       "category": "Střecha",
