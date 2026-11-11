@@ -1,101 +1,106 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T13:12:14.089Z",
+  "updated_at": "2026-11-11T13:13:10.256Z",
   "target_per_region": 10,
-  "current_category": "Autoservis",
+  "current_category": "Instalatér",
   "next_category": "Instalatér",
   "categories": [
     {
       "category": "Autoservis",
-      "status": "in_progress",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Středočeský kraj": {
-          "verified_count": 9,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "status": "complete",
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Jihočeský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Plzeňský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Karlovarský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Ústecký kraj": {
-          "verified_count": 7,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "status": "complete",
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Liberecký kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Královéhradecký kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Pardubický kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 9,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "status": "complete",
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 9,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "status": "complete",
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Olomoucký kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Zlínský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "updated_at": "2026-11-11T13:13:10.256Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 9,
+          "verified_count": 10,
           "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T13:12:14.089Z"
+          "status": "complete",
+          "updated_at": "2026-11-11T13:13:10.256Z"
         }
       },
-      "verified_assignments": 133,
-      "added_firms": 133
+      "verified_assignments": 140,
+      "added_firms": 139,
+      "completed_at": "2026-11-11T13:13:10.256Z",
+      "updated_at": "2026-11-11T13:13:10.256Z",
+      "duplicate_records_inserted": 0,
+      "collapsed_shared_business_candidates": 4,
+      "excluded_unverified_records": 1
     },
     {
       "category": "Instalatér",
