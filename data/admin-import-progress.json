@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T19:16:33.275Z",
+  "updated_at": "2026-11-11T20:13:04.234Z",
   "target_per_region": 10,
   "current_category": "Zedník a obkladač",
   "next_category": "Malíř a natěrač",
@@ -802,79 +802,113 @@
     },
     {
       "category": "Zedník a obkladač",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Středočeský kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Jihočeský kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Plzeňský kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Karlovarský kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Ústecký kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Pardubický kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Jihomoravský kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T20:13:04.234Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T20:08:07Z",
+      "updated_at": "2026-11-11T20:13:04.234Z",
+      "added_firms": 0,
+      "updated_existing_firms": 5,
+      "verified_assignments": 6,
+      "missing_assignments": 134
     },
     {
       "category": "Malíř a natěrač",
