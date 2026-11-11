@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T21:16:24.419Z",
+  "updated_at": "2026-11-11T22:13:16Z",
   "target_per_region": 10,
   "current_category": "Pokrývač a klempíř",
   "next_category": "Truhlář",
@@ -1033,79 +1033,115 @@
     },
     {
       "category": "Pokrývač a klempíř",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T22:13:16Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T22:08:11Z",
+      "updated_at": "2026-11-11T22:13:16Z",
+      "added_firms": 0,
+      "updated_existing_firms": 19,
+      "verified_assignments": 50,
+      "missing_assignments": 90,
+      "duplicate_records_inserted": 0,
+      "existing_business_candidates_merged": 19
     },
     {
       "category": "Truhlář",
