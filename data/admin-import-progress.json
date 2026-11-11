@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T22:13:16Z",
+  "updated_at": "2026-11-11T22:16:20Z",
   "target_per_region": 10,
-  "current_category": "Pokrývač a klempíř",
-  "next_category": "Truhlář",
+  "current_category": "Truhlář",
+  "next_category": "Topenář",
   "categories": [
     {
       "category": "Autoservis",
@@ -1033,115 +1033,119 @@
     },
     {
       "category": "Pokrývač a klempíř",
-      "status": "in_progress",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 3,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 7,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Středočeský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Ústecký kraj": {
-          "verified_count": 3,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 7,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Liberecký kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Pardubický kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 3,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 7,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Zlínský kraj": {
-          "verified_count": 3,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 7,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 4,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 6,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T22:13:16Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-11T22:16:20Z"
         }
       },
       "started_at": "2026-11-11T22:08:11Z",
-      "updated_at": "2026-11-11T22:13:16Z",
-      "added_firms": 0,
+      "updated_at": "2026-11-11T22:16:20Z",
+      "added_firms": 8,
       "updated_existing_firms": 19,
-      "verified_assignments": 50,
-      "missing_assignments": 90,
+      "verified_assignments": 140,
+      "missing_assignments": 0,
       "duplicate_records_inserted": 0,
-      "existing_business_candidates_merged": 19
+      "existing_business_candidates_merged": 19,
+      "completed_at": "2026-11-11T22:16:20Z",
+      "inaccessible_source_candidates_skipped": 1,
+      "unresolved_contact_candidates_skipped": 1,
+      "unverified_service_candidates_skipped": 5
     },
     {
       "category": "Truhlář",
