@@ -33,10 +33,10 @@ Deno.serve(async req=>{
  if(req.method==="GET"){
   const resource=new URL(req.url).searchParams.get("resource")||"dashboard";
   if(resource==="coupons"){
-   const [campaigns,dispatches]=await Promise.all([rest(base,key,"opravao_coupon_campaigns?select=*&order=created_at.desc&limit=500"),rest(base,key,"opravao_coupon_dispatches?select=campaign_id,status&limit=5000")]);
-   if(!campaigns.ok)return fail(campaigns);if(!dispatches.ok)return fail(dispatches);
+   const [campaigns,archived,dispatches]=await Promise.all([rest(base,key,"opravao_coupon_campaigns?archived_at=is.null&select=*&order=created_at.desc&limit=500"),rest(base,key,"opravao_coupon_campaigns?archived_at=not.is.null&select=*&order=archived_at.desc&limit=500"),rest(base,key,"opravao_coupon_dispatches?select=campaign_id,status&limit=5000")]);
+   if(!campaigns.ok)return fail(campaigns);if(!archived.ok)return fail(archived);if(!dispatches.ok)return fail(dispatches);
    const counts={};for(const item of dispatches.data||[]){if(item.status==="sent")counts[item.campaign_id]=(counts[item.campaign_id]||0)+1}
-   return json({data:campaigns.data||[],sent_counts:counts},200,origin)
+   return json({data:campaigns.data||[],archived:archived.data||[],sent_counts:counts},200,origin)
   }
   if(resource==="leads"){
    const r=await rest(base,key,"plotao_leads?source=eq.opravao.cz&select=id,created_at,submitted_at,name,phone,email,place,region,note,payload,status,assigned_to,next_action,next_action_at,partner_name,outcome,communication,updated_at&order=created_at.desc&limit=1000");
@@ -86,6 +86,21 @@ Deno.serve(async req=>{
   const row={title,code,region,repair_type,provider_name,description,discount_percent,valid_from,valid_until:valid_until||null,status:"draft",created_by:actor};
   const saved=await rest(base,key,"opravao_coupon_campaigns",{method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify(row)});
   if(!saved.ok)return fail(saved);await audit(base,key,actor,action,"coupon",saved.data?.[0]?.id||"",row);return json({data:saved.data?.[0]},201,origin)
+ }
+ if(action==="archive_coupon"||action==="restore_coupon"||action==="delete_coupon"){
+  if(!safeId(b.id))return json({error:"invalid_id"},422,origin);
+  const found=await rest(base,key,"opravao_coupon_campaigns?id=eq."+b.id+"&select=id,title,archived_at");
+  if(!found.ok)return fail(found);const campaign=found.data?.[0];if(!campaign)return json({error:"coupon_not_found"},404,origin);
+  if(action==="delete_coupon"){
+   if(!campaign.archived_at)return json({error:"coupon_must_be_archived_first",detail:"Nejprve kupón přesuňte do koše."},409,origin);
+   const history=await rest(base,key,"opravao_coupon_dispatches?campaign_id=eq."+b.id+"&select=id&limit=1");
+   if(!history.ok)return fail(history);if(history.data?.length)return json({error:"coupon_has_history",detail:"Kupón má záznamy o rozesílce, proto jej lze pouze ponechat v koši."},409,origin);
+   const gone=await rest(base,key,"opravao_coupon_campaigns?id=eq."+b.id,{method:"DELETE",headers:{"Prefer":"return=representation"}});
+   if(!gone.ok)return fail(gone);await audit(base,key,actor,action,"coupon",b.id,{});return json({ok:true},200,origin)
+  }
+  const archived_at=action==="archive_coupon"?new Date().toISOString():null;
+  const saved=await rest(base,key,"opravao_coupon_campaigns?id=eq."+b.id,{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify({archived_at,updated_at:new Date().toISOString()})});
+  if(!saved.ok)return fail(saved);await audit(base,key,actor,action,"coupon",b.id,{archived_at});return json({data:saved.data?.[0]},200,origin)
  }
  if(action==="preview_coupon"){
   if(!safeId(b.id))return json({error:"invalid_id"},422,origin);
