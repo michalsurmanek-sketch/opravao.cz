@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T13:13:10.256Z",
+  "updated_at": "2026-11-11T14:19:15.515Z",
   "target_per_region": 10,
   "current_category": "Instalatér",
-  "next_category": "Instalatér",
+  "next_category": "Elektrikář",
   "categories": [
     {
       "category": "Autoservis",
@@ -104,37 +104,43 @@
     },
     {
       "category": "Instalatér",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 8,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:19:15.515Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:19:15.515Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:19:15.515Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:19:15.515Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:19:15.515Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "status": "in_progress",
+          "updated_at": "2026-11-11T14:19:15.515Z"
         },
         "Liberecký kraj": {
           "verified_count": 0,
@@ -176,7 +182,10 @@
           "target": 10,
           "status": "pending"
         }
-      }
+      },
+      "started_at": "2026-11-11T14:19:15.515Z",
+      "added_firms": 15,
+      "verified_assignments": 20
     },
     {
       "category": "Elektrikář",
@@ -2460,6 +2469,462 @@
     },
     {
       "category": "Fotovoltaika a solární panely",
+      "status": "pending",
+      "regions": {
+        "Hlavní město Praha": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Středočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Ústecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Liberecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Pardubický kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Kraj Vysočina": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihomoravský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Zlínský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Moravskoslezský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "category": "Tepelná čerpadla",
+      "status": "pending",
+      "regions": {
+        "Hlavní město Praha": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Středočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Ústecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Liberecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Pardubický kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Kraj Vysočina": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihomoravský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Zlínský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Moravskoslezský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "category": "Zabezpečení a kamerové systémy",
+      "status": "pending",
+      "regions": {
+        "Hlavní město Praha": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Středočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Ústecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Liberecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Pardubický kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Kraj Vysočina": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihomoravský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Zlínský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Moravskoslezský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "category": "Čištění kanalizace",
+      "status": "pending",
+      "regions": {
+        "Hlavní město Praha": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Středočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Ústecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Liberecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Pardubický kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Kraj Vysočina": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihomoravský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Zlínský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Moravskoslezský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "category": "Studny a čerpadla",
+      "status": "pending",
+      "regions": {
+        "Hlavní město Praha": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Středočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Ústecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Liberecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Pardubický kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Kraj Vysočina": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihomoravský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Zlínský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Moravskoslezský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "category": "Revize elektro a hromosvodů",
+      "status": "pending",
+      "regions": {
+        "Hlavní město Praha": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Středočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihočeský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Plzeňský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Karlovarský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Ústecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Liberecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Královéhradecký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Pardubický kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Kraj Vysočina": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Jihomoravský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Olomoucký kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Zlínský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        },
+        "Moravskoslezský kraj": {
+          "verified_count": 0,
+          "target": 10,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "category": "Jiné / nevím si rady",
       "status": "pending",
       "regions": {
         "Hlavní město Praha": {
