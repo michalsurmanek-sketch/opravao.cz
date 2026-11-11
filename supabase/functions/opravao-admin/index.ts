@@ -105,7 +105,7 @@ Deno.serve(async req=>{
  if(action==="preview_coupon"){
   if(!safeId(b.id))return json({error:"invalid_id"},422,origin);
   const found=await rest(base,key,"opravao_coupon_campaigns?id=eq."+b.id+"&select=*");
-  if(!found.ok)return fail(found);const campaign=found.data?.[0];if(!campaign)return json({error:"coupon_not_found"},404,origin);
+  if(!found.ok)return fail(found);const campaign=found.data?.[0];if(!campaign)return json({error:"coupon_not_found"},404,origin);if(campaign.archived_at)return json({error:"coupon_archived",detail:"Kupón je v koši a nelze jej odeslat."},409,origin);
   const [leadResult,dispatchResult]=await Promise.all([rest(base,key,"plotao_leads?source=eq.opravao.cz&select=id,email,region,payload&limit=5000"),rest(base,key,"opravao_coupon_dispatches?campaign_id=eq."+b.id+"&select=lead_id&limit=5000")]);
   if(!leadResult.ok)return fail(leadResult);if(!dispatchResult.ok)return fail(dispatchResult);
   const already=new Set((dispatchResult.data||[]).map(x=>x.lead_id));
@@ -115,7 +115,7 @@ Deno.serve(async req=>{
  if(action==="send_coupon"){
   if(!safeId(b.id))return json({error:"invalid_id"},422,origin);
   const found=await rest(base,key,"opravao_coupon_campaigns?id=eq."+b.id+"&select=*");
-  if(!found.ok)return fail(found);const campaign=found.data?.[0];if(!campaign)return json({error:"coupon_not_found"},404,origin);
+  if(!found.ok)return fail(found);const campaign=found.data?.[0];if(!campaign)return json({error:"coupon_not_found"},404,origin);if(campaign.archived_at)return json({error:"coupon_archived",detail:"Kupón je v koši a nelze jej odeslat."},409,origin);
   const today=new Date().toISOString().slice(0,10);if(campaign.valid_from&&campaign.valid_from>today||campaign.valid_until&&campaign.valid_until<today)return json({error:"coupon_outside_validity"},409,origin);
   const resendKey=Deno.env.get("RESEND_API_KEY");if(!resendKey)return json({error:"resend_not_configured"},503,origin);
   const [leadResult,dispatchResult]=await Promise.all([rest(base,key,"plotao_leads?source=eq.opravao.cz&select=id,email,name,region,payload&limit=5000"),rest(base,key,"opravao_coupon_dispatches?campaign_id=eq."+b.id+"&select=lead_id,status&limit=5000")]);
