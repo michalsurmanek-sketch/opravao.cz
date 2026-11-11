@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T18:21:40.755Z",
+  "updated_at": "2026-11-11T19:12:04.655Z",
   "target_per_region": 10,
   "current_category": "Hodinový manžel",
   "next_category": "Zedník a obkladač",
@@ -682,79 +682,112 @@
     },
     {
       "category": "Hodinový manžel",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Karlovarský kraj": {
           "verified_count": 0,
           "target": 10,
-          "status": "pending"
+          "missing_count": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 1,
           "target": 10,
-          "status": "pending"
+          "missing_count": 9,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 5,
           "target": 10,
-          "status": "pending"
+          "missing_count": 5,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T19:12:04.655Z"
         }
-      }
+      },
+      "started_at": "2026-11-11T19:05:23Z",
+      "updated_at": "2026-11-11T19:12:04.655Z",
+      "added_firms": 30,
+      "updated_existing_firms": 0,
+      "verified_assignments": 35
     },
     {
       "category": "Zedník a obkladač",
