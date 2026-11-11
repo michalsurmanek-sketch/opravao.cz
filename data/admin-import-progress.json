@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T11:28:15.272Z",
+  "updated_at": "2026-11-11T13:07:56.876Z",
   "target_per_region": 10,
   "current_category": "Autoservis",
   "next_category": "Instalatér",
@@ -13,89 +13,89 @@
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Středočeský kraj": {
           "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 8,
+          "verified_count": 9,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Plzeňský kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 8,
+          "verified_count": 9,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Ústecký kraj": {
-          "verified_count": 2,
+          "verified_count": 4,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Liberecký kraj": {
           "verified_count": 10,
           "target": 10,
           "status": "complete",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Královéhradecký kraj": {
+          "verified_count": 8,
+          "target": 10,
+          "status": "in_progress",
+          "updated_at": "2026-11-11T13:07:56.876Z"
+        },
+        "Pardubický kraj": {
           "verified_count": 7,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
-        },
-        "Pardubický kraj": {
-          "verified_count": 4,
-          "target": 10,
-          "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 6,
+          "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 6,
+          "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 6,
+          "verified_count": 7,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Zlínský kraj": {
-          "verified_count": 6,
+          "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 5,
+          "verified_count": 8,
           "target": 10,
           "status": "in_progress",
-          "updated_at": "2026-11-11T11:28:15.272Z"
+          "updated_at": "2026-11-11T13:07:56.876Z"
         }
       },
-      "verified_assignments": 92,
-      "added_firms": 92
+      "verified_assignments": 109,
+      "added_firms": 109
     },
     {
       "category": "Instalatér",
