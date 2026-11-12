@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-12T00:19:41Z",
+  "updated_at": "2026-11-12T01:17:18Z",
   "target_per_region": 10,
   "current_category": "Ploty a brány",
   "next_category": "Zámečník",
@@ -1380,79 +1380,115 @@
     },
     {
       "category": "Ploty a brány",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T01:17:18Z"
         }
-      }
+      },
+      "started_at": "2026-11-12T01:13:44Z",
+      "updated_at": "2026-11-12T01:17:18Z",
+      "added_firms": 0,
+      "updated_existing_firms": 2,
+      "verified_assignments": 29,
+      "missing_assignments": 111,
+      "duplicate_records_inserted": 0,
+      "existing_business_candidates_merged": 2
     },
     {
       "category": "Zámečník",
