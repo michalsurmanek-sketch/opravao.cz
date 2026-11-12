@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-12T02:17:04Z",
+  "updated_at": "2026-11-12T03:16:56Z",
   "target_per_region": 10,
-  "current_category": "Klimatizace a vzduchotechnika",
-  "next_category": "Žaluzie a rolety",
+  "current_category": "Žaluzie a rolety",
+  "next_category": "Sklenář",
   "categories": [
     {
       "category": "Autoservis",
@@ -1610,79 +1610,116 @@
     },
     {
       "category": "Klimatizace a vzduchotechnika",
-      "status": "pending",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T03:16:56Z"
         }
-      }
+      },
+      "started_at": "2026-11-12T03:12:30Z",
+      "updated_at": "2026-11-12T03:16:56Z",
+      "completed_at": "2026-11-12T03:16:56Z",
+      "added_firms": 10,
+      "updated_existing_firms": 0,
+      "verified_assignments": 140,
+      "missing_assignments": 0,
+      "duplicate_records_inserted": 0,
+      "existing_business_candidates_merged": 0
     },
     {
       "category": "Žaluzie a rolety",
