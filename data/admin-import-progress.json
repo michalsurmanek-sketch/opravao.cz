@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-12T07:18:17Z",
+  "updated_at": "2026-11-12T07:30:45Z",
   "target_per_region": 10,
-  "current_category": "Fasády a zateplení",
-  "next_category": "Kominík",
+  "current_category": "Kominík",
+  "next_category": "Opravy garážových vrat",
   "categories": [
     {
       "category": "Autoservis",
@@ -2185,79 +2185,120 @@
     },
     {
       "category": "Fasády a zateplení",
-      "status": "pending",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 10,
           "target": 10,
-          "status": "pending"
+          "status": "complete",
+          "missing_count": 0,
+          "updated_at": "2026-11-12T07:30:45Z"
         }
-      }
+      },
+      "started_at": "2026-11-12T07:24:39Z",
+      "updated_at": "2026-11-12T07:30:45Z",
+      "completed_at": "2026-11-12T07:30:45Z",
+      "added_firms": 10,
+      "added_assignments": 140,
+      "existing_assignments": 0,
+      "updated_existing_firms": 0,
+      "verified_assignments": 140,
+      "missing_assignments": 0,
+      "duplicate_records_inserted": 0,
+      "skipped_duplicate_candidates": 0,
+      "excluded_unverified_identity": 1,
+      "excluded_material_only_supplier": 1
     },
     {
       "category": "Kominík",
