@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-11T23:18:44Z",
+  "updated_at": "2026-11-12T00:17:50Z",
   "target_per_region": 10,
   "current_category": "Topenář",
   "next_category": "Ploty a brány",
@@ -1264,79 +1264,115 @@
     },
     {
       "category": "Topenář",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 3,
           "target": 10,
-          "status": "pending"
+          "missing_count": 7,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 2,
           "target": 10,
-          "status": "pending"
+          "missing_count": 8,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T00:17:50Z"
         }
-      }
+      },
+      "started_at": "2026-11-12T00:13:19Z",
+      "updated_at": "2026-11-12T00:17:50Z",
+      "added_firms": 0,
+      "updated_existing_firms": 21,
+      "verified_assignments": 38,
+      "missing_assignments": 102,
+      "duplicate_records_inserted": 0,
+      "existing_business_candidates_merged": 21
     },
     {
       "category": "Ploty a brány",
