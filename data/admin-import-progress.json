@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-12T01:17:18Z",
+  "updated_at": "2026-11-12T01:18:50Z",
   "target_per_region": 10,
-  "current_category": "Ploty a brány",
-  "next_category": "Zámečník",
+  "current_category": "Zámečník",
+  "next_category": "Klimatizace a vzduchotechnika",
   "categories": [
     {
       "category": "Autoservis",
@@ -1380,115 +1380,118 @@
     },
     {
       "category": "Ploty a brány",
-      "status": "in_progress",
+      "status": "complete",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Středočeský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Ústecký kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Liberecký kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Pardubický kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Zlínský kraj": {
-          "verified_count": 3,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 7,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 2,
+          "verified_count": 10,
           "target": 10,
-          "missing_count": 8,
-          "status": "in_progress",
-          "updated_at": "2026-11-12T01:17:18Z"
+          "missing_count": 0,
+          "status": "complete",
+          "updated_at": "2026-11-12T01:18:50Z"
         }
       },
       "started_at": "2026-11-12T01:13:44Z",
-      "updated_at": "2026-11-12T01:17:18Z",
-      "added_firms": 0,
+      "updated_at": "2026-11-12T01:18:50Z",
+      "added_firms": 8,
       "updated_existing_firms": 2,
-      "verified_assignments": 29,
-      "missing_assignments": 111,
+      "verified_assignments": 140,
+      "missing_assignments": 0,
       "duplicate_records_inserted": 0,
-      "existing_business_candidates_merged": 2
+      "existing_business_candidates_merged": 2,
+      "completed_at": "2026-11-12T01:18:50Z",
+      "preexisting_category_firms": 1,
+      "inaccessible_source_candidates_skipped": 1
     },
     {
       "category": "Zámečník",
