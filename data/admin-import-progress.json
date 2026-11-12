@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-12T08:15:03Z",
+  "updated_at": "2026-11-12T09:14:46Z",
   "target_per_region": 10,
   "current_category": "Opravy garážových vrat",
   "next_category": "Zahradník",
@@ -2420,7 +2420,7 @@
     },
     {
       "category": "Opravy garážových vrat",
-      "status": "pending",
+      "status": "blocked_database_unavailable",
       "regions": {
         "Hlavní město Praha": {
           "verified_count": 0,
@@ -2492,7 +2492,12 @@
           "target": 10,
           "status": "pending"
         }
-      }
+      },
+      "started_at": "2026-11-12T09:13:47Z",
+      "updated_at": "2026-11-12T09:14:46Z",
+      "added_firms": 0,
+      "added_assignments": 0,
+      "updated_existing_firms": 0
     },
     {
       "category": "Zahradník",
