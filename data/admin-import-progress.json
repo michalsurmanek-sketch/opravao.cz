@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-12T01:18:50Z",
+  "updated_at": "2026-11-12T02:14:56Z",
   "target_per_region": 10,
   "current_category": "Zámečník",
   "next_category": "Klimatizace a vzduchotechnika",
@@ -1495,79 +1495,115 @@
     },
     {
       "category": "Zámečník",
-      "status": "pending",
+      "status": "in_progress",
       "regions": {
         "Hlavní město Praha": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Středočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Jihočeský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Plzeňský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Karlovarský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Ústecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Liberecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Královéhradecký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Pardubický kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Kraj Vysočina": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Jihomoravský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Olomoucký kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Zlínský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         },
         "Moravskoslezský kraj": {
-          "verified_count": 0,
+          "verified_count": 4,
           "target": 10,
-          "status": "pending"
+          "missing_count": 6,
+          "status": "in_progress",
+          "updated_at": "2026-11-12T02:14:56Z"
         }
-      }
+      },
+      "started_at": "2026-11-12T02:09:52Z",
+      "updated_at": "2026-11-12T02:14:56Z",
+      "added_firms": 0,
+      "updated_existing_firms": 4,
+      "verified_assignments": 56,
+      "missing_assignments": 84,
+      "duplicate_records_inserted": 0,
+      "existing_business_candidates_merged": 4
     },
     {
       "category": "Klimatizace a vzduchotechnika",
