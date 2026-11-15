@@ -85,6 +85,26 @@ document.querySelectorAll("[data-save-lead]").forEach(b=>b.onclick=async()=>{con
 function renderOverviewRecent(){const body=$("#recentRows");if(!body)return;body.querySelectorAll("[data-archive-overview]").forEach(b=>b.onclick=()=>{if(!confirm("Přesunout poptávku do koše? Poptávka zůstane uložená."))return;setArchivedLead(b.dataset.archiveOverview,true);refresh()})}
 function renderArchivedLeads(){const ids=archivedLeadIds();const rows=leads.filter(x=>ids.includes(x.id));const panel=$("#archivedLeadPanel");panel.innerHTML=rows.length?rows.map(x=>'<div style="padding:10px;border-bottom:1px solid #ddd">' +esc(x.name||"Zákazník")+" · "+esc(x.payload?.repairType||"Oprava")+" · "+esc(when(x.created_at))+' <button class="button alt" data-restore-lead="'+esc(x.id)+'">Obnovit</button></div>').join(""):"<p>Koš je prázdný.</p>";panel.querySelectorAll("[data-restore-lead]").forEach(b=>b.onclick=()=>{setArchivedLead(b.dataset.restoreLead,false);renderArchivedLeads();renderLeads();renderOverviewRecent()})}
 $("#showArchivedLeads").addEventListener("click",()=>{const p=$("#archivedLeadPanel");p.hidden=!p.hidden;$("#showArchivedLeads").textContent=p.hidden?"Zobrazit koš":"Skrýt koš";if(!p.hidden)renderArchivedLeads()});
+let replyImageFile=null,replyImageUrl=null;
+function clearReplyImage(){
+ if(replyImageUrl)globalThis.URL.revokeObjectURL(replyImageUrl);
+ replyImageFile=null;replyImageUrl=null;$("#replyImage").value="";
+ $("#replyImageThumb").removeAttribute("src");$("#replyImagePreview").hidden=true;
+ replyRequestId=null;
+}
+$("#replyImage").onchange=()=>{
+ const file=$("#replyImage").files[0];clearReplyImage();
+ if(!file)return;
+ if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size===0||file.size>5*1024*1024){$("#replyNotice").textContent="Vyberte JPG, PNG nebo WebP do 5 MB.";return}
+ replyImageFile=file;replyImageUrl=globalThis.URL.createObjectURL(file);
+ $("#replyImageThumb").src=replyImageUrl;$("#replyImageName").textContent=file.name;
+ $("#replyImagePreview").hidden=false;$("#replyNotice").textContent="";
+};
+$("#replyImageRemove").onclick=clearReplyImage;
+function readReplyImage(file){return new Promise((resolve,reject)=>{
+ const reader=new FileReader();reader.onload=()=>resolve({filename:file.name,content_type:file.type,content:String(reader.result).split(",")[1]});
+ reader.onerror=()=>reject(new Error("Obrázek se nepodařilo načíst."));reader.readAsDataURL(file);
+})}
 let replyRequestId=null;
 let replyNoticeTarget="#leadNotice";
 document.addEventListener("click",e=>{
@@ -94,12 +114,12 @@ document.addEventListener("click",e=>{
  $("#replyTitle").textContent=b.dataset.replyPartner?"Komunikace s opravářem":"Komunikace se zákazníkem";
  if(!lead.email){msg(replyNoticeTarget,"Kontakt nemá e-mailovou adresu.",true);return}
  $("#replyLeadId").value=lead.id;$("#replyRecipient").textContent=(lead.name||"Zákazník")+" · "+lead.email;
- const initialRequest={created_at:lead.submitted_at||lead.created_at,type:"incoming",body:["Nová poptávka zákazníka","Typ opravy: "+(lead.payload?.repairType||"Neuvedeno"),"Místo: "+(lead.place||"Neuvedeno"),...(lead.note&&!/^Typ opravy:\s*/i.test(lead.note)?["Popis: "+lead.note]:[])].join("\n")};const timeline=[initialRequest,...(Array.isArray(lead.communication)?lead.communication:[])].sort((a,b)=>new Date(a.created_at||a.sent_at||0)-new Date(b.created_at||b.sent_at||0));$("#replyHistory").innerHTML=timeline.map(x=>'<div class="reply-item"><small>'+esc(when(x.created_at||x.sent_at))+' · '+esc(x.type==="outgoing"||x.direction==="out"?"Odesláno":"Zpráva")+'</small><p>'+esc(x.body||x.message||"")+'</p></div>').join("")||"<p>Zatím bez uložených zpráv.</p>";
- $("#replyMessage").value="";$("#replyNotice").textContent="";$("#replyModal").hidden=false;replyRequestId=null;
+ const initialRequest={created_at:lead.submitted_at||lead.created_at,type:"incoming",body:["Nová poptávka zákazníka","Typ opravy: "+(lead.payload?.repairType||"Neuvedeno"),"Místo: "+(lead.place||"Neuvedeno"),...(lead.note&&!/^Typ opravy:\s*/i.test(lead.note)?["Popis: "+lead.note]:[])].join("\n")};const timeline=[initialRequest,...(Array.isArray(lead.communication)?lead.communication:[])].sort((a,b)=>new Date(a.created_at||a.sent_at||0)-new Date(b.created_at||b.sent_at||0));$("#replyHistory").innerHTML=timeline.map(x=>'<div class="reply-item"><small>'+esc(when(x.created_at||x.sent_at))+' · '+esc(x.type==="outgoing"||x.direction==="out"?"Odesláno":"Zpráva")+'</small><p>'+esc(x.body||x.message||"")+'</p>'+((x.attachments||[]).map(a=>'<small>Obrázek: '+esc(a.filename)+'</small>').join(''))+'</div>').join("")||"<p>Zatím bez uložených zpráv.</p>";
+ clearReplyImage();$("#replyMessage").value="";$("#replyNotice").textContent="";$("#replyModal").hidden=false;replyRequestId=null;
 });
 $("#replyMessage").addEventListener("input",()=>{replyRequestId=null});
 let replySending=false;
-function closeReply(){if(replySending)return;$("#replyModal").hidden=true;$("#replyMessage").value="";replyRequestId=null;}
+function closeReply(){if(replySending)return;$("#replyModal").hidden=true;clearReplyImage();$("#replyMessage").value="";replyRequestId=null;}
 $("#replyClose").onclick=closeReply;
 $("#replyModal").addEventListener("click",e=>{if(e.target.id==="replyModal")closeReply()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#replyModal").hidden)closeReply()});
@@ -107,17 +127,17 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#replyModal").h
 $("#replyForm").onsubmit=async e=>{
  e.preventDefault();const btn=$("#replySend"),notice=$("#replyNotice"),message=$("#replyMessage").value.trim();if(message.length<2)return;
  if(!replyRequestId)replyRequestId=crypto.randomUUID();
- replySending=true;btn.disabled=true;$("#replyClose").disabled=true;btn.textContent="Odesílám…";notice.textContent="";
- try{const result=await api("",{action:"send_reply",id:$("#replyLeadId").value,request_id:replyRequestId,message},"POST");notice.textContent=result.warning?"E-mail odeslán, historie nebyla uložena.":result.already_sent?"Tato zpráva již byla odeslána.":"Zpráva odeslána.";if(!result.warning){$("#replyModal").hidden=true;await refresh();msg(replyNoticeTarget,result.already_sent?"Zpráva již byla odeslána.":"Odpověď odeslána.")}replyRequestId=null}
+ replySending=true;$("#replyMessage").disabled=true;$("#replyImage").disabled=true;$("#replyImageRemove").disabled=true;btn.disabled=true;$("#replyClose").disabled=true;btn.textContent="Odesílám…";notice.textContent="";
+ try{const attachments=replyImageFile?[await readReplyImage(replyImageFile)]:[];const result=await api("",{action:"send_reply",id:$("#replyLeadId").value,request_id:replyRequestId,message,attachments},"POST");notice.textContent=result.warning?"E-mail odeslán, historie nebyla uložena.":result.already_sent?"Tato zpráva již byla odeslána.":"Zpráva odeslána.";if(!result.warning){$("#replyModal").hidden=true;await refresh();msg(replyNoticeTarget,result.already_sent?"Zpráva již byla odeslána.":"Odpověď odeslána.")}replyRequestId=null}
  catch(err){notice.textContent="Odeslání selhalo: "+err.message}
- finally{replySending=false;btn.disabled=false;$("#replyClose").disabled=false;btn.textContent="Odeslat zprávu"}
+ finally{replySending=false;$("#replyMessage").disabled=false;$("#replyImage").disabled=false;$("#replyImageRemove").disabled=false;btn.disabled=false;$("#replyClose").disabled=false;btn.textContent="Odeslat zprávu"}
 };
 $("#exportLeads").onclick=()=>{
  const q=($("#searchLead").value||"").toLowerCase(),st=$("#filterStatus").value||"";
  const rows=leads.filter(x=>(!st||x.status===st)&&[x.place,x.email,x.phone,x.name,x.note,x.assigned_to,x.next_action,x.payload?.repairType].join(" ").toLowerCase().includes(q));
  const fields=["created_at","name","email","phone","place","region","repair_type","status","assigned_to","next_action"];
  const csv=[fields.join(";"),...rows.map(x=>[x.created_at,x.name,x.email,x.phone,x.place,x.region,x.payload?.repairType||x.note,human(x.status),x.assigned_to,x.next_action].map(v=>'"'+String(v??"").replace(/"/g,'""').replace(/^[=+@-]/,m=>"'"+m)+'"').join(";"))].join("\r\n");
- const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="opravao-poptavky-"+new Date().toISOString().slice(0,10)+".csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}),url=globalThis.URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="opravao-poptavky-"+new Date().toISOString().slice(0,10)+".csv";a.click();setTimeout(()=>globalThis.URL.revokeObjectURL(url),1000);
 };
 $("#searchLead").addEventListener("input",renderLeads);$("#filterStatus").addEventListener("change",renderLeads);$("#filterLocation").addEventListener("change",renderLeads);$("#refreshLeads").onclick=async()=>{const b=$("#refreshLeads");b.disabled=true;b.textContent="Načítám…";try{await refresh();msg("#leadNotice","Poptávky byly aktualizovány.")}catch(e){msg("#leadNotice","Aktualizace selhala: "+e.message,true)}finally{b.disabled=false;b.textContent="Obnovit"}};
 
@@ -175,7 +195,7 @@ $("#invoiceIssuerForm").onsubmit=e=>{e.preventDefault();localStorage.setItem(iss
 $("#testInvoiceEmail").onclick=async()=>{const b=$("#testInvoiceEmail");if(!confirm("Odeslat zkušební fakturační e-mail na info@montao.cz?"))return;b.disabled=true;msg("#testInvoiceNotice","Odesílám testovací e-mail…");try{const r=await api("",{action:"test_invoice_email"},"POST");msg("#testInvoiceNotice","Resend přijal test pro "+r.recipient+". ID: "+(r.provider_id||"neuvedeno")+". Doručení ověřte v poště.")}catch(e){msg("#testInvoiceNotice","Odeslání selhalo: "+e.message,true)}finally{b.disabled=false}};
 $("#billingSearch").addEventListener("input",renderRevenue);
 $("#billingStatus").addEventListener("change",renderRevenue);
-$("#billingExport").onclick=()=>{const q=($("#billingSearch").value||"").toLowerCase(),st=$("#billingStatus").value;const rows=revenue.filter(x=>(!st||x.status===st)&&[x.opravao_partners?.company_name,x.invoice_ref,x.note,x.kind].join(" ").toLowerCase().includes(q));const fields=["Datum","Opravář","Typ","Částka Kč","Číslo dokladu","Splatnost","Stav","Poznámka"];const csv=[fields,...rows.map(x=>[x.created_at,x.opravao_partners?.company_name,x.kind,x.amount,x.invoice_ref,x.due_at,x.status,x.note])].map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""').replace(/^[=+@-]/,m=>"'"+m)+'"').join(";")).join("\r\n");const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}),url=window.URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="opravao-fakturace-"+new Date().toISOString().slice(0,10)+".csv";a.click();setTimeout(()=>window.URL.revokeObjectURL(url),1000);msg("#billingNotice","Exportováno "+rows.length+" položek.")};
+$("#billingExport").onclick=()=>{const q=($("#billingSearch").value||"").toLowerCase(),st=$("#billingStatus").value;const rows=revenue.filter(x=>(!st||x.status===st)&&[x.opravao_partners?.company_name,x.invoice_ref,x.note,x.kind].join(" ").toLowerCase().includes(q));const fields=["Datum","Opravář","Typ","Částka Kč","Číslo dokladu","Splatnost","Stav","Poznámka"];const csv=[fields,...rows.map(x=>[x.created_at,x.opravao_partners?.company_name,x.kind,x.amount,x.invoice_ref,x.due_at,x.status,x.note])].map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""').replace(/^[=+@-]/,m=>"'"+m)+'"').join(";")).join("\r\n");const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}),url=window.globalThis.URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="opravao-fakturace-"+new Date().toISOString().slice(0,10)+".csv";a.click();setTimeout(()=>window.globalThis.URL.revokeObjectURL(url),1000);msg("#billingNotice","Exportováno "+rows.length+" položek.")};
 $("#refreshRevenue").onclick=()=>refresh();$("#revenueForm").onsubmit=async e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));f.amount=Number(f.amount);try{await api("",{action:"create_revenue",...f},"POST");e.target.reset();msg("#revenueNotice","Výnosová položka přidána.");await refresh()}catch(e){msg("#revenueNotice",e.message,true)}};
 $("#pricingForm").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target),price={standard:Number(f.get("standard")),urgent:Number(f.get("urgent")||settings.lead_pricing?.urgent||0),max_partners_per_lead:Number(f.get("max_partners_per_lead")),customer_price:0,charge_policy:"partner_acceptance"},model={primary:"qualified_lead_fee",subscription_enabled:f.has("subscription_enabled"),commission_enabled:f.has("commission_enabled"),featured_listing_enabled:f.has("featured_listing_enabled")};try{await api("",{action:"save_settings",key:"lead_pricing",value:price},"POST");await api("",{action:"save_settings",key:"business_model",value:model},"POST");msg("#settingsNotice","Ceník a model byly uloženy.");await refresh()}catch(e){msg("#settingsNotice",e.message,true)}};
 
