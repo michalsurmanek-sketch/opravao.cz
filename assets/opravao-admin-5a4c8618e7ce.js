@@ -201,6 +201,7 @@ $("#pricingForm").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.t
 
 /* Unread requests use the same "new" state as the existing Save/read action. */
 function updateUnreadLeadBadge(rows=leads){
+ window.opravaoInbox?.update(rows);
  const button=document.querySelector('.nav button[data-view="requests"]');
  if(!button)return;
  let badge=document.getElementById("unreadLeadBadge");
@@ -229,6 +230,7 @@ async function pollUnreadLeads(){
   if(!session||session.user?.id!==currentUser)return;
   if(Array.isArray(data.leads)){
    leads=data.leads;
+   if(Array.isArray(data.settings))settings=Object.fromEntries(data.settings.map(x=>[x.key,x.value]));
    updateUnreadLeadBadge();
   }
  }catch{/* Keep the last confirmed count; manual refresh shows connection errors. */}

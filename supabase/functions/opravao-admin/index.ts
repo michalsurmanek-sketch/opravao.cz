@@ -135,6 +135,19 @@ Deno.serve(async req=>{
   await rest(base,key,"opravao_coupon_campaigns?id=eq."+campaign.id,{method:"PATCH",body:JSON.stringify({status:"active",updated_at:new Date().toISOString()})});
   await audit(base,key,actor,action,"coupon",campaign.id,{sent:sentCount,failed:failedCount,eligible:recipients.length});return json({ok:true,sent:sentCount,failed:failedCount,eligible:recipients.length},200,origin)
  }
+ if(action==="mark_reply_read"){
+  if(!safeId(b.id)||!Array.isArray(b.seen_ids)||b.seen_ids.length>1000||b.seen_ids.some(x=>typeof x!=="string"||x.length>600))return json({error:"invalid_read_marker"},422,origin);
+  const found=await rest(base,key,"plotao_leads?id=eq."+b.id+"&source=eq.opravao.cz&select=id,communication");
+  if(!found.ok)return fail(found);const lead=found.data?.[0];if(!lead)return json({error:"lead_not_found"},404,origin);
+  const incoming=new Set((Array.isArray(lead.communication)?lead.communication:[]).map((x,i)=>({x,id:String(x.provider_id||x.request_id||x.created_at||x.sent_at||"message")+":"+i})).filter(({x})=>x.type==="incoming"||["in","incoming","inbound"].includes(x.direction)).map(x=>x.id));
+  const readKey="inbox_read_"+b.id;
+  const previous=await rest(base,key,"opravao_settings?key=eq."+readKey+"&select=value");if(!previous.ok)return fail(previous);
+  const savedIds=previous.data?.[0]?.value?.seen_ids;
+  const seen_ids=[...new Set([...(Array.isArray(savedIds)?savedIds:[]),...b.seen_ids])].filter(id=>incoming.has(id));
+  const value={seen_ids};
+  const saved=await rest(base,key,"opravao_settings?on_conflict=key",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=representation"},body:JSON.stringify({key:readKey,value,updated_at:new Date().toISOString()})});
+  if(!saved.ok)return fail(saved);return json({ok:true,key:readKey,value},200,origin);
+ }
  if(action==="send_reply"){
   if(!safeId(b.id)||!safeId(b.request_id)||typeof b.message!=="string"||b.message.trim().length<2||b.message.length>10000)return json({error:"invalid_reply"},422,origin);
   const attachments=[];
