@@ -137,6 +137,20 @@ Deno.serve(async req=>{
  }
  if(action==="send_reply"){
   if(!safeId(b.id)||!safeId(b.request_id)||typeof b.message!=="string"||b.message.trim().length<2||b.message.length>10000)return json({error:"invalid_reply"},422,origin);
+  const attachments=[];
+  if(b.attachments!==undefined){
+   if(!Array.isArray(b.attachments)||b.attachments.length>1)return json({error:"invalid_attachments",detail:"Přidejte nejvýše jeden obrázek do 5 MB."},422,origin);
+   for(const a of b.attachments){
+    if(!a||typeof a.content!=="string"||a.content.length>6990508||!a.content.length||(a.content.length%4!==0||!/^[A-Za-z0-9+/]*={0,2}$/.test(a.content)))return json({error:"invalid_image",detail:"Neplatný obrázek nebo velikost nad 5 MB."},422,origin);
+    let bytes;try{bytes=atob(a.content)}catch{return json({error:"invalid_image"},422,origin)}
+    const hex=Array.from(bytes.slice(0,12),c=>c.charCodeAt(0).toString(16).padStart(2,"0")).join("");
+    const mime=hex.startsWith("89504e470d0a1a0a")?"image/png":hex.startsWith("ffd8ff")?"image/jpeg":bytes.startsWith("RIFF")&&bytes.slice(8,12)==="WEBP"?"image/webp":"";
+    if(!mime||mime!==a.content_type||bytes.length>5*1024*1024)return json({error:"invalid_image",detail:"Podporovány jsou JPG, PNG a WebP do 5 MB."},422,origin);
+    const ext=mime==="image/png"?"png":mime==="image/jpeg"?"jpg":"webp";
+    const filename=(str(a.filename,120).replace(/[^a-zA-Z0-9._-]/g,"_").replace(/\.[^.]*$/,"")||"obrazek")+"."+ext;
+    attachments.push({filename,content:a.content,content_type:mime,content_id:"opravao-reply-image"});
+   }
+  }
   const leadResult=await rest(base,key,"plotao_leads?id=eq."+b.id+"&source=eq.opravao.cz&select=id,name,email,communication,status");
   if(!leadResult.ok)return fail(leadResult);
   const lead=leadResult.data?.[0];if(!lead)return json({error:"lead_not_found"},404,origin);
@@ -145,9 +159,12 @@ Deno.serve(async req=>{
   if(history.some(x=>x.request_id===b.request_id))return json({ok:true,already_sent:true},200,origin);
   const resendKey=Deno.env.get("RESEND_API_KEY");if(!resendKey)return json({error:"resend_not_configured"},503,origin);
   const message=b.message.trim();
-  const sent=await fetch("https://api.resend.com/emails",{method:"POST",headers:{"Authorization":"Bearer "+resendKey,"Content-Type":"application/json","Idempotency-Key":b.request_id},body:JSON.stringify({from:"Opravao.cz <info@opravao.cz>",to:[lead.email],reply_to:"info@opravao.cz",subject:"Re: Vaše poptávka opravy – Opravao.cz [OPRAVAO:"+lead.id+"]",text:"Dobrý den,\n\n"+message+"\n\nOpravao.cz"})});
+  const escapeHtml=value=>String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  const imageHtml=attachments.length?'<p><img src="cid:opravao-reply-image" alt="Přiložený obrázek" style="max-width:100%;height:auto"></p>':"";
+  const html='<div style="font-family:Arial,sans-serif;line-height:1.6"><p>Dobrý den,</p><p>'+escapeHtml(message).replace(/\n/g,"<br>")+'</p>'+imageHtml+'<p>Opravao.cz</p></div>';
+  const sent=await fetch("https://api.resend.com/emails",{method:"POST",headers:{"Authorization":"Bearer "+resendKey,"Content-Type":"application/json","Idempotency-Key":b.request_id},body:JSON.stringify({from:"Opravao.cz <info@opravao.cz>",to:[lead.email],reply_to:"info@opravao.cz",subject:"Re: Vaše poptávka opravy – Opravao.cz [OPRAVAO:"+lead.id+"]",text:"Dobrý den,\n\n"+message+"\n\nOpravao.cz",...(attachments.length?{html,attachments}:{})})});
   const sentData=await sent.json().catch(()=>({}));if(!sent.ok)return json({error:"email_send_failed",detail:sentData.message||"Odeslání selhalo"},502,origin);
-  const entry={type:"outgoing",channel:"email",body:message,created_at:new Date().toISOString(),request_id:b.request_id,provider_id:sentData.id||null,from:"info@opravao.cz",to:lead.email};
+  const entry={type:"outgoing",channel:"email",body:message,attachments:attachments.map(a=>({filename:a.filename,content_type:a.content_type})),created_at:new Date().toISOString(),request_id:b.request_id,provider_id:sentData.id||null,from:"info@opravao.cz",to:lead.email};
   const saved=await rest(base,key,"plotao_leads?id=eq."+b.id+"&source=eq.opravao.cz",{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify({communication:[...history,entry],status:lead.status==="new"?"contacted":lead.status,updated_at:new Date().toISOString()})});
   if(!saved.ok)return json({ok:true,warning:"email_sent_history_not_saved"},200,origin);
   await audit(base,key,actor,action,"lead",b.id,{recipient:lead.email,provider_id:sentData.id});
