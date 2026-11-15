@@ -125,7 +125,7 @@ $("#replyModal").addEventListener("click",e=>{if(e.target.id==="replyModal")clos
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#replyModal").hidden)closeReply()});
 
 $("#replyForm").onsubmit=async e=>{
- e.preventDefault();const btn=$("#replySend"),notice=$("#replyNotice"),message=$("#replyMessage").value.trim();if(message.length<2)return;
+ e.preventDefault();const btn=$("#replySend"),notice=$("#replyNotice"),message=$("#replyMessage").value;if(message.trim().length<2)return;
  if(!replyRequestId)replyRequestId=crypto.randomUUID();
  replySending=true;$("#replyMessage").disabled=true;$("#replyImage").disabled=true;$("#replyImageRemove").disabled=true;btn.disabled=true;$("#replyClose").disabled=true;btn.textContent="Odesílám…";notice.textContent="";
  try{const attachments=replyImageFile?[await readReplyImage(replyImageFile)]:[];const result=await api("",{action:"send_reply",id:$("#replyLeadId").value,request_id:replyRequestId,message,attachments},"POST");notice.textContent=result.warning?"E-mail odeslán, historie nebyla uložena.":result.already_sent?"Tato zpráva již byla odeslána.":"Zpráva odeslána.";if(!result.warning){$("#replyModal").hidden=true;await refresh();msg(replyNoticeTarget,result.already_sent?"Zpráva již byla odeslána.":"Odpověď odeslána.")}replyRequestId=null}
